@@ -2,6 +2,19 @@
 
 /*
 |--------------------------------------------------------------------------
+| Default pagination for this application (By Mostafijur Rahman Rana)
+|--------------------------------------------------------------------------
+|
+| This code define default bootstrap pagination for front found and lost list.
+| 
+*/
+
+Illuminate\Pagination\AbstractPaginator::defaultView("pagination::bootstrap-4");
+Illuminate\Pagination\AbstractPaginator::defaultSimpleView("pagination::simple-bootstrap-4");
+
+
+/*
+|--------------------------------------------------------------------------
 | Create The Application
 |--------------------------------------------------------------------------
 |
