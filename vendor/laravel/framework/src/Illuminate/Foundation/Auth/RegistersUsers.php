@@ -17,13 +17,7 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-
-        $title = 'User Registration';
-
-        $menu = 'register';
-
-        return view('front.auth.register')->withTitle($title)->withMenu($menu);
-
+        return view('auth.register');
     }
 
     /**
@@ -63,6 +57,6 @@ trait RegistersUsers
      */
     protected function registered(Request $request, $user)
     {
-        
+        //
     }
 }

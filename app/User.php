@@ -7,11 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    // core user auth path: vendor>laravel>foundation>Auth>
-
     use Notifiable;
-
-    protected $table = 'users'; // you can custom this table
 
     /**
      * The attributes that are mass assignable.
@@ -30,5 +26,4 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
 }

@@ -107,7 +107,7 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
      */
     protected function getPayload($email, $token)
     {
-        return ['ow_email' => $email, 'token' => $this->hasher->make($token), 'created_at' => new Carbon];
+        return ['email' => $email, 'token' => $this->hasher->make($token), 'created_at' => new Carbon];
     }
 
     /**
@@ -120,7 +120,7 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
     public function exists(CanResetPasswordContract $user, $token)
     {
         $record = (array) $this->getTable()->where(
-            'ow_email', $user->getEmailForPasswordReset()
+            'email', $user->getEmailForPasswordReset()
         )->first();
 
         return $record &&
