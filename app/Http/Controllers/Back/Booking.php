@@ -27,18 +27,23 @@ class Booking extends Controller{
      */
     public function index() {
 
-        // get ambulance type
-        $amb_types = AmbulanceTypeModel::all();
+        // make object and get booking list
+        $bookings = new BookingModel();
+        $lists = $bookings
+                    ->join('abmulance_types','bookings.booking_ambulance_type_id','=','abmulance_types.abmulance_type_id')
+                    ->select('bookings.*','abmulance_types.abmulance_type_name')
+                    ->get();
 
-        // get booking list
-        $lists = BookingModel::all();
+
+        // get mbulance type
+        $ambtypes = AmbulanceTypeModel::all();
 
         $title = 'Booking List';
         
         $menu = 'booking';
 
         return view('back.booking.booking_list')
-                                        ->withAmb_types($amb_types)
+                                        ->withAmbtypes($ambtypes)
                                         ->withLists($lists)
                                         ->withTitle($title)
                                         ->withMenu($menu);

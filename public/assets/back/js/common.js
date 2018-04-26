@@ -120,55 +120,44 @@ function deleteall(table, field, image){
 
 }// end function
 
+// common status change 
+ function common_status_change(table,id_field,id,status_field,status){
+  
+  $.ajax({
 
-// this function used for lost report status changed   
-function status_change(table,field,id,status,status_field){
+    url: BASE_URL + "/admin/cmn-status",
 
-  // confirm
-  if (confirm("Are you sure? Click OK to confirme")) {
+    // fired data 
+    data: {
+        "table": table,
+        "id_field": id_field,
+        "id": id,
+        "status_field": status_field,
+        "status": status
+    },
+    // content type
+    contentType: "application/json;charset=utf-8",
+    dataType: 'json',
 
-    // ajax action
-    $.ajax({
-      url: BASE_URL + "/admin/cmn-report-status",
-      // fired data type
-      data: {
-          "table": table,
-          "field": field,
-          "id": id,
-          "status": status,
-          "status_field": status_field
-      },
+    success: function (data){
 
-      // content type
-      contentType: "application/json;charset=utf-8",
-      dataType: 'json',
+      if(data == 1){
 
-      // success feedback
-      success:function(data){
-        $('#row_' + id).remove();
-      },
-      // error feedback
-      error:function(data){
-        $('#error').html('<span>status changed error!</span>');
+        status = 1;
+        $('#status_'+id).html('<a href="#" class = "btn btn-success" onclick="common_status_change();">Active</a>');
+      
+      }else{
+
+        status = 0;
+        $('#status_'+id).html('<a href="#" class = "btn btn-warning" onclick="common_status_change();">Inactive</a>');
+      
       }
-    });
 
-  } // confirm
+    },
 
+    error: function (data){
+      $('#error').html('<span>Sorry! status try another time!</span>');
+    }
+
+  });
 }
-
-// next time use
-// function set_primary(product_id,clipart_id) {
-
-//   $('.primary_set').attr('checked', false);
-
-//   $.ajax({
-//     url:BASE_URL+'common/set_default_product/'+product_id+'/'+clipart_id,
-//       success: function (data){
-                      
-//       $('#default_'+product_id).prop('checked', true);
-//       // location.reload();
-//       }
-//   });
-
-// }

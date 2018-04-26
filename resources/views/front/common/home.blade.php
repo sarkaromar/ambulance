@@ -112,7 +112,7 @@
                                         <div class="col-md-6 pd-right">
                                             <div class="input">
                                                 <i class="fa fa-calendar"></i>
-                                                <input type="text" class="date-end date-selector form-controller" id="date_format" name="date" placeholder="Date" required>
+                                                <input type="text" class="date-end date-selector form-controller" name="date" placeholder="Date" required>
                                             </div>
                                         </div><!--/.col-md-6-->
                                         <div class="col-md-6 pd-left">
@@ -135,7 +135,7 @@
                                         </div><!--/.col-md-6-->
                                         <div class="col-md-12">
                                             <div class="input">
-                                                <textarea rows="2" cols="100" name="address" placeholder="Name and Full Address" required></textarea>
+                                                <textarea rows="2" cols="100" name="address" placeholder="Full Address" required></textarea>
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6-->
                                     </div><!-- /.row -->

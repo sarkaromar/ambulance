@@ -44,8 +44,8 @@ Route::prefix('admin')->group(function(){
 	Route::post('/update-booking/{id}', 'Back\Booking@update');
 	
 	// common action --------
-	Route::get('/cmn-delete', 'CommonController@delete');
-	Route::get('/cmn-status', 'CommonController@status');
+	Route::get('/cmn-delete', 'Back\CommonController@delete');
+	Route::get('/cmn-status', 'Back\CommonController@cmn_status');
 
 
 
