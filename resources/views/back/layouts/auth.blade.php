@@ -22,7 +22,7 @@
         <!-- javascript -->
         <script src="{{ URL::to('assets/back/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
         <script src="{{ URL::to('assets/back/bootstrap/js/bootstrap.min.js') }}"></script> 
-        <script src="{{ URL::to('assets/back/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ URL::to('assets/back/plugins/iCheck/icheck.min.js') }}"></script> 
         <script>
             $(function () {
                 $('input').iCheck({

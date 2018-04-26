@@ -15,6 +15,8 @@ Auth::routes();
 
 // front route -----------------------------------------------------------------
 Route::get('/', 'Front\Home@index');
+Route::post('/booking', 'Front\Home@do_booking')->name('booking');
+
 //about page
 Route::get('/about-us', 'Front\Home@about');
 
@@ -29,30 +31,22 @@ Route::get('/tnc', 'Front\Home@tnc');
 Route::get('/contact-us', 'Front\Home@contact');
 
 
+// admin routes ----------------------------------------------------------------
+
+Route::prefix('admin')->group(function(){
+
+	// dashboard --------
+	Route::get('/dashboard', 'Back\Dashboard@index')->name('admin.dashboard');
+
+	// booking section --------
+	Route::get('/booking', 'Back\Booking@index');
+	Route::post('/add-booking', 'Back\Booking@store');
+	Route::post('/update-booking/{id}', 'Back\Booking@update');
+	
+	// common action --------
+	Route::get('/cmn-delete', 'CommonController@delete');
+	Route::get('/cmn-status', 'CommonController@status');
 
 
 
-
-
-
-
-
-// lost report related page's -------
-// Route::get('/lost-list', 'Front\LostPostController@lost_list');
-// Route::get('/lost-search-list', 'Front\LostPostController@lost_search_list');
-// Route::get('/lost-item-details/{id}', 'Front\LostPostController@lost_item_details');
-// // report form
-// Route::get('/lost-report', 'Front\LostPostController@index');
-// Route::post('/send-lost-report', 'Front\LostPostController@store');
-
-// // found report related page's -------
-// Route::get('/found-list', 'Front\FoundPostController@found_list');
-// Route::get('/found-search-list', 'Front\FoundPostController@found_search_list');
-// Route::get('/found-item-details/{id}', 'Front\FoundPostController@found_item_details');
-// // report form
-// Route::get('/found-report', 'Front\FoundPostController@index');
-// Route::post('/send-found-report', 'Front\FoundPostController@store');
-
-// // get area 
-// Route::get('/get-area', 'CommonController@get_area');
-// Route::get('/get-area-by-slug', 'CommonController@get_area_by_slug');
+});

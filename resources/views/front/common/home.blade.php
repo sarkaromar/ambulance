@@ -60,67 +60,82 @@
                             <h4 class="from-subtitle">অ্যাম্বুলেন্স পেতে ঘর গুলা পূরণ করুন।</h4>
                             <h2 class="from-title">অ্যাম্বুলেন্স ভাড়া জন্য</h2>
                         </div><!-- /.shipping-form-heading -->
-                        <form action="#" method="get" class="advance-search-query">
+                        <form class="advance-search-query" action="{{ route('booking') }}" method="POST">
+                        {{ csrf_field() }}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (Session::has('success'))
+                        <div class="alert alert-success">
+                            <strong>Thanks!</strong> {{Session::get('success')}}
+                        </div>
+                        @endif
                             <div class="regular-search">
                                 <div class="form-content">
                                     <div class="row">
                                         <div class="col-md-12 pd-right">
                                             <div class="input">                          
-                                                <select>
-                                                    <option value="volvo">Choose Ambulance</option>
-                                                    <option value="volvo">Non AC Ambulance</option>                                         
-                                                    <option value="volvo">AC Ambulance</option>                                         
-                                                    <option value="volvo">ICU Ambulance</option>                                        
-                                                    <option value="volvo">Freezer Ambulance</option> 
+                                                <i class="fa fa-user"></i>
+                                                <input type="text" name="name" placeholder="Full Name" required>
+                                            </div><!-- /.input -->
+                                        </div><!--/.col-md-6-->
+                                        <div class="col-md-12 pd-right">
+                                            <div class="input">                          
+                                                <select name="amb_type" required>
+                                                    <option value="">Choose Ambulance</option>
+                                                    @if($ambtypes[0])
+                                                    @foreach($ambtypes as $amb_type)
+                                                    <option value="{{ $amb_type->abmulance_type_id }}">{{ $amb_type->abmulance_type_name }}</option>
+                                                    @endforeach
+                                                    @endif
                                                 </select>
                                             </div><!-- /.input -->
                                         </div><!--/.col-md-6-->
-
                                         <div class="col-md-6 pd-right">
                                             <div class="input">
-                                                    <i class="fa fa-map-marker"></i>
-                                                    <input type="text" name="FirstName" placeholder="From">
+                                                <i class="fa fa-map-marker"></i>
+                                                <input type="text" name="form" placeholder="From" required>
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6-->
-
                                         <div class="col-md-6 pd-left">
                                             <div class="input">
                                                     <i class="fa fa-map-marker"></i>
-                                                <input type="text" name="FirstName" placeholder="To">
+                                                <input type="text" name="to" placeholder="To" required>
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6-->
-
                                         <div class="col-md-6 pd-right">
                                             <div class="input">
                                                 <i class="fa fa-calendar"></i>
-                                                <input type="text" class="date-end date-selector form-controller" placeholder="Date">
+                                                <input type="text" class="date-end date-selector form-controller" id="date_format" name="date" placeholder="Date" required>
                                             </div>
-                                        </div><!--/.col-md-6--> 
-                                           
+                                        </div><!--/.col-md-6-->
                                         <div class="col-md-6 pd-left">
                                             <div class="input">
                                                 <i class="fa fa-clock-o"></i>
-                                                <input type="text" class="time-selector form-controller" placeholder="15:00 am">
+                                                <input type="text" class="time-selector form-controller" name="time" placeholder="15:00 am" required>
                                             </div>
                                         </div><!--/.col-md-6-->  
-
                                         <div class="col-md-6 pd-right">
                                             <div class="input">
                                                     <i class="fa fa-mobile"></i>
-                                                <input type="text" name="mobile" placeholder="Mobile nubmer">
+                                                <input type="text" name="mobile" placeholder="Mobile nubmer" required>
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6--> 
-
                                         <div class="col-md-6 pd-left">
                                             <div class="input">
                                                     <i class="fa fa-at"></i>
                                                 <input type="email" name="email" placeholder="Email">
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6-->
-
                                         <div class="col-md-12">
                                             <div class="input">
-                                                <textarea rows="2" cols="100" placeholder="Name and Full Address"></textarea>
+                                                <textarea rows="2" cols="100" name="address" placeholder="Name and Full Address" required></textarea>
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6-->
                                     </div><!-- /.row -->

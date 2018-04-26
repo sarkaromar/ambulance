@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{$title}} - Lost and found</title>
+        <title>{{$title}}</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" href="{{ URL::to('assets/back/favicon.ico') }}" type="image/x-icon" />
         <link rel="stylesheet" href="{{ URL::to('assets/back/bootstrap/css/bootstrap.min.css') }}" >
@@ -37,8 +37,8 @@
             <!-- header -->
             <header class="main-header">
                 <a href="{{ url('/admin/dashboard') }}" class="logo">
-                    <span class="logo-mini"><b>Lost and Found</b></span>
-                    <span class="logo-lg"><b>Lost and Found</b></span>
+                    <span class="logo-mini"><b>Ambulance</b></span>
+                    <span class="logo-lg"><b>Ambulance</b></span>
                 </a>
                 <!-- navbar -->
                 <nav class="navbar navbar-static-top">
@@ -52,7 +52,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                    <span class="hidden-xs"><?=Auth::user()->name?> &nbsp; As &nbsp;
                                         <?php
-                                        if (Auth::user()->level == 0) { 
+                                        if (Auth::user()->level == 1) { 
                                             echo '<span class="label label-success">Manager</span>';
                                         } elseif (Auth::user()->level == 2) {
                                             echo '<span class="label label-danger">Super Admin</span>';
@@ -68,10 +68,10 @@
                                     <!-- user footer-->
                                     <li class="user-footer">
                                         <div class="pull-right">
-                                            <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat"
+                                            <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
                                                 onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-fw fa-sign-out"></i><span>Logout</span></a>
-                                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 {{ csrf_field() }}
                                             </form>
                                         </div>
@@ -93,40 +93,10 @@
                                 <i class="fa fa-dashboard fa-lg"></i><span> &nbsp;Dashboard</span>
                             </a>
                         </li>
-                        <!-- found reports -->
-                        <li class="treeview <?php if ($menu == 'found_reports') echo 'active' ?>">
-                            <a href="{{ url('/admin/active-found-lists') }}" >
-                                <i class="fa fa-smile-o fa-lg"></i><span> &nbsp;Found Reports</span>
-                            </a>
-                        </li>
-                        <!-- lost reports -->
-                        <li class="treeview <?php if ($menu == 'lost_reports') echo 'active' ?>">
-                            <a href="{{ url('/admin/active-lost-lists') }}" >
-                                <i class="fa fa-frown-o fa-lg"></i><span> &nbsp;Lost Reports</span>
-                            </a>
-                        </li>
-                        <!-- user -->
-                        <li class="treeview <?php if ($menu == 'user') echo 'active' ?>">
-                            <a href="{{ url('/admin/user') }}" >
-                                <i class="fa fa-users fa-lg"></i><span> &nbsp;User</span>
-                            </a>
-                        </li>
-                        <!-- post category -->
+                        <!-- booking list -->
                         <li class="treeview <?php if ($menu == 'post_cat') echo 'active' ?>">
-                            <a href="{{ url('/admin/post-category') }}" >
-                                <i class="fa fa-list-ul fa-lg"></i><span> &nbsp;Post Category</span>
-                            </a>
-                        </li>
-                        <!-- area -->
-                        <li class="treeview <?php if ($menu == 'area' ) echo 'active' ?>">
-                            <a href="{{ url('/admin/area') }}" >
-                                <i class="fa fa-fw fa-map-marker fa-lg"></i><span> &nbsp;Area</span>
-                            </a>
-                        </li>
-                        <!-- division -->
-                        <li class="treeview <?php if ($menu == 'division' ) echo 'active' ?>">
-                            <a href="{{ url('/admin/division') }}" >
-                                <i class="fa fa-fw fa-map-o fa-lg"></i><span> &nbsp;Division</span>
+                            <a href="{{ url('/admin/booking') }}" >
+                                <i class="fa fa-list-ul fa-lg"></i><span> &nbsp;Booking List</span>
                             </a>
                         </li>
                     </ul>
@@ -138,7 +108,7 @@
         <!-- /wrapper -->
         <footer class="main-footer">
             <div class="pull-right">
-                <p><?=date('Y');?> &copy; Lost and found. Powered by Cloud Next Generation LTD. | <b>First Phase : beta version</b></p>
+                <p><?=date('Y');?> &copy; {{ config('app.name') }} | First Phase : <b>beta version</b></p>
             </div>
         </footer>
         <!-- Script -->

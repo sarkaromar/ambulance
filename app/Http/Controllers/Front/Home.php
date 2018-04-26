@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use App\AmbulanceTypeModel;
+use App\BookingModel;
 
 // use DB;
 // use Auth;
-// use Session;
+use Session;
 
 /**
  * This class used for home page and other static page
@@ -28,14 +31,71 @@ class Home extends Controller {
         // get sliders
         // $data['sliders'] = DB::table('v_sliders')->get();
 
+        // get ambulance type
+        $ambtypes = AmbulanceTypeModel::all();
+
         $title = 'Maa Moni Ambulance Service 24/7';
         
         $menu = 'home';
         
         return view('front.common.home')
+                ->withAmbtypes($ambtypes)
                 ->withTitle($title)
                 ->withMenu($menu);
     }
+
+    /**
+     * do booking method
+     *
+     *  @param 
+     * @return Response
+     * @author Mostafijur Rahman Rana
+     */
+    public function do_booking(Request $request){
+
+        // validate
+        $this->validate($request, [
+            
+            'name' => 'required|max:255',
+            'amb_type' => 'required|integer|max:255',
+            'form' => 'required|max:255',
+            'to' => 'required|max:255',
+            'date' => 'required|max:255',
+            'time' => 'required|max:255',
+            'mobile' => 'required|max:255',
+            'email' => 'email|max:255',
+            'address' => 'required|max:5000'
+
+        ]);
+        
+        // create object
+        $booking = new BookingModel();
+        // assign
+        $booking->booking_applicant_name = trim($request->input('name'));
+        $booking->booking_ambulance_type_id = trim($request->input('amb_type'));
+        $booking->booking_form = trim($request->input('form'));
+        $booking->booking_to = trim($request->input('to'));
+        $booking->booking_date = trim($request->input('date'));
+        $booking->booking_time = trim($request->input('time'));
+        $booking->booking_mobile = trim($request->input('mobile'));
+        $booking->booking_email = trim($request->input('email'));
+        $booking->booking_address = trim($request->input('address'));
+
+        if($booking->save()){
+
+            Session::flash('success', 'We received your request, we will contact with you!');
+            return redirect::Back();
+
+        } else {
+            
+            Session::flash('error', 'Please, try next time!');
+            return redirect::Back();
+        
+        }
+
+    }
+
+
 
     /**
      * Show the about page.

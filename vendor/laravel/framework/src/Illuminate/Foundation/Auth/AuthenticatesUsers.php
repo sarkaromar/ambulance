@@ -17,7 +17,12 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        return view('auth.login');
+        $title = "Admin login";
+
+        $menu = "admin_login";
+
+        return view('back.auth.login')->withTitle($title)->withMenu($menu);
+
     }
 
     /**
@@ -156,7 +161,7 @@ trait AuthenticatesUsers
 
         $request->session()->invalidate();
 
-        return redirect('/');
+        return redirect('/login');
     }
 
     /**

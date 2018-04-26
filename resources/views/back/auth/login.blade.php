@@ -4,11 +4,11 @@
 <div class="layer">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ URL::to('admin/login') }}"><b style="color:#fff;font-size:60px;">Login</b></a>
+            <a href="{{ URL::to('admin/login') }}"><b style="color:#fff;font-size:60px;">{{ config('app.name') }}</b></a>
         </div>
         <div class="login-box-body" style="box-shadow: 0px 0px 20px 5px;">
-            <p class="login-box-msg">Hi User!</p>
-            <form class="form-horizontal" method="POST" action="{{ route('admin.login.submit') }}">
+            <p class="login-box-msg">Welcome to admin login</p>
+            <form class="form-horizontal" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="example@gmail.com" maxlength="128" required autofocus>
