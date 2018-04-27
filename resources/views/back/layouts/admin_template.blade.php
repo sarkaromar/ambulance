@@ -10,8 +10,10 @@
         <link rel="stylesheet" href="{{ URL::to('assets/back/extra/font-awesome.min.css') }}" >
         <link rel="stylesheet" href="{{ URL::to('assets/back/extra/ionicons.min.css') }}" >
         <link rel="stylesheet" href="{{ URL::to('assets/back/plugins/datatables/dataTables.bootstrap.css') }}">
-        <link rel="stylesheet" href="{{ URL::to('assets/back/plugins/select2/select2.min.css') }}">
+        <!-- <link rel="stylesheet" href="{{ URL::to('assets/back/plugins/select2/select2.min.css') }}">
         <link rel="stylesheet" href="{{ URL::to('assets/back/plugins/tagsinput/bootstrap-tagsinput.css') }}">
+         -->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="{{ URL::to('assets/back/dist/css/AdminLTE.min.css') }}" >
         <link rel="stylesheet" href="{{ URL::to('assets/back/dist/css/skins/_all-skins.min.css') }}" >
         <link rel="stylesheet" href="{{ URL::to('assets/back/css/custom.css') }}" >
@@ -114,12 +116,29 @@
         <!-- Script -->
         <script src="{{ URL::to('assets/back/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
         <script src="{{ URL::to('assets/back/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="{{ URL::to('assets/back/plugins/select2/select2.full.min.js') }}"></script>
-        <script src="{{ URL::to('assets/back/plugins/tagsinput/bootstrap-tagsinput.min.js') }}"></script>
+        <!-- <script src="{{ URL::to('assets/back/plugins/select2/select2.full.min.js') }}"></script> -->
+        <!-- <script src="{{ URL::to('assets/back/plugins/tagsinput/bootstrap-tagsinput.min.js') }}"></script> -->
         <script src="{{ URL::to('assets/back/plugins/datatables/jquery.dataTables.min.js') }}"></script>
         <script src="{{ URL::to('assets/back/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="{{ URL::to('assets/back/dist/js/demo.js') }}"></script>
         <script src="{{ URL::to('assets/back/js/common.js') }}"></script>
+        <script>
+            $( function() {
+                $( "#jquery_datepicker" ).datepicker({
+                    minDate: 0,
+                    dateFormat: 'yy-mm-dd'
+                });
+            });
+        </script>
+        <!-- date picker for row -->
+
+
+
+
+
+
+
         <script>
           $(function () {
             $('#data_table').DataTable({

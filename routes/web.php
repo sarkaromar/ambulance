@@ -42,11 +42,10 @@ Route::prefix('admin')->group(function(){
 	Route::get('/booking', 'Back\Booking@index');
 	Route::post('/add-booking', 'Back\Booking@store');
 	Route::post('/update-booking/{id}', 'Back\Booking@update');
+	Route::get('/booking-status/{id}/{status}', 'Back\Booking@status');
+	Route::get('/booking-delete/{id}', 'Back\Booking@delete');
 	
-	// common action --------
-	Route::get('/cmn-delete', 'Back\CommonController@delete');
-	Route::get('/cmn-status', 'Back\CommonController@cmn_status');
-
+	
 
 
 });

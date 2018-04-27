@@ -60,7 +60,7 @@ class Home extends Controller {
             'amb_type' => 'required|integer|max:255',
             'form' => 'required|max:255',
             'to' => 'required|max:255',
-            'date' => 'required|max:255',
+            'date' => 'required|date|max:255',
             'time' => 'required|max:255',
             'mobile' => 'required|max:255',
             'email' => 'email|max:255',

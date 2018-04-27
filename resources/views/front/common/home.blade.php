@@ -112,7 +112,7 @@
                                         <div class="col-md-6 pd-right">
                                             <div class="input">
                                                 <i class="fa fa-calendar"></i>
-                                                <input type="text" class="date-end date-selector form-controller" name="date" placeholder="Date" required>
+                                                <input type="text" id="jquery_datepicker" class="form-controller" name="date" placeholder="Date" required>
                                             </div>
                                         </div><!--/.col-md-6-->
                                         <div class="col-md-6 pd-left">
