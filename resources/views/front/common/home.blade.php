@@ -62,7 +62,7 @@
                         </div><!-- /.shipping-form-heading -->
                         <form class="advance-search-query" action="{{ route('booking') }}" method="POST">
                         {{ csrf_field() }}
-                        @if ($errors->any())
+                            @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
                                     @foreach ($errors->all() as $error)
@@ -70,12 +70,12 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif
-                        @if (Session::has('success'))
-                        <div class="alert alert-success">
-                            <strong>Thanks!</strong> {{Session::get('success')}}
-                        </div>
-                        @endif
+                            @endif
+                            @if (Session::has('success'))
+                            <div class="alert alert-success">
+                                <strong>Thanks!</strong> {{Session::get('success')}}
+                            </div>
+                            @endif
                             <div class="regular-search">
                                 <div class="form-content">
                                     <div class="row">

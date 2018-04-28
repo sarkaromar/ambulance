@@ -10,9 +10,8 @@
         <link rel="stylesheet" href="{{ URL::to('assets/back/extra/font-awesome.min.css') }}" >
         <link rel="stylesheet" href="{{ URL::to('assets/back/extra/ionicons.min.css') }}" >
         <link rel="stylesheet" href="{{ URL::to('assets/back/plugins/datatables/dataTables.bootstrap.css') }}">
-        <!-- <link rel="stylesheet" href="{{ URL::to('assets/back/plugins/select2/select2.min.css') }}">
-        <link rel="stylesheet" href="{{ URL::to('assets/back/plugins/tagsinput/bootstrap-tagsinput.css') }}">
-         -->
+        <!-- <link rel="stylesheet" href="{{ URL::to('assets/back/plugins/select2/select2.min.css') }}"> -->
+        <!-- <link rel="stylesheet" href="{{ URL::to('assets/back/plugins/tagsinput/bootstrap-tagsinput.css') }}"> -->
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="{{ URL::to('assets/back/dist/css/AdminLTE.min.css') }}" >
         <link rel="stylesheet" href="{{ URL::to('assets/back/dist/css/skins/_all-skins.min.css') }}" >
@@ -90,17 +89,39 @@
                 <section class="sidebar">
                     <ul class="sidebar-menu">
                         <!-- dashboard -->
-                        <li class="treeview <?php if ($menu == 'dash' ) echo 'active' ?>">
+                        <li class="treeview <?php if ($menu == 'dashboard' ) echo 'active' ?>">
                             <a href="{{ url('/admin/dashboard') }}" >
                                 <i class="fa fa-dashboard fa-lg"></i><span> &nbsp;Dashboard</span>
                             </a>
                         </li>
                         <!-- booking list -->
-                        <li class="treeview <?php if ($menu == 'post_cat') echo 'active' ?>">
+                        <li class="treeview <?php if ($menu == 'booking') echo 'active' ?>">
                             <a href="{{ url('/admin/booking') }}" >
                                 <i class="fa fa-list-ul fa-lg"></i><span> &nbsp;Booking List</span>
                             </a>
                         </li>
+                        <!-- CMS page -->
+                        <li class="treeview <?php if($menu == 'cms' ) echo 'active' ?>">
+                            <a href="#">
+                                <i class="fa fa-fw fa-edit fa-lg"></i><span> &nbsp;CMS Page</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="<?php if (isset($submenu) && $submenu == 'about' ) echo 'active' ?>">
+                                    <a href="{{ url('/admin/about')}}"><i class="fa fa-caret-right"></i> About us</a>
+                                </li>
+                                <li class="<?php if (isset($submenu) && $submenu == 'rants' ) echo 'active' ?>">
+                                    <a href="{{ url('/admin/rants')}}"><i class="fa fa-caret-right"></i> Rants</a>
+                                </li>
+                                <li class="<?php if (isset($submenu) && $submenu == 'tnc' ) echo 'active' ?>">
+                                    <a href="{{ url('/admin/tnc')}}"><i class="fa fa-caret-right"></i> Terms& Cond.</a>
+                                </li>
+                            </ul>
+                        </li>  
+
+                        <!-- other link goes here  -->
                     </ul>
                 </section>
             </aside>
@@ -120,24 +141,69 @@
         <!-- <script src="{{ URL::to('assets/back/plugins/tagsinput/bootstrap-tagsinput.min.js') }}"></script> -->
         <script src="{{ URL::to('assets/back/plugins/datatables/jquery.dataTables.min.js') }}"></script>
         <script src="{{ URL::to('assets/back/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+        <script src="{{ URL::to('assets/back/dist/js/app.min.js') }}"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="{{ URL::to('assets/back/dist/js/demo.js') }}"></script>
-        <script src="{{ URL::to('assets/back/js/common.js') }}"></script>
+
+        <!-- tinymce with laravel file manager  -->
         <script>
+            var route_prefix = "{{ url(config('lfm.url_prefix', config('lfm.prefix'))) }}";
+        </script>
+        <!-- TinyMCE init -->
+        <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+        <script>
+            var editor_config = {
+              path_absolute : "",
+              selector: "textarea[name=content]",
+              plugins: [
+                "link image code",
+              ],
+              relative_urls: false,
+              height: 350,
+              file_browser_callback : function(field_name, url, type, win) {
+                var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+                var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
+
+                var cmsURL = editor_config.path_absolute + route_prefix + '?field_name=' + field_name;
+                if (type == 'image') {
+                  cmsURL = cmsURL + "&type=Images";
+                } else {
+                  cmsURL = cmsURL + "&type=Files";
+                }
+
+                tinyMCE.activeEditor.windowManager.open({
+                  file : cmsURL,
+                  title : 'Filemanager',
+                  width : x * 0.8,
+                  height : y * 0.8,
+                  resizable : "yes",
+                  close_previous : "no"
+                });
+              }
+            };
+
+            tinymce.init(editor_config);
+        </script>
+        <script>
+            {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}
+        </script>
+        <script>
+            $('#lfm').filemanager('image', {prefix: route_prefix});
+            $('#lfm2').filemanager('file', {prefix: route_prefix});
+        </script>
+
+
+
+        <!-- datepicker -->
+        <!-- <script>
             $( function() {
                 $( "#jquery_datepicker" ).datepicker({
                     minDate: 0,
                     dateFormat: 'yy-mm-dd'
                 });
             });
-        </script>
+        </script> -->
         <!-- date picker for row -->
-
-
-
-
-
-
 
         <script>
           $(function () {

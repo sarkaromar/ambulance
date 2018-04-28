@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">                
-                <h2 class="page-title">Rants</h2>
+                <h2 class="page-title">{{ $title }}</h2>
                 <p class="page-description yellow-color">Maa-Moni Ambulance</p>        
             </div><!-- /.col-md-12 -->
         </div><!-- /.row-->
@@ -18,14 +18,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="about-top-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="heading-content-three">
-                                <h2 class="title">Why <br />Choose Us</h2>
-                                <h4 class="sub-title">Ambulance Information</h4>
-                            </div><!-- /.section-title-area -->
-                        </div><!-- /.col-md-12 -->
-                    </div><!-- /.row -->
+                    {!! $content !!}
                 </div><!-- /.top-content -->
             </div><!-- /.col-md-12 -->
         </div><!-- /.row -->

@@ -27,7 +27,7 @@ Route::get('/non-ac-ambulance', 'Front\Home@non_ac_ambulance');
 Route::get('/rants', 'Front\Home@rants');
 Route::get('/news', 'Front\Home@news');
 Route::get('/faq', 'Front\Home@faq');
-Route::get('/tnc', 'Front\Home@tnc');
+Route::get('/terms_and_conditions', 'Front\Home@tnc');
 Route::get('/contact-us', 'Front\Home@contact');
 
 
@@ -45,7 +45,16 @@ Route::prefix('admin')->group(function(){
 	Route::get('/booking-status/{id}/{status}', 'Back\Booking@status');
 	Route::get('/booking-delete/{id}', 'Back\Booking@delete');
 	
-	
+	// cms section --------
+	Route::get('/about', 'Back\Cms@about');
+	Route::post('/about-update', 'Back\Cms@about_update');
+
+	Route::get('/rants', 'Back\Cms@rants');
+	Route::post('/rants-update', 'Back\Cms@rants_update');
+
+	Route::get('/tnc', 'Back\Cms@tnc');
+	Route::post('/tnc-update', 'Back\Cms@tnc_update');
+
 
 
 });

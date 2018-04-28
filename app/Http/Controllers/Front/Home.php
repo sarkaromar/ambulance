@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\AmbulanceTypeModel;
 use App\BookingModel;
+use App\ContentModel;
 
 // use DB;
 // use Auth;
@@ -106,14 +107,19 @@ class Home extends Controller {
      */
     public function about(){
 
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
-
-        $title = 'Maa Moni Ambulance Service 24/7';
+        // make object get data
+        $contentmodel = new ContentModel();
+        $result = $contentmodel->select('content_info')->where('content_name', 'about')->first();
+        $content = $result->content_info;
+        
+        $title = 'About';
         
         $menu = 'about';
         
-        return view('front.common.about')->withTitle($title)->withMenu($menu);
+        return view('front.common.about')
+                    ->withContent($content)
+                    ->withTitle($title)
+                    ->withMenu($menu);
     }
 
     /**
@@ -144,14 +150,19 @@ class Home extends Controller {
      */
     public function rants(){
 
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
+        // make object get data
+        $contentmodel = new ContentModel();
+        $result = $contentmodel->select('content_info')->where('content_name', 'rants')->first();
+        $content = $result->content_info;
 
-        $title = 'Maa Moni Ambulance Service 24/7';
+        $title = 'Rants';
         
         $menu = 'rants';
         
-        return view('front.common.rants')->withTitle($title)->withMenu($menu);
+        return view('front.common.rants')
+                    ->withContent($content)
+                    ->withTitle($title)
+                    ->withMenu($menu);
     }
 
     /**
@@ -201,14 +212,19 @@ class Home extends Controller {
      */
     public function tnc(){
 
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
+        // make object get data
+        $contentmodel = new ContentModel();
+        $result = $contentmodel->select('content_info')->where('content_name', 'tnc')->first();
+        $content = $result->content_info;
 
-        $title = 'Maa Moni Ambulance Service 24/7';
+        $title = 'Terms and Conditions';
         
         $menu = 'tnc';
         
-        return view('front.common.tnc')->withTitle($title)->withMenu($menu);
+        return view('front.common.tnc')
+                    ->withContent($content)
+                    ->withTitle($title)
+                    ->withMenu($menu);
     }
 
     /**
@@ -229,5 +245,7 @@ class Home extends Controller {
         
         return view('front.common.contact')->withTitle($title)->withMenu($menu);
     }
+
+
 
 }

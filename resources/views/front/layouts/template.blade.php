@@ -89,7 +89,7 @@
                                     <li><a href="{{ url('rants') }}">ভাড়া তালিকা</a></li>
                                     <li><a href="{{ url('news') }}">খবর</a></li>
                                     <li><a href="{{ url('faq') }}">প্রশ্নাবলী</a></li>
-                                    <li><a href="{{ url('tnc') }}">শর্ত</a></li>
+                                    <li><a href="{{ url('terms_and_conditions') }}">শর্ত</a></li>
                                     <li><a href="{{ url('contact-us') }}">যোগাযোগ</a></li>
                                 </ul> <!-- /.menu-list -->
                             </div> <!-- /.menu-content-->

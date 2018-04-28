@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">                
-                <h2 class="page-title">{{ $title }}</h2>
+                <h2 class="page-title">About</h2>
                 <p class="page-description yellow-color">About your company</p>        
             </div><!-- /.col-md-12 -->
         </div><!-- /.row-->
@@ -19,7 +19,28 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="about-top-content">
-                    {!! $content !!}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-content-three">
+                                <h2 class="title">Why <br />Choose Us</h2>
+                                <h4 class="sub-title">Ambulance Information</h4>
+                            </div><!-- /.section-title-area -->
+                        </div><!-- /.col-md-12 -->
+                    </div><!-- /.row -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="extra-big-title">Best Ambulance Service </h2>
+                        </div><!-- /.col-md-12 -->
+                        <div class="col-md-6">
+                            <div class="about-content-left">
+                                <p>Sed pellentesque pulvinar arcu ac congue. Sed sed est nec justo maximus blandit. Curabitur lacinia, eros sit amet maximus suscipit, magna sapien veneuynatis eros, et gravida urna massa ut lectus. Quisque lacinia laciunia viverra. Nullram nec est et lorem sodales ornare a in sapien. In trtset urna marximus, conse ctetur iligula in, gravida erat. Nullam digniifssrim hendrerit auctor. Sed varius, dolor vitae iaculis condim rtweentum, massa nisl cursus sapien, gravida ultrices nisi dolor non erat. Nullam digniifssrim hendrerit auctor. Sed varius, dolor vitae dolor vitae iaculis condim rtweentum.</p>
+                                <p>Sed pellentesque pulvinar arcu ac congue. Sed sed est nec justo maximus blandit. Curabitur lacinia, eros sit amet maximus suscipit, magna sapien veneuynatis eros, et gravida urna massa ut lectus. Quisque lacinia.</p>
+                            </div><!-- /.about-content-left-->
+                        </div><!-- /.col-md-5 -->
+                        <div class="col-md-6">
+                            <img src="assets/images/ambulance/a1.png" alt="car-item" />
+                        </div><!-- /.col-md-7 -->
+                    </div><!-- /.row -->
                 </div><!-- /.top-content -->
             </div><!-- /.col-md-12 -->
         </div><!-- /.row -->
