@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\AmbulanceTypeModel;
 use App\BookingModel;
+use App\FaqModel;
+use App\SliderModel;
+use App\TestimonialModel;
 use App\ContentModel;
 
 // use DB;
@@ -29,8 +32,14 @@ class Home extends Controller {
      */
     public function index(){
 
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
+        // get slider
+        $sliders = SliderModel::all();
+
+        // get testimonial
+        $tests = TestimonialModel::all();
+
+        // get faq
+        $faqs = FaqModel::all();
 
         // get ambulance type
         $ambtypes = AmbulanceTypeModel::all();
@@ -40,6 +49,9 @@ class Home extends Controller {
         $menu = 'home';
         
         return view('front.common.home')
+                ->withSliders($sliders)
+                ->withTests($tests)
+                ->withFaqs($faqs)
                 ->withAmbtypes($ambtypes)
                 ->withTitle($title)
                 ->withMenu($menu);

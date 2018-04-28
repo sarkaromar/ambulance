@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BookingModel extends Model
-{	
+class FaqModel extends Model
+{
 	/**
      * The database table used by the model.
      * @author rana
      * @var string
      */
-	protected $table = "bookings";
-
+	protected $table = "faqs";
+	
 }

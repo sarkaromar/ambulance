@@ -100,6 +100,32 @@
                                 <i class="fa fa-list-ul fa-lg"></i><span> &nbsp;Booking List</span>
                             </a>
                         </li>
+                        <!-- dynamic content -->
+                        <li class="treeview <?php if($menu == 'dynamic' ) echo 'active' ?>">
+                            <a href="#">
+                                <i class="fa fa-fw fa-edit fa-lg"></i><span> &nbsp;Dynamic Content</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="<?php if (isset($submenu) && $submenu == 'slider' ) echo 'active' ?>">
+                                    <a href="{{ url('/admin/slider')}}"><i class="fa fa-caret-right"></i> Slider</a>
+                                </li>
+                                <li class="<?php if (isset($submenu) && $submenu == 'news' ) echo 'active' ?>">
+                                    <a href="{{ url('/admin/news')}}"><i class="fa fa-caret-right"></i> News</a>
+                                </li>
+                                <li class="<?php if (isset($submenu) && $submenu == 'driver' ) echo 'active' ?>">
+                                    <a href="{{ url('/admin/driver')}}"><i class="fa fa-caret-right"></i> Driver</a>
+                                </li>
+                                <li class="<?php if (isset($submenu) && $submenu == 'testimonial' ) echo 'active' ?>">
+                                    <a href="{{ url('/admin/testimonial')}}"><i class="fa fa-caret-right"></i> Testimonial</a>
+                                </li>
+                                <li class="<?php if (isset($submenu) && $submenu == 'faq' ) echo 'active' ?>">
+                                    <a href="{{ url('/admin/faq')}}"><i class="fa fa-caret-right"></i> FAQ</a>
+                                </li>
+                            </ul>
+                        </li>
                         <!-- CMS page -->
                         <li class="treeview <?php if($menu == 'cms' ) echo 'active' ?>">
                             <a href="#">

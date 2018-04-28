@@ -5,30 +5,31 @@
 <div class="slider-block">    
   <div class="">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <img src="{{ URL::to('assets/images/ambulance/1.jpg') }}" alt="...">
-              </div>
-              <div class="item">
-                <img src="{{ URL::to('assets/images/ambulance/2.jpg') }}" alt="...">
-              </div>
-              <div class="item">
-                <img src="{{ URL::to('assets/images/ambulance/4.jpg') }}" alt="...">
-              </div>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            @if(isset($sliders[0]))
+            <?php $x = 0; foreach($sliders as $slider) { $x++; ?>
+            <div class="item @php if($x == 1){ echo 'active';} @endphp">
+                <img src="{{ URL::to('photo/slider' , $slider->slider_image ) }}" alt="slider">
             </div>
-          
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
+            <?php } ?>
+            @else
+            <!-- no slider -->
+            <div class="item">
+                <img src="{{ URL::to('photo/slider/empty_slider.png') }}" alt="empty slider">
+            </div>
+            @endif
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
   </div><!-- /.slider wrapper -->
 </div><!-- /.slider-block -->
 <div class="vehicle-multi-border blue-white"></div><!-- /.vehicle-multi-border -->
@@ -168,104 +169,37 @@
                     <div class="faq-accordion">
                         <div class="accordion">
                             <div class="panel-group" id="accordion">
+                                @if(isset($faqs[0]))
+                                <?php $x = 0; foreach($faqs as $faq) { $x++; ?>
                                 <div class="panel panel-default">
                                     <div class="panel-heading theme-blue">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse_{{ $x }}">
                                                 <i class="fa fa-plus"></i>
-                                                <span>It Is a long established fact That a reander will be Distracted?</span>
+                                                <span>{{ $faq->faq_question }}</span>
                                             </a>
                                         </h4>
                                     </div>
-
-                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div id="collapse_{{ $x }}" class="panel-collapse collapse @php if($x == 1){ echo 'in';} @endphp">
                                         <div class="panel-body">
-                                            <p class="accordion-details">Consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris egethreiuy Morbi mollis Aons ectetur adipiscing elit. Cras vitaetr nibh nisl. Crais etitikis is mauris egethiuy Morbi mollis. Cras vitae nibh nisl. Cras etitikis mauris egethiuy Morbi mollis</p>
-                                        </div>
-                                    </div> 
-                                </div>   
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading theme-blue">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                                <span>Established fact That a reander will be Distracted?</span>
-                                            </a>
-                                        </h4>
-                                    </div>
-
-                                    <div id="collapseTwo" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <p class="accordion-details">Consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris egethreiuy Morbi mollis Aons ectetur adipiscing elit. Cras vitaetr nibh nisl. Crais etitikis is mauris egethiuy Morbi mollis. Cras vitae nibh nisl. Cras etitikis mauris egethiuy Morbi mollis</p>
+                                            <p class="accordion-details">{{ $faq->faq_answer }}</p>
                                         </div>
                                     </div> 
                                 </div>
-
+                                <?php } ?>
+                                @else
+                                <!-- empty data -->
                                 <div class="panel panel-default">
                                     <div class="panel-heading theme-blue">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                                <span>It Is a long established fact That a reander will be Distracted?</span>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#">
+                                                <i class="fa fa-plus"></i>
+                                                <span>No Question</span>
                                             </a>
                                         </h4>
                                     </div>
-
-                                    <div id="collapseThree" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <p class="accordion-details">Consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris egethreiuy Morbi mollis Aons ectetur adipiscing elit. Cras vitaetr nibh nisl. Crais etitikis is mauris egethiuy Morbi mollis. Cras vitae nibh nisl. Cras etitikis mauris egethiuy Morbi mollis</p>
-                                        </div>
-                                    </div> 
                                 </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading theme-blue">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                                <span>Established fact That a reander will be Distracted?</span>
-                                            </a>
-                                        </h4>
-                                    </div>
-
-                                    <div id="collapseFour" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <p class="accordion-details">Consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris egethreiuy Morbi mollis Aons ectetur adipiscing elit. Cras vitaetr nibh nisl. Crais etitikis is mauris egethiuy Morbi mollis. Cras vitae nibh nisl. Cras etitikis mauris egethiuy Morbi mollis</p>
-                                        </div>
-                                    </div> 
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading theme-blue">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                                <span>It is a longEstablished fact That a reander will be Distracted?</span>
-                                            </a>
-                                        </h4>
-                                    </div>
-
-                                    <div id="collapseFive" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <p class="accordion-details">Consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris egethreiuy Morbi mollis Aons ectetur adipiscing elit. Cras vitaetr nibh nisl. Crais etitikis is mauris egethiuy Morbi mollis. Cras vitae nibh nisl. Cras etitikis mauris egethiuy Morbi mollis</p>
-                                        </div>
-                                    </div> 
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading theme-blue">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                                <span>Established fact That a reander will be Distracted?</span>
-                                            </a>
-                                        </h4>
-                                    </div>
-
-                                    <div id="collapseSix" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <p class="accordion-details">Consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris egethreiuy Morbi mollis Aons ectetur adipiscing elit. Cras vitaetr nibh nisl. Crais etitikis is mauris egethiuy Morbi mollis. Cras vitae nibh nisl. Cras etitikis mauris egethiuy Morbi mollis</p>
-                                        </div>
-                                    </div> 
-                                </div>
+                                @endif
                             </div><!-- /.panel-group -->
                         </div><!-- /.accordion -->
                     </div><!-- /.faq-accordion -->
@@ -419,16 +353,18 @@
                     </div><!-- /.pull-right -->
                 </div><!-- /.col-md-2 -->
             </div><!-- /.row --> 
-
             <div class="testimonial-slider slider-style-two owl-carousel" data-item="[3,2,1,1]">
+                
+                @if(isset($tests[0]))
+                <?php $x = 0; foreach($tests as $test) { $x++; ?>
                 <div class="item">
                     <div class="client-image">
-                        <img src="assets/images/testimonial-image.png" alt="testimonial" />
+                        <img src="{{ URL::to('photo/testimonial' , $test->testi_image ) }}" alt="testimonial" />
                     </div><!-- /.client-image -->
                     <div class="client-detales">                            
-                        <h3 class="client-title">Single Rakib</h3>
-                        <h5 class="client-subtitle">softhopper Manager</h5>
-                        <p class="discription">Amorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris eget lorem ultricies ferme ntum a inti diam.</p>
+                        <h3 class="client-title">{{ $test->testi_name }}</h3>
+                        <h5 class="client-subtitle">{{ $test->testi_position }}</h5>
+                        <p class="discription">{{ $test->testi_comment }}</p>
                         <div class="star">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -437,79 +373,9 @@
                             <i class="fa fa-star"></i>
                         </div><!-- /.star -->
                     </div><!-- /.client-detales -->
-                </div><!-- /.item -->
-
-                <div class="item">
-                    <div class="client-image">
-                        <img src="assets/images/testimonial-image.png" alt="testimonial" />
-                    </div><!-- /.client-image -->
-                    <div class="client-detales">                            
-                        <h3 class="client-title">Bibahito Sagor</h3>
-                        <h5 class="client-subtitle">softhopper Manager</h5>
-                        <p class="discription">Amorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris eget lorem ultricies ferme ntum a inti diam.</p>
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div><!-- /.star -->
-                    </div><!-- /.client-detales -->
-                </div><!-- /.item -->
-
-                <div class="item">
-                    <div class="client-image">
-                        <img src="assets/images/testimonial-image.png" alt="testimonial" />
-                    </div><!-- /.client-image -->
-                    <div class="client-detales">                            
-                        <h3 class="client-title">Pankha Zahid</h3>
-                        <h5 class="client-subtitle">softhopper Manager</h5>
-                        <p class="discription">Amorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris eget lorem ultricies ferme ntum a inti diam.</p>
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div><!-- /.star -->
-                    </div><!-- /.client-detales -->
-                </div><!-- /.item -->
-
-                <div class="item">
-                    <div class="client-image">
-                        <img src="assets/images/testimonial-image.png" alt="testimonial" />
-                    </div><!-- /.client-image -->
-                    <div class="client-detales">                            
-                        <h3 class="client-title">Single Rakib</h3>
-                        <h5 class="client-subtitle">softhopper Manager</h5>
-                        <p class="discription">Amorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris eget lorem ultricies ferme ntum a inti diam.</p>
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div><!-- /.star -->
-                    </div><!-- /.client-detales -->
-                </div><!-- /.item -->
-
-                <div class="item">
-                    <div class="client-image">
-                        <img src="assets/images/testimonial-image.png" alt="testimonial" />
-                    </div><!-- /.client-image -->
-                    <div class="client-detales">                            
-                        <h3 class="client-title">Single Rakib</h3>
-                        <h5 class="client-subtitle">softhopper Manager</h5>
-                        <p class="discription">Amorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris eget lorem ultricies ferme ntum a inti diam.</p>
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div><!-- /.star -->
-                    </div><!-- /.client-detales -->
-                </div><!-- /.item -->
+                </div><!-- /.item -->          
+                <?php } ?>
+                @endif
             </div><!-- /.testimonial-slider -->           
         </div><!-- /.container -->
     </div><!-- /.testimonial-area -->
