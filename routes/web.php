@@ -11,31 +11,29 @@
 |
 */
 
-Auth::routes();
 
 // front route -----------------------------------------------------------------
-Route::get('/', 'Front\Home@index');
-Route::post('/booking', 'Front\Home@do_booking')->name('booking');
+// about
+Route::get('/', 'Front\Home_@index');
+Route::post('/booking', 'Front\Home_@do_booking')->name('booking');
+Route::get('/about-us', 'Front\Home_@about');
 
-//about page
-Route::get('/about-us', 'Front\Home@about');
+// other pages
+Route::get('/rants', 'Front\Home_@rants');
+Route::get('/news', 'Front\Home_@news');
+Route::get('/faq', 'Front\Home_@faq');
+Route::get('/terms_and_conditions', 'Front\Home_@tnc');
+Route::get('/contact-us', 'Front\Home_@contact');
 
 // services pages
 Route::get('/non-ac-ambulance', 'Front\Service@non_ac_ambulance');
 Route::get('/ac-ambulance', 'Front\Service@ac_ambulance');
 Route::get('/icu-ambulance', 'Front\Service@icu_ambulance');
-Route::get('/freezer-ambulance', 'Front\Service@freezer_ambulance');
-
-// other pages
-Route::get('/rants', 'Front\Home@rants');
-Route::get('/news', 'Front\Home@news');
-Route::get('/faq', 'Front\Home@faq');
-Route::get('/terms_and_conditions', 'Front\Home@tnc');
-Route::get('/contact-us', 'Front\Home@contact');
+Route::get('/freezer-van', 'Front\Service@freezer_ambulance');
 
 
 // admin routes ----------------------------------------------------------------
-
+Auth::routes();
 Route::prefix('admin')->group(function(){
 
 	// dashboard --------
@@ -49,16 +47,35 @@ Route::prefix('admin')->group(function(){
 	Route::get('/booking-delete/{id}', 'Back\Booking@delete');
 
 	// service section --------
+	// ac
 	Route::get('/ac', 'Back\Service\Ac@index');
 	Route::post('/add-ac-slider', 'Back\Service\Ac@add_slider');
 	Route::post('/update-ac-slider/{id}', 'Back\Service\Ac@update_slider');
-	// Route::post('/ac-update', 'Back\Service\Ac@update');
+	Route::post('/update-ac-short-desc/', 'Back\Service\Ac@update_short_desc');
+	Route::post('/update-ac-service-info/', 'Back\Service\Ac@update_service_info');
+	// common for all
+	Route::get('/delete-service-slider/{id}', 'Back\Service\Ac@delete_slider');
 
-	Route::get('/delete-service-slider/{id}', 'Back\Service\Ac@delete_slider'); // common for all
+	// non ac
+	Route::get('/non-ac', 'Back\Service\Non_ac@index');
+	Route::post('/add-non-ac-slider', 'Back\Service\Non_ac@add_slider');
+	Route::post('/update-non-ac-slider/{id}', 'Back\Service\Non_ac@update_slider');
+	Route::post('/update-non-ac-short-desc/', 'Back\Service\Non_ac@update_short_desc');
+	Route::post('/update-non-ac-service-info/', 'Back\Service\Non_ac@update_service_info');
+
+	// icu
+	Route::get('/icu', 'Back\Service\Icu@index');
+	Route::post('/add-icu-slider', 'Back\Service\Icu@add_slider');
+	Route::post('/update-icu-slider/{id}', 'Back\Service\Icu@update_slider');
+	Route::post('/update-icu-short-desc/', 'Back\Service\Icu@update_short_desc');
+	Route::post('/update-icu-service-info/', 'Back\Service\Icu@update_service_info');
 	
-
-	// ---
-
+	// freezer
+	Route::get('/freezer', 'Back\Service\Freezer@index');
+	Route::post('/add-freezer-slider', 'Back\Service\Freezer@add_slider');
+	Route::post('/update-freezer-slider/{id}', 'Back\Service\Freezer@update_slider');
+	Route::post('/update-freezer-short-desc/', 'Back\Service\Freezer@update_short_desc');
+	Route::post('/update-freezer-service-info/', 'Back\Service\Freezer@update_service_info');
 
 	// cms section ---------------------
 	// slider section
@@ -100,7 +117,5 @@ Route::prefix('admin')->group(function(){
 
 	Route::get('/tnc', 'Back\Cms@tnc');
 	Route::post('/tnc-update', 'Back\Cms@tnc_update');
-
-
 
 });

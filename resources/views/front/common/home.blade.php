@@ -106,7 +106,7 @@
                                         </div><!--/.col-md-6-->
                                         <div class="col-md-6 pd-left">
                                             <div class="input">
-                                                    <i class="fa fa-map-marker"></i>
+                                                <i class="fa fa-map-marker"></i>
                                                 <input type="text" name="to" placeholder="To" required>
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6-->

@@ -113,7 +113,7 @@
                                     <a href="{{ url('/admin/ac')}}"><i class="fa fa-caret-right"></i> Ac Amb.</a>
                                 </li>
                                 <li class="<?php if (isset($submenu) && $submenu == 'non_ac' ) echo 'active' ?>">
-                                    <a href="{{ url('/admin/non_ac')}}"><i class="fa fa-caret-right"></i> Non-Ac Amb.</a>
+                                    <a href="{{ url('/admin/non-ac')}}"><i class="fa fa-caret-right"></i> Non-Ac Amb.</a>
                                 </li>
                                 <li class="<?php if (isset($submenu) && $submenu == 'icu' ) echo 'active' ?>">
                                     <a href="{{ url('/admin/icu')}}"><i class="fa fa-caret-right"></i> ICU Amb.</a>

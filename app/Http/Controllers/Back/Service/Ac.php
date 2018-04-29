@@ -43,7 +43,7 @@ class Ac extends Controller{
 
         $sortdesc = $result->service_short_desc;
         
-        $sliders = $servicslideremodel::all();
+        $sliders = $servicslideremodel->where('service_id', $result->service_id)->get();
         
         $title = 'AC Ambulance';
         
@@ -202,66 +202,57 @@ class Ac extends Controller{
     public function update_short_desc(Request $request) {
 
         // make object
-        $contentmodel = new ContentModel();
+        $servicemodel = new ServiceModel();
         
         // assign value
         $data = [
-            'content_info' => $request->input('content')
+            'service_short_desc' => $request->input('short_desc')
         ];
 
         // update
-        if($contentmodel->where('content_name', 'about')->update($data)){
+        if($servicemodel->where('service_name', 'ac')->update($data)){
             
             $msg = "Successfully Updated!";
             Session::flash('success', $msg);
-            return redirect('/admin/about');
+            return redirect('/admin/ac');
             
         } else {
             
             $msg = "Error whiling Updated!";
             Session::flash('error', $msg);
-            return redirect('/admin/about');
+            return redirect('/admin/ac');
             
         }
     
     }
 
-
-
-
-
-
-
-
-
-    
     /**
-     * update
+     * update service info
      *
      * @return response
      */
-    public function update(Request $request) {
+    public function update_service_info(Request $request) {
 
         // make object
-        $contentmodel = new ContentModel();
+        $servicemodel = new ServiceModel();
         
         // assign value
         $data = [
-            'content_info' => $request->input('content')
+            'service_info' => $request->input('content')
         ];
 
         // update
-        if($contentmodel->where('content_name', 'about')->update($data)){
+        if($servicemodel->where('service_name', 'ac')->update($data)){
             
             $msg = "Successfully Updated!";
             Session::flash('success', $msg);
-            return redirect('/admin/about');
+            return redirect('/admin/ac');
             
         } else {
             
             $msg = "Error whiling Updated!";
             Session::flash('error', $msg);
-            return redirect('/admin/about');
+            return redirect('/admin/ac');
             
         }
     

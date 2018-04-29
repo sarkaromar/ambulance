@@ -1,263 +1,261 @@
 <?php
 
-namespace App\Http\Controllers\Front;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use App\AmbulanceTypeModel;
-use App\BookingModel;
-use App\FaqModel;
-use App\SliderModel;
-use App\TestimonialModel;
-use App\ContentModel;
+namespace App\Http\Controllers\Back\Service;
 
-// use DB;
-// use Auth;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use App\ServiceModel;
+use App\ServiceSliderModel;
+
 use Session;
 
-/**
- * This class used for home page and other static page
- *
- *
- * @author Mostafijur Rahman Rana
- */
-class Home extends Controller {
+class Non_ac extends Controller{
 
     /**
-     * Show the home page.
+     * Check is admin?
      *
-     *  @param 
-     * @return Response
-     * @author Mostafijur Rahman Rana
+     * @return void
      */
-    public function index(){
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
+     * show the ac page
+     *
+     * @return response
+     */
+    public function index() {
 
-        // get slider
-        $sliders = SliderModel::all();
+        // make object 
+        $servicemodel = new ServiceModel();
+        $servicslideremodel = new ServiceSliderModel();
 
-        // get testimonial
-        $tests = TestimonialModel::all();
+        // service data
+        $result = $servicemodel->select('service_id', 'service_short_desc', 'service_info')->where('service_name', 'non_ac')->first();
 
-        // get faq
-        $faqs = FaqModel::all();
+        $serviceid = $result->service_id;
 
-        // get ambulance type
-        $ambtypes = AmbulanceTypeModel::all();
+        $content = $result->service_info;
 
-        $title = 'Maa Moni Ambulance Service 24/7';
+        $sortdesc = $result->service_short_desc;
         
-        $menu = 'home';
+        $sliders = $servicslideremodel->where('service_id', $result->service_id)->get();
         
-        return view('front.common.home')
-                ->withSliders($sliders)
-                ->withTests($tests)
-                ->withFaqs($faqs)
-                ->withAmbtypes($ambtypes)
-                ->withTitle($title)
-                ->withMenu($menu);
+        $title = 'Non AC Ambulance';
+        
+        $menu = 'service';
+
+        $submenu = 'non_ac';
+
+        return view('back.service.non_ac')
+                    ->withContent($content)
+                    ->withSortdesc($sortdesc)
+                    ->withServiceid($serviceid)
+                    ->withSliders($sliders)
+                    ->withTitle($title)
+                    ->withMenu($menu)
+                    ->withSubmenu($submenu);
+      
     }
 
     /**
-     * do booking method
+     * add new booking
      *
-     *  @param 
-     * @return Response
-     * @author Mostafijur Rahman Rana
+     * @return response
      */
-    public function do_booking(Request $request){
+    public function add_slider(Request $request) {
 
-        // validate
-        $this->validate($request, [
-            
-            'name' => 'required|max:255',
-            'amb_type' => 'required|integer|max:255',
-            'form' => 'required|max:255',
-            'to' => 'required|max:255',
-            'date' => 'required|date|max:255',
-            'time' => 'required|max:255',
-            'mobile' => 'required|max:255',
-            'email' => 'email|max:255',
-            'address' => 'required|max:5000'
+        // image upload
+        if(Input::file('image')){
 
-        ]);
+            $image = Input::file('image');
+            $image_name  = str_random(4).time() . '.' . $image->getClientOriginalExtension();
+            $path = getcwd() . '/photo/service_slider/';
+            $image->move($path, $image_name);
+
+        }
         
-        // create object
-        $booking = new BookingModel();
-        // assign
-        $booking->booking_applicant_name = trim($request->input('name'));
-        $booking->booking_ambulance_type_id = trim($request->input('amb_type'));
-        $booking->booking_form = trim($request->input('form'));
-        $booking->booking_to = trim($request->input('to'));
-        $booking->booking_date = trim($request->input('date'));
-        $booking->booking_time = trim($request->input('time'));
-        $booking->booking_mobile = trim($request->input('mobile'));
-        $booking->booking_email = trim($request->input('email'));
-        $booking->booking_address = trim($request->input('address'));
-
-        if($booking->save()){
-
-            Session::flash('success', 'We received your request, we will contact with you!');
-            return redirect::Back();
-
+        // create object and assign
+        $slider = new ServiceSliderModel();
+        $slider->service_id = $request->input('id');
+        $slider->service_slider_image = $image_name;
+        
+        if($slider->save()){
+            $msg = "Added Successfully!";
+            Session::flash('success', $msg);
+            return redirect('/admin/non-ac');
         } else {
-            
-            Session::flash('error', 'Please, try next time!');
-            return redirect::Back();
-        
+            $msg = "Error whiling added!";
+            Session::flash('success', $msg);
+            return redirect('/admin/non-ac');
+        }
+    }
+
+    /**
+     * update booking
+     *
+     * @return response
+     */
+    public function update_slider(Request $request, $id) {
+
+        // image upload
+        if(Input::file('image')){
+
+            // delete from directory
+            $del_image = $request->input('old_image');
+            if(!empty($del_image)){
+
+                $path = getcwd() . '/photo/service_slider/';
+                $filename = $path . $del_image;
+                if (file_exists($filename)) {
+                    unlink($filename);
+                }
+
+            }
+
+            // new image upload
+            $image = Input::file('image');
+            $image_name  = str_random(4).time() . '.' . $image->getClientOriginalExtension();
+            $path = getcwd() . '/photo/service_slider/';
+            $image->move($path, $image_name);
+
+        }else{
+
+            $image_name = $request->input('old_image');
+
         }
 
-    }
+        // make array
+        $data = [ 
 
-
-
-    /**
-     * Show the about page.
-     *
-     * @param   
-     * @return Response
-     * @author Mostafijur Rahman Rana
-     */
-    public function about(){
-
-        // make object get data
-        $contentmodel = new ContentModel();
-        $result = $contentmodel->select('content_info')->where('content_name', 'about')->first();
-        $content = $result->content_info;
+            'service_slider_image' => $image_name,
         
-        $title = 'About';
+        ];
+
+        // make object and update
+        $slider = new ServiceSliderModel();
+        $result = $slider->where('service_slider_id', $id)->update($data);
+
+        // redirect
+        if($result){
+            $msg = "Update Successfully!";
+            Session::flash('success', $msg);
+            return Redirect::back();
+        }else{
+            $msg = "Error whiling update!";
+            Session::flash('success', $msg);
+            return Redirect::back();
+        }
         
-        $menu = 'about';
-        
-        return view('front.common.about')
-                    ->withContent($content)
-                    ->withTitle($title)
-                    ->withMenu($menu);
     }
 
     /**
-     * Show the non_ac_ambulance page.
+     * delete booking info
      *
-     * @param   
-     * @return Response
-     * @author Mostafijur Rahman Rana
+     * @return response
      */
-    public function non_ac_ambulance(){
+    public function delete_slider($id) {
 
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
+        // make object
+        $slider = new ServiceSliderModel();
+        
+        // get image
+        $data =  $slider->select('service_slider_image')->where('service_slider_id', $id)->first();
+    
+        // delete from directory
+        if(!empty($data->service_slider_image)){
 
-        $title = 'Maa Moni Ambulance Service 24/7';
+            $path = getcwd() . '/photo/service_slider/';
+            $filename = $path . $data->service_slider_image;
+            if (file_exists($filename)) {
+                unlink($filename);
+            }
+
+        }
+
+        // delete row
+        $result = $slider->where('service_slider_id', $id)->delete();
+
+        // redirect
+        if($result){
+            $msg = "Successfully Deleted!";
+            Session::flash('success', $msg);
+            return Redirect::back();
+        }else{
+            $msg = "Error Whiling Delete!";
+            Session::flash('success', $msg);
+            return Redirect::back();
+        }
         
-        $menu = 'non_ac_ambulance';
+    }
+
+
+    /**
+     * update
+     *
+     * @return response
+     */
+    public function update_short_desc(Request $request) {
+
+        // make object
+        $servicemodel = new ServiceModel();
         
-        return view('front.common.non_ac_ambulance')->withTitle($title)->withMenu($menu);
+        // assign value
+        $data = [
+            'service_short_desc' => $request->input('short_desc')
+        ];
+
+        // update
+        if($servicemodel->where('service_name', 'non_ac')->update($data)){
+            
+            $msg = "Successfully Updated!";
+            Session::flash('success', $msg);
+            return redirect('/admin/non-ac');
+            
+        } else {
+            
+            $msg = "Error whiling Updated!";
+            Session::flash('error', $msg);
+            return redirect('/admin/non-ac');
+            
+        }
+    
     }
 
     /**
-     * Show the rants page.
+     * update service info
      *
-     * @param   
-     * @return Response
-     * @author Mostafijur Rahman Rana
+     * @return response
      */
-    public function rants(){
+    public function update_service_info(Request $request) {
 
-        // make object get data
-        $contentmodel = new ContentModel();
-        $result = $contentmodel->select('content_info')->where('content_name', 'rants')->first();
-        $content = $result->content_info;
+        // make object
+        $servicemodel = new ServiceModel();
+        
+        // assign value
+        $data = [
+            'service_info' => $request->input('content')
+        ];
 
-        $title = 'Rants';
-        
-        $menu = 'rants';
-        
-        return view('front.common.rants')
-                    ->withContent($content)
-                    ->withTitle($title)
-                    ->withMenu($menu);
+        // update
+        if($servicemodel->where('service_name', 'non_ac')->update($data)){
+            
+            $msg = "Successfully Updated!";
+            Session::flash('success', $msg);
+            return redirect('/admin/non-ac');
+            
+        } else {
+            
+            $msg = "Error whiling Updated!";
+            Session::flash('error', $msg);
+            return redirect('/admin/non-ac');
+            
+        }
+    
     }
-
-    /**
-     * Show the news page.
-     *
-     * @param   
-     * @return Response
-     * @author Mostafijur Rahman Rana
-     */
-    public function news(){
-
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
-
-        $title = 'Maa Moni Ambulance Service 24/7';
-        
-        $menu = 'news';
-        
-        return view('front.common.news')->withTitle($title)->withMenu($menu);
-    }
-
-    /**
-     * Show the faq page.
-     *
-     * @param   
-     * @return Response
-     * @author Mostafijur Rahman Rana
-     */
-    public function faq(){
-
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
-
-        $title = 'Maa Moni Ambulance Service 24/7';
-        
-        $menu = 'faq';
-        
-        return view('front.common.faq')->withTitle($title)->withMenu($menu);
-    }
-
-    /**
-     * Show the tnc page.
-     *
-     * @param   
-     * @return Response
-     * @author Mostafijur Rahman Rana
-     */
-    public function tnc(){
-
-        // make object get data
-        $contentmodel = new ContentModel();
-        $result = $contentmodel->select('content_info')->where('content_name', 'tnc')->first();
-        $content = $result->content_info;
-
-        $title = 'Terms and Conditions';
-        
-        $menu = 'tnc';
-        
-        return view('front.common.tnc')
-                    ->withContent($content)
-                    ->withTitle($title)
-                    ->withMenu($menu);
-    }
-
-    /**
-     * Show the contact page.
-     *
-     * @param   
-     * @return Response
-     * @author Mostafijur Rahman Rana
-     */
-    public function contact(){
-
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
-
-        $title = 'Maa Moni Ambulance Service 24/7';
-        
-        $menu = 'contact';
-        
-        return view('front.common.contact')->withTitle($title)->withMenu($menu);
-    }
-
-
 
 }

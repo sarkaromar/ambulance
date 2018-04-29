@@ -22,6 +22,20 @@
                             <a class="btn btn-success" data-toggle="modal" href="#add" title="add">Add</a>
                         </div>
                     </div><!-- /.box-header -->
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    @if (Session::has('success'))
+                    <div class="alert alert-success">
+                        <strong>Thanks!</strong> {{Session::get('success')}}
+                    </div>
+                    @endif
                     <!-- list row -->
                     <div class="row">
                         <div class="col-md-12">
@@ -113,26 +127,12 @@
                     <div class="box-header">
                         <h3 class="box-title">Short Description</h3>
                     </div>
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-                    @if (Session::has('success'))
-                    <div class="alert alert-success">
-                        <strong>Thanks!</strong> {{Session::get('success')}}
-                    </div>
-                    @endif
-                    <form method="POST" action="{{ url('/admin/ac-update/')  }}">
+                    <form method="POST" action="{{ url('/admin/update-ac-short-desc/')  }}">
                     {{ csrf_field() }}
                         <div class="box-body">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <textarea name="short_desc" class="form-control" rows="5">{{ $sortdesc }}</textarea>
+                                    <textarea name="short_desc" class="form-control" rows="5" required>{{ $sortdesc }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -145,13 +145,12 @@
                         </div>
                     </form>
                 </div><!-- /.box -->
-
                 <!-- box -->
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Service Dynamic Information</h3>
                     </div>
-                    <form method="POST" action="{{ url('/admin/ac-update/')  }}">
+                    <form method="POST" action="{{ url('/admin/update-ac-service-info/')  }}">
                     {{ csrf_field() }}
                         <div class="box-body">
                             <div class="form-group">

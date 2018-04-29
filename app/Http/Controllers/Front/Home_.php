@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+
 use App\AmbulanceTypeModel;
 use App\BookingModel;
 use App\FaqModel;
@@ -21,7 +22,7 @@ use Session;
  *
  * @author Mostafijur Rahman Rana
  */
-class Home extends Controller {
+class Home_ extends Controller {
 
     /**
      * Show the home page.
