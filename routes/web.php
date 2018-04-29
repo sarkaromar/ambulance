@@ -20,8 +20,11 @@ Route::post('/booking', 'Front\Home@do_booking')->name('booking');
 //about page
 Route::get('/about-us', 'Front\Home@about');
 
-// our services pages
-Route::get('/non-ac-ambulance', 'Front\Home@non_ac_ambulance');
+// services pages
+Route::get('/non-ac-ambulance', 'Front\Service@non_ac_ambulance');
+Route::get('/ac-ambulance', 'Front\Service@ac_ambulance');
+Route::get('/icu-ambulance', 'Front\Service@icu_ambulance');
+Route::get('/freezer-ambulance', 'Front\Service@freezer_ambulance');
 
 // other pages
 Route::get('/rants', 'Front\Home@rants');
@@ -44,6 +47,18 @@ Route::prefix('admin')->group(function(){
 	Route::post('/update-booking/{id}', 'Back\Booking@update');
 	Route::get('/booking-status/{id}/{status}', 'Back\Booking@status');
 	Route::get('/booking-delete/{id}', 'Back\Booking@delete');
+
+	// service section --------
+	Route::get('/ac', 'Back\Service\Ac@index');
+	Route::post('/add-ac-slider', 'Back\Service\Ac@add_slider');
+	Route::post('/update-ac-slider/{id}', 'Back\Service\Ac@update_slider');
+	// Route::post('/ac-update', 'Back\Service\Ac@update');
+
+	Route::get('/delete-service-slider/{id}', 'Back\Service\Ac@delete_slider'); // common for all
+	
+
+	// ---
+
 
 	// cms section ---------------------
 	// slider section
