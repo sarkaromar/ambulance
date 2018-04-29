@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2018 at 07:37 PM
+-- Generation Time: Apr 29, 2018 at 09:04 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -102,7 +102,8 @@ INSERT INTO `bookings` (`booking_id`, `booking_applicant_name`, `booking_ambulan
 (6, 'julie', 1, 'f', 't', 'd', 't', '132654879', 'admin@test.com', 'add', 1, NULL, '2018-04-27 11:38:10', '2018-04-27 12:11:45'),
 (7, 'test', 1, 'amin', 'mirpur', '2018-04-28', '23:40', '13654798', 'admin@test.com', 'add', 0, NULL, '2018-04-27 11:54:41', '2018-04-27 11:54:41'),
 (8, 'test', 1, 'amin', 'mirpur', '2018-04-28', '23:40', '13654798', 'admin@test.com', 'add', 0, NULL, '2018-04-27 11:54:42', '2018-04-27 11:54:42'),
-(9, 'abcd', 4, 'f', 't', '2018-04-28', '00:20', '13654798', 'nargisjulie@gmail.com', 'dafd', 0, NULL, '2018-04-27 12:00:43', '2018-04-27 12:00:43');
+(9, 'abcd', 4, 'f', 't', '2018-04-28', '00:20', '13654798', 'nargisjulie@gmail.com', 'dafd', 0, NULL, '2018-04-27 12:00:43', '2018-04-27 12:00:43'),
+(10, 'nohar', 4, 'from', 'to', '2018-04-30', '00:50', '123987', 'admin@test.com', 'add', 0, NULL, '2018-04-29 18:49:17', '2018-04-29 18:49:17');
 
 -- --------------------------------------------------------
 
@@ -206,7 +207,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2018_04_28_154134_create_news_table', 6),
 (10, '2018_04_28_155539_create_drivers_table', 7),
 (11, '2018_04_28_160753_create_testimonials_table', 8),
-(12, '2018_04_28_162611_create_faqs_table', 9);
+(12, '2018_04_28_162611_create_faqs_table', 9),
+(13, '2018_04_29_130905_create_services_table', 10),
+(14, '2018_04_29_131353_create_service_sliders_table', 10);
 
 -- --------------------------------------------------------
 
@@ -246,6 +249,63 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `services`
+--
+
+CREATE TABLE `services` (
+  `service_id` int(10) UNSIGNED NOT NULL,
+  `service_name` varchar(255) DEFAULT NULL,
+  `service_short_desc` text,
+  `service_info` text,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`service_id`, `service_name`, `service_short_desc`, `service_info`, `created_at`, `updated_at`) VALUES
+(1, 'ac', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,', '<div class=\"vehicle-single-content\">\r\n<div class=\"tb mb-block\">\r\n<div class=\"tb-cell mb-block\">\r\n<h2 class=\"vehicle-single-title\">Maruti 2008 Model ambulance</h2>\r\n</div>\r\n<!-- /.tb-cell -->\r\n<div class=\"tb-cell mb-block\">\r\n<h2 class=\"pull-right rent-price\">Rent/Day: $350</h2>\r\n</div>\r\n<!-- /.tb-cell --></div>\r\n<!-- /.tb -->\r\n<div class=\"clearfix\">&nbsp;</div>\r\n<!-- /.clearfix -->\r\n<div class=\"price-details\">\r\n<h3 class=\"details-title\">Price Details-</h3>\r\n<ul>\r\n<li>Rent/Day: $150 (negotiable)</li>\r\n<li>Rent/Week: $900 (negotiable)</li>\r\n<li>Rent/Month: $3000 (negotiable)</li>\r\n<li>Service Charge : 150 USD per month, subject to change</li>\r\n<li>Security Deposit : All Security\'s Company</li>\r\n<li>Servicing : Servicing free</li>\r\n</ul>\r\n</div>\r\n<!-- /.price -->\r\n<div class=\"vehicle-overview\">\r\n<div class=\"row\">\r\n<div class=\"col-md-12\">\r\n<h3 class=\"overview-title\">Car Overview</h3>\r\n<div class=\"overview\">\r\n<ul>\r\n<li>Class: Compact</li>\r\n<li>Price from: 8.26 USD / day</li>\r\n<li>Gear box: Auto</li>\r\n<li>Mileage: Unlimited</li>\r\n<li>Max passengers: 5</li>\r\n<li>Fuel: Octen/Petrol</li>\r\n<li>Max luggage: 1</li>\r\n<li>Fuel usage: 5-6/100km</li>\r\n<li>Doors: 4</li>\r\n<li>Engine capacity: 1400 ccm</li>\r\n<li>Deposit: 110.00 USD</li>\r\n</ul>\r\n</div>\r\n<!-- /.vehicle-overview --></div>\r\n<!-- /.col-md-12 --></div>\r\n<!-- /.row --></div>\r\n<!-- /.overview -->\r\n<div class=\"vehicle-internal-features\">\r\n<div class=\"row\">\r\n<div class=\"col-md-6\">\r\n<h3 class=\"features-title\">Internal features:</h3>\r\n<ul class=\"features-list\">\r\n<li>A/C full-time</li>\r\n<li>Audio Music</li>\r\n<li>Video Music</li>\r\n<li>Special Set</li>\r\n<li>Fire exit</li>\r\n<li>Sound Proof</li>\r\n<li>Satellite Tracker</li>\r\n<li>Car Heater</li>\r\n<li>Mineral Water</li>\r\n<li>Cold Drinks</li>\r\n</ul>\r\n</div>\r\n<!-- /.col-md-6 -->\r\n<div class=\"col-md-6\">\r\n<h3 class=\"features-title\">External features:</h3>\r\n<ul class=\"features-list\">\r\n<li>4 Doors</li>\r\n<li>2 Outlooking Glass</li>\r\n<li>Awesome Balance System</li>\r\n<li>Powerful Head Light</li>\r\n<li>Backup Fuel</li>\r\n<li>Emergency Break</li>\r\n<li>Emergency Safety Tools</li>\r\n</ul>\r\n</div>\r\n<!-- /.col-md-6 --></div>\r\n<!-- /.row --></div>\r\n<!-- /.indoor --></div>\r\n<!-- /.family-apartment-content -->\r\n<div class=\"hidden-md hidden-lg text-center extend-btn\">&nbsp;</div>', NULL, '2018-04-29 18:32:21'),
+(2, 'non_ac', 'non ac short', '<div class=\"vehicle-single-content\">\r\n<div class=\"tb mb-block\">\r\n<div class=\"tb-cell mb-block\">\r\n<h2 class=\"vehicle-single-title\">Maruti 2008 Model ambulance</h2>\r\n</div>\r\n<!-- /.tb-cell -->\r\n<div class=\"tb-cell mb-block\">\r\n<h2 class=\"pull-right rent-price\">Rent/Day: $350</h2>\r\n</div>\r\n<!-- /.tb-cell --></div>\r\n<!-- /.tb -->\r\n<div class=\"clearfix\">&nbsp;</div>\r\n<!-- /.clearfix -->\r\n<div class=\"price-details\">\r\n<h3 class=\"details-title\">Price Details-</h3>\r\n<ul>\r\n<li>Rent/Day: $150 (negotiable)</li>\r\n<li>Rent/Week: $900 (negotiable)</li>\r\n<li>Rent/Month: $3000 (negotiable)</li>\r\n<li>Service Charge : 150 USD per month, subject to change</li>\r\n<li>Security Deposit : All Security\'s Company</li>\r\n<li>Servicing : Servicing free</li>\r\n</ul>\r\n</div>\r\n<!-- /.price -->\r\n<div class=\"vehicle-overview\">\r\n<div class=\"row\">\r\n<div class=\"col-md-12\">\r\n<h3 class=\"overview-title\">Car Overview</h3>\r\n<div class=\"overview\">\r\n<ul>\r\n<li>Class: Compact</li>\r\n<li>Price from: 8.26 USD / day</li>\r\n<li>Gear box: Auto</li>\r\n<li>Mileage: Unlimited</li>\r\n<li>Max passengers: 5</li>\r\n<li>Fuel: Octen/Petrol</li>\r\n<li>Max luggage: 1</li>\r\n<li>Fuel usage: 5-6/100km</li>\r\n<li>Doors: 4</li>\r\n<li>Engine capacity: 1400 ccm</li>\r\n<li>Deposit: 110.00 USD</li>\r\n</ul>\r\n</div>\r\n<!-- /.vehicle-overview --></div>\r\n<!-- /.col-md-12 --></div>\r\n<!-- /.row --></div>\r\n<!-- /.overview -->\r\n<div class=\"vehicle-internal-features\">\r\n<div class=\"row\">\r\n<div class=\"col-md-6\">\r\n<h3 class=\"features-title\">Internal features:</h3>\r\n<ul class=\"features-list\">\r\n<li>A/C full-time</li>\r\n<li>Audio Music</li>\r\n<li>Video Music</li>\r\n<li>Special Set</li>\r\n<li>Fire exit</li>\r\n<li>Sound Proof</li>\r\n<li>Satellite Tracker</li>\r\n<li>Car Heater</li>\r\n<li>Mineral Water</li>\r\n<li>Cold Drinks</li>\r\n</ul>\r\n</div>\r\n<!-- /.col-md-6 -->\r\n<div class=\"col-md-6\">\r\n<h3 class=\"features-title\">External features:</h3>\r\n<ul class=\"features-list\">\r\n<li>4 Doors</li>\r\n<li>2 Outlooking Glass</li>\r\n<li>Awesome Balance System</li>\r\n<li>Powerful Head Light</li>\r\n<li>Backup Fuel</li>\r\n<li>Emergency Break</li>\r\n<li>Emergency Safety Tools</li>\r\n</ul>\r\n</div>\r\n<!-- /.col-md-6 --></div>\r\n<!-- /.row --></div>\r\n<!-- /.indoor --></div>\r\n<!-- /.family-apartment-content -->\r\n<div class=\"hidden-md hidden-lg text-center extend-btn\">&nbsp;</div>', NULL, '2018-04-29 18:38:18'),
+(3, 'icu', 'icu short', '<div class=\"vehicle-single-content\">\r\n<div class=\"tb mb-block\">\r\n<div class=\"tb-cell mb-block\">\r\n<h2 class=\"vehicle-single-title\">Maruti 2008 Model ambulance</h2>\r\n</div>\r\n<!-- /.tb-cell -->\r\n<div class=\"tb-cell mb-block\">\r\n<h2 class=\"pull-right rent-price\">Rent/Day: $350</h2>\r\n</div>\r\n<!-- /.tb-cell --></div>\r\n<!-- /.tb -->\r\n<div class=\"clearfix\">&nbsp;</div>\r\n<!-- /.clearfix -->\r\n<div class=\"price-details\">\r\n<h3 class=\"details-title\">Price Details-</h3>\r\n<ul>\r\n<li>Rent/Day: $150 (negotiable)</li>\r\n<li>Rent/Week: $900 (negotiable)</li>\r\n<li>Rent/Month: $3000 (negotiable)</li>\r\n<li>Service Charge : 150 USD per month, subject to change</li>\r\n<li>Security Deposit : All Security\'s Company</li>\r\n<li>Servicing : Servicing free</li>\r\n</ul>\r\n</div>\r\n<!-- /.price -->\r\n<div class=\"vehicle-overview\">\r\n<div class=\"row\">\r\n<div class=\"col-md-12\">\r\n<h3 class=\"overview-title\">Car Overview</h3>\r\n<div class=\"overview\">\r\n<ul>\r\n<li>Class: Compact</li>\r\n<li>Price from: 8.26 USD / day</li>\r\n<li>Gear box: Auto</li>\r\n<li>Mileage: Unlimited</li>\r\n<li>Max passengers: 5</li>\r\n<li>Fuel: Octen/Petrol</li>\r\n<li>Max luggage: 1</li>\r\n<li>Fuel usage: 5-6/100km</li>\r\n<li>Doors: 4</li>\r\n<li>Engine capacity: 1400 ccm</li>\r\n<li>Deposit: 110.00 USD</li>\r\n</ul>\r\n</div>\r\n<!-- /.vehicle-overview --></div>\r\n<!-- /.col-md-12 --></div>\r\n<!-- /.row --></div>\r\n<!-- /.overview -->\r\n<div class=\"vehicle-internal-features\">\r\n<div class=\"row\">\r\n<div class=\"col-md-6\">\r\n<h3 class=\"features-title\">Internal features:</h3>\r\n<ul class=\"features-list\">\r\n<li>A/C full-time</li>\r\n<li>Audio Music</li>\r\n<li>Video Music</li>\r\n<li>Special Set</li>\r\n<li>Fire exit</li>\r\n<li>Sound Proof</li>\r\n<li>Satellite Tracker</li>\r\n<li>Car Heater</li>\r\n<li>Mineral Water</li>\r\n<li>Cold Drinks</li>\r\n</ul>\r\n</div>\r\n<!-- /.col-md-6 -->\r\n<div class=\"col-md-6\">\r\n<h3 class=\"features-title\">External features:</h3>\r\n<ul class=\"features-list\">\r\n<li>4 Doors</li>\r\n<li>2 Outlooking Glass</li>\r\n<li>Awesome Balance System</li>\r\n<li>Powerful Head Light</li>\r\n<li>Backup Fuel</li>\r\n<li>Emergency Break</li>\r\n<li>Emergency Safety Tools</li>\r\n</ul>\r\n</div>\r\n<!-- /.col-md-6 --></div>\r\n<!-- /.row --></div>\r\n<!-- /.indoor --></div>\r\n<!-- /.family-apartment-content -->\r\n<div class=\"hidden-md hidden-lg text-center extend-btn\">&nbsp;</div>', NULL, '2018-04-29 18:38:27'),
+(4, 'freezer', 'freezer short', '<div class=\"vehicle-single-content\">\r\n<div class=\"tb mb-block\">\r\n<div class=\"tb-cell mb-block\">\r\n<h2 class=\"vehicle-single-title\">Maruti 2008 Model ambulance</h2>\r\n</div>\r\n<!-- /.tb-cell -->\r\n<div class=\"tb-cell mb-block\">\r\n<h2 class=\"pull-right rent-price\">Rent/Day: $350</h2>\r\n</div>\r\n<!-- /.tb-cell --></div>\r\n<!-- /.tb -->\r\n<div class=\"clearfix\">&nbsp;</div>\r\n<!-- /.clearfix -->\r\n<div class=\"price-details\">\r\n<h3 class=\"details-title\">Price Details-</h3>\r\n<ul>\r\n<li>Rent/Day: $150 (negotiable)</li>\r\n<li>Rent/Week: $900 (negotiable)</li>\r\n<li>Rent/Month: $3000 (negotiable)</li>\r\n<li>Service Charge : 150 USD per month, subject to change</li>\r\n<li>Security Deposit : All Security\'s Company</li>\r\n<li>Servicing : Servicing free</li>\r\n</ul>\r\n</div>\r\n<!-- /.price -->\r\n<div class=\"vehicle-overview\">\r\n<div class=\"row\">\r\n<div class=\"col-md-12\">\r\n<h3 class=\"overview-title\">Car Overview</h3>\r\n<div class=\"overview\">\r\n<ul>\r\n<li>Class: Compact</li>\r\n<li>Price from: 8.26 USD / day</li>\r\n<li>Gear box: Auto</li>\r\n<li>Mileage: Unlimited</li>\r\n<li>Max passengers: 5</li>\r\n<li>Fuel: Octen/Petrol</li>\r\n<li>Max luggage: 1</li>\r\n<li>Fuel usage: 5-6/100km</li>\r\n<li>Doors: 4</li>\r\n<li>Engine capacity: 1400 ccm</li>\r\n<li>Deposit: 110.00 USD</li>\r\n</ul>\r\n</div>\r\n<!-- /.vehicle-overview --></div>\r\n<!-- /.col-md-12 --></div>\r\n<!-- /.row --></div>\r\n<!-- /.overview -->\r\n<div class=\"vehicle-internal-features\">\r\n<div class=\"row\">\r\n<div class=\"col-md-6\">\r\n<h3 class=\"features-title\">Internal features:</h3>\r\n<ul class=\"features-list\">\r\n<li>A/C full-time</li>\r\n<li>Audio Music</li>\r\n<li>Video Music</li>\r\n<li>Special Set</li>\r\n<li>Fire exit</li>\r\n<li>Sound Proof</li>\r\n<li>Satellite Tracker</li>\r\n<li>Car Heater</li>\r\n<li>Mineral Water</li>\r\n<li>Cold Drinks</li>\r\n</ul>\r\n</div>\r\n<!-- /.col-md-6 -->\r\n<div class=\"col-md-6\">\r\n<h3 class=\"features-title\">External features:</h3>\r\n<ul class=\"features-list\">\r\n<li>4 Doors</li>\r\n<li>2 Outlooking Glass</li>\r\n<li>Awesome Balance System</li>\r\n<li>Powerful Head Light</li>\r\n<li>Backup Fuel</li>\r\n<li>Emergency Break</li>\r\n<li>Emergency Safety Tools</li>\r\n</ul>\r\n</div>\r\n<!-- /.col-md-6 --></div>\r\n<!-- /.row --></div>\r\n<!-- /.indoor --></div>\r\n<!-- /.family-apartment-content -->\r\n<div class=\"hidden-md hidden-lg text-center extend-btn\">&nbsp;</div>', NULL, '2018-04-29 18:38:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service_sliders`
+--
+
+CREATE TABLE `service_sliders` (
+  `service_slider_id` int(10) UNSIGNED NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `service_slider_image` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `service_sliders`
+--
+
+INSERT INTO `service_sliders` (`service_slider_id`, `service_id`, `service_slider_image`, `created_at`, `updated_at`) VALUES
+(1, 1, 'AJSC1525022023.png', '2018-04-29 17:13:43', '2018-04-29 17:13:43'),
+(2, 1, 'jamH1525022029.png', '2018-04-29 17:13:49', '2018-04-29 17:13:49'),
+(3, 1, 'H1oP1525022035.png', '2018-04-29 17:13:55', '2018-04-29 17:13:55'),
+(8, 4, 'anNb1525024541.png', '2018-04-29 17:55:41', '2018-04-29 17:55:41'),
+(9, 4, 'LCUA1525024593.png', '2018-04-29 17:56:33', '2018-04-29 17:56:33'),
+(10, 4, 'YfdY1525024598.png', '2018-04-29 17:56:38', '2018-04-29 17:56:38'),
+(11, 3, 'ZKrN1525024605.png', '2018-04-29 17:56:45', '2018-04-29 17:56:45'),
+(12, 3, '3Qxm1525024609.png', '2018-04-29 17:56:49', '2018-04-29 17:56:49'),
+(13, 3, 'lLpN1525024615.png', '2018-04-29 17:56:55', '2018-04-29 17:56:55'),
+(14, 2, 'RcB11525024621.png', '2018-04-29 17:57:01', '2018-04-29 17:57:01'),
+(15, 2, 'HCjl1525024627.png', '2018-04-29 17:57:07', '2018-04-29 17:57:07'),
+(16, 2, 'Bdkc1525024631.png', '2018-04-29 17:57:11', '2018-04-29 17:57:11');
 
 -- --------------------------------------------------------
 
@@ -359,6 +419,18 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`service_id`);
+
+--
+-- Indexes for table `service_sliders`
+--
+ALTER TABLE `service_sliders`
+  ADD PRIMARY KEY (`service_slider_id`);
+
+--
 -- Indexes for table `sliders`
 --
 ALTER TABLE `sliders`
@@ -390,7 +462,7 @@ ALTER TABLE `admin_users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `booking_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `booking_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `contents`
@@ -414,13 +486,25 @@ ALTER TABLE `faqs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
   MODIFY `news_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `services`
+--
+ALTER TABLE `services`
+  MODIFY `service_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `service_sliders`
+--
+ALTER TABLE `service_sliders`
+  MODIFY `service_slider_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `sliders`
