@@ -92,7 +92,11 @@ class Settings extends Controller{
             'setting_skype' => $request->input('setting_skype'),
             'setting_twitter' => $request->input('setting_twitter'),
             'setting_youtube' => $request->input('setting_youtube'),
-            'setting_instagram' => $request->input('setting_instagram')
+            'setting_instagram' => $request->input('setting_instagram'),
+            'setting_total_amb' => $request->input('setting_total_amb'),
+            'setting_total_driver' => $request->input('setting_total_driver'),
+            'setting_total_client' => $request->input('setting_total_client'),
+            'setting_total_day' => $request->input('setting_total_day'),
 
         ];
 

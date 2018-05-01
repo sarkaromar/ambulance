@@ -157,6 +157,18 @@
     <!-- ======Faq Block======= -->
     <div class="faq-bolck pd-75">
         <div class="container">
+            <marquee>
+                @if(isset($news[0]))
+                @foreach($news as $new)
+                <a href="{{ url('/news-details',$new->news_id ) }}">{{ $new->news_title }}</a>
+                @endforeach
+                @endif
+            </marquee>
+        </div>
+    </div>
+    <!-- ======Faq Block======= -->
+    <div class="faq-bolck pd-75">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="block-title-area tb-cell">
@@ -263,25 +275,25 @@
             <div class="stat theme-blue">
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="milestone-counter">
-                        <h3 class="stat-count highlight" data-form="0" data-to="25" data-speed="2500">25</h3>
+                        <h3 class="stat-count highlight" data-form="0" data-to="{{ $setting[0]->setting_total_amb }}" data-speed="2500">{{ $setting[0]->setting_total_amb }}</h3>
                         <div class="milestone-details">আমাদের অ্যাম্বুলেন্স</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="milestone-counter">
-                        <h3 class="stat-count highlight" data-form="0" data-to="45" data-speed="2500">45</h3>
+                        <h3 class="stat-count highlight" data-form="0" data-to="{{ $setting[0]->setting_total_driver }}" data-speed="2500">{{ $setting[0]->setting_total_driver }}</h3>
                         <div class="milestone-details">ড্রাইভার</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="milestone-counter">
-                        <h3 class="stat-count highlight" data-form="0" data-to="1254" data-speed="2500">1254</h3>
+                        <h3 class="stat-count highlight" data-form="0" data-to="{{ $setting[0]->setting_total_client }}" data-speed="2500">{{ $setting[0]->setting_total_client }}</h3>
                         <div class="milestone-details">শুভ গ্রাহকরা</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="milestone-counter">
-                        <h3 class="stat-count highlight" data-form="0" data-to="1525" data-speed="2500">1525</h3>
+                        <h3 class="stat-count highlight" data-form="0" data-to="{{ $setting[0]->setting_total_day }}" data-speed="2500">{{ $setting[0]->setting_total_day }}</h3>
                         <div class="milestone-details">ব্যবসায়ে দিন</div>
                     </div>
                 </div>
@@ -313,7 +325,6 @@
                 </div><!-- /.col-md-2 -->
             </div><!-- /.row --> 
             <div class="testimonial-slider slider-style-two owl-carousel" data-item="[3,2,1,1]">
-                
                 @if(isset($tests[0]))
                 <?php $x = 0; foreach($tests as $test) { $x++; ?>
                 <div class="item">

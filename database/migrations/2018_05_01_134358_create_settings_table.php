@@ -27,6 +27,10 @@ class CreateSettingsTable extends Migration
             $table->string('setting_twitter')->nullable();
             $table->string('setting_youtube')->nullable();
             $table->string('setting_instagram')->nullable();
+            $table->string('setting_total_amb')->nullable();
+            $table->string('setting_total_driver')->nullable();
+            $table->string('setting_total_client')->nullable();
+             $table->string('setting_total_day')->nullable();
             $table->timestamps();
         });
     }

@@ -50,6 +50,8 @@ class Home_ extends Controller {
         // get ambulance type
         $ambtypes = AmbulanceTypeModel::all();
 
+        $news = NewsModel::all();
+
         // get setting info
         $setting = SettingsModel::all();
 
@@ -65,6 +67,7 @@ class Home_ extends Controller {
                 ->withAmbtypes($ambtypes)
                 ->withTitle($title)
                 ->withSetting($setting)
+                ->withNews($news)
                 ->withMenu($menu);
     }
 

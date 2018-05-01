@@ -114,6 +114,30 @@
                                 <input type="text" class="form-control" name="setting_instagram" value="{{ $setting->setting_instagram }}" placeholder="link">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Total Ambulance</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="setting_total_amb" value="{{ $setting->setting_total_amb }}" placeholder="total" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Total Driver</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="setting_total_driver" value="{{ $setting->setting_total_driver }}" placeholder="total" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Total Client</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="setting_total_client" value="{{ $setting->setting_total_client }}" placeholder="total" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Total Day</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="setting_total_day" value="{{ $setting->setting_total_day }}" placeholder="total" required>
+                            </div>
+                        </div>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success"><i class="fa fa-fw fa-check-square-o"></i> Update</button>
