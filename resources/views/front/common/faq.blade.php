@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-12">                
                     <h2 class="page-title">{{ $title }}</h2>
-                    <p class="page-description yellow-color">Maa-Moni Ambulance</p>        
+                    <p class="page-description yellow-color">মা-মনি অ্যাম্বুলেন্স</p>        
                 </div><!-- /.col-md-12 -->
             </div><!-- /.row-->
         </div><!-- /.container-fluid -->           
@@ -22,8 +22,8 @@
                 <div class="">
                         <div class="block-title-area tb-cell">
                             <div class="heading-content style-one border">
-                                <h3 class="subtitle">Maa-Moni Ambulance</h3>
-                                <h2 class="title">FA<span>Q</span></h2>
+                                <h3 class="subtitle">মা-মনি অ্যাম্বুলেন্স</h3>
+                                <h2 class="title">প্রায়শই জিজ্ঞাসিত <span>প্রশ্নাবলী</span></h2>
                                 <br>
                             </div><!-- /.heading-content-one -->
                         </div><!-- /title -->

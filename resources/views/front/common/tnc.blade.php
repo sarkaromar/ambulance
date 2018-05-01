@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">                
                 <h2 class="page-title">{{ $title }}</h2>
-                <p class="page-description yellow-color">Maa-Moni Ambulance</p>        
+                <p class="page-description yellow-color">মা-মনি অ্যাম্বুলেন্স</p>        
             </div><!-- /.col-md-12 -->
         </div><!-- /.row-->
     </div><!-- /.container-fluid -->           

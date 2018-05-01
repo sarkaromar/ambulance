@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">                
-                <h2 class="page-title">News Details</h2>
-                <p class="page-description yellow-color">Maa-Moni Ambulance</p>        
+                <h2 class="page-title">{{ $title }}</h2>
+                <p class="page-description yellow-color">মা-মনি অ্যাম্বুলেন্স</p>        
             </div><!-- /.col-md-12 -->
         </div><!-- /.row-->
     </div><!-- /.container-fluid -->           
@@ -37,13 +37,6 @@
                                 <p>{{ $news->news_desc }}</p>
                             </div><!-- /.entry-content -->
                         </div><!-- /.single-post -->
-                        <div class="entry-share">
-                            <span class="meta-name">Share:</span>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-heart"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                        </div><!-- /.entry-share -->
                     </article><!-- /.post -->
                 </div><!-- /.single-main -->
             </div><!-- /.col-md-8 --> 

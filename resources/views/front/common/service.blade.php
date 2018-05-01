@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">                
                 <h2 class="page-title">{{ $title }}</h2>
-                <p class="page-description yellow-color">About your Ambulance</p>        
+                <p class="page-description yellow-color">মা-মনি অ্যাম্বুলেন্স</p>        
             </div><!-- /.col-md-12 -->
         </div><!-- /.row-->
     </div><!-- /.container-fluid -->           
@@ -64,15 +64,15 @@
                             <div class="form-content available-filter">
                                 <div class="regular-search">
                                     <div class="form-group">
-                                        <label class="text-uppercase">Full Name</label>
+                                        <label class="text-uppercase">সম্পূর্ণ নাম</label>
                                         <div class="input">
                                             <i class="fa fa-user"></i>
-                                            <input type="text" class="pick-location form-controller" name="name" placeholder="Full Name" required>
+                                            <input type="text" class="pick-location form-controller" name="name" placeholder="সম্পূর্ণ নাম" required>
                                         </div><!--/.input-->
-                                        <label class="text-uppercase">Choose Ambulance</label>
+                                        <label class="text-uppercase">আম্বুল্যান্স বাছায় করুন</label>
                                         <div class="input">                                    
                                             <select name="amb_type" required>
-                                                <option value="">Choose Ambulance</option>
+                                                <option value="">আম্বুল্যান্স বাছায় করুন</option>
                                                 @if($ambtypes[0])
                                                 @foreach($ambtypes as $amb_type)
                                                 <option value="{{ $amb_type->abmulance_type_id }}">{{ $amb_type->abmulance_type_name }}</option>
@@ -80,45 +80,45 @@
                                                 @endif
                                             </select>
                                         </div><!-- /.input -->
-                                        <label class="text-uppercase">Form</label>
+                                        <label class="text-uppercase">কোথা থেকে যাবেন</label>
                                         <div class="input">
                                             <i class="fa fa-map-marker"></i>
-                                            <input type="text" class="pick-location form-controller" name="form" placeholder="From" required>
+                                            <input type="text" class="pick-location form-controller" name="form" placeholder="কোথা থেকে যাবেন" required>
                                         </div><!--/.input-->
-                                        <label class="text-uppercase">To</label>
+                                        <label class="text-uppercase">কোথা পর্যন্ত যাবেন</label>
                                         <div class="input">
                                             <i class="fa fa-map-marker"></i>
-                                            <input class="pick-location form-controller" type="text" name="to" placeholder="To" required>
+                                            <input class="pick-location form-controller" type="text" name="to" placeholder="কোথা পর্যন্ত যাবেন" required>
                                         </div><!--/.input-->
-                                        <label>Picking up Date</label>
+                                        <label>তারিখ</label>
                                         <div class="input">
                                             <i class="fa fa-calendar"></i>
-                                            <input type="text" id="jquery_datepicker" class="form-controller" name="date" placeholder="Date" required>
+                                            <input type="text" id="jquery_datepicker" class="form-controller" name="date" placeholder="তারিখ" required>
                                         </div><!--/.input-->
-                                        <label class="text-uppercase">Picking up Time</label>
+                                        <label class="text-uppercase">সময়</label>
                                         <div class="input">
                                             <i class="fa fa-clock-o"></i>
-                                            <input type="text" class="time-selector form-controller" name="time" placeholder="15:00 am" required>
+                                            <input type="text" class="time-selector form-controller" name="time" placeholder="সময়" required>
                                         </div><!--/.input-->
-                                        <label class="text-uppercase">Mobile number</label>
+                                        <label class="text-uppercase">মোবাইল নাম্বার</label>
                                         <div class="input">
                                             <i class="fa fa-mobile"></i>
                                             <input type="text" class="form-controller" name="mobile" placeholder="+8801........." required>
                                         </div><!--/.input-->
-                                        <label class="text-uppercase">Email id</label>
+                                        <label class="text-uppercase">ইমেইল</label>
                                         <div class="input">
                                             <i class="fa fa-at"></i>
-                                            <input type="email" class="form-controller" name="email" placeholder="Email">
+                                            <input type="email" class="form-controller" name="email" placeholder="ইমেইল">
                                         </div><!--/.input-->
-                                        <label class="text-uppercase">Full Address</label>
+                                        <label class="text-uppercase">আপনের পূর্ণ ঠিকানা</label>
                                         <div class="input">
                                             <i class="fa fa-at"></i>
-                                            <textarea rows="2" cols="100" name="address" placeholder="Full Address" required></textarea>
+                                            <textarea rows="2" cols="100" name="address" placeholder="আপনের পূর্ণ ঠিকানা" required></textarea>
                                         </div><!--/.input-->
                                     </div><!-- /.form-group -->
                                 </div><!-- /.div regular-search -->
                                 <div class="check-vehicle-footer">
-                                    <button type="submit" class="button blue-button">Book Now</button>
+                                    <button type="submit" class="button blue-button">বুক করুন</button>
                                 </div><!-- /.check-vehicle-footer -->
                             </div><!-- /.from-cotent -->
                         </form><!-- /.advance_search_query -->
