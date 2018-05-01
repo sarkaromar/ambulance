@@ -37,7 +37,7 @@
                                     <i class="fa fa-phone"></i>
                                 </div><!-- /.icon-block -->
                                 <div class="menu-info">                                
-                                    <a href="#">ফোন - {{ $setting[0]->setting_phone1 }}</a>
+                                    <a href="#">{{ $setting[0]->setting_phone1 }}</a>
                                     <a href="#">{{ $setting[0]->setting_email1 }}</a>
                                 </div>
                             </li>
@@ -58,7 +58,7 @@
                                     <a href="{{ $setting[0]->setting_fb }}"><i class="fa fa-facebook"></i></a>
                                     <a href="{{ $setting[0]->setting_twitter }}"><i class="fa fa-twitter"></i></a>
                                     <a href="{{ $setting[0]->setting_instagram }}"><i class="fa fa-instagram"></i></a>
-                                    <a href="{{ $setting[0]->setting_youtube }}"><i class="fa fa-youtube"></i></a>
+                                    <a href="{{ $setting[0]->setting_youtube }}"><i class="fa fa-google-plus"></i></a>
                                 </div><!-- /.social-icon -->
                             </li>
                         </ul>
@@ -150,7 +150,7 @@
                             </h3><!-- /.widget-title -->
                             <div class="widget-about-content">
                                 <img src="{{ URL::to('photo/logo', $setting[0]->setting_logo) }}" alt="logo" />
-                                <p>We Provide develo gped in a way so that the clients find  Support. Themes are developed in a way so that  the clients find.</p>
+                                <p>মা-মনি অ্যাম্বুলেন্স পক্ষ থেকে আপনাদের স্বাগতম । মান সম্মত সার্ভিস - কম খরচে আমরা আপনার সেবায় সার্বক্ষনিক প্রস্তুত।</p>
                                 <a href="{{ url('about-us') }}" class="button">আরো</a>
                             </div><!-- /.widget-content -->
                         </div><!-- /.widget widget_about -->
@@ -226,7 +226,7 @@
                                 <a href="{{ $setting[0]->setting_fb }}"><i class="fa fa-facebook"></i></a>
                                 <a href="{{ $setting[0]->setting_twitter }}"><i class="fa fa-twitter"></i></a>
                                 <a href="{{ $setting[0]->setting_instagram }}"><i class="fa fa-instagram"></i></a>
-                                <a href="{{ $setting[0]->setting_youtube }}"><i class="fa fa-youtube"></i></a>
+                                <a href="{{ $setting[0]->setting_youtube }}"><i class="fa fa-google-plus"></i></a>
                             </div><!-- /.social-profile -->
                         </div><!-- /.bottom-content-right -->
                      </div><!-- /.col-md-3 -->

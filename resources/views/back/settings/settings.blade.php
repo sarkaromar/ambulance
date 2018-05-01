@@ -103,7 +103,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Youtube Link</label>
+                            <label class="col-sm-2 control-label">Google plus Link</label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control" name="setting_youtube" value="{{ $setting->setting_youtube }}" placeholder="link">
                             </div>

@@ -75,14 +75,18 @@ Version: 1.0
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
+@font-face {
+  font-family: SolaimanLipi;
+  src: url("SolaimanLipi.ttf");
+}
+
 html {
   font-size: 100%;
 }
 
 body {
   background-color: white;
-  /* font-family: "Roboto Slab", serif; */
-  font-family: 'Hind Siliguri', sans-serif;
+  font-family: Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.45em;
@@ -91,7 +95,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family: Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   line-height: 1.4em;
   color: #1d1d1f;
   font-weight: 400;
@@ -608,9 +612,20 @@ body:not(.woocommerce) .blog-single-block #comments table td {
 }
 
 .mrt-less-137 {
-  margin-top: -137px;
+  /* margin-top: -137px; */
 }
-
+.flash-news-text {
+  padding: 0 5px;
+  background: #2e93e4;
+  color: #fff;
+  font-size: 16px !important;
+  text-align: center;
+  width: 100% !important;
+  display: block;
+}
+a.flash-news {
+  padding: 5px;
+}
 .mr-top-less-160 {
   margin-top: -160px;
 }
@@ -1591,7 +1606,7 @@ a:hover, a:active {
     text-transform: capitalize;
     text-decoration: none;
     position: relative;
-    font-family: 'Hind Siliguri', sans-serif;
+   font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
     color: #1d1d1f;
     vertical-align: middle;
     -webkit-box-shadow: 0 0 0 transparent;
@@ -2347,7 +2362,7 @@ pagination
 }
 
 .header-two .header-bottom-block .nav-right-content > ul > li > a {
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 .header-two .header-top-block {
@@ -2375,7 +2390,7 @@ pagination
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 0.015em;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 .header-two .header-content-right ul li .icon-block {
@@ -2513,7 +2528,7 @@ pagination
 
 .tel-contact-number a {
   color: #E91E22;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   font-size: 18px;
   font-weight: 700;
   margin-right: 15px;
@@ -3094,7 +3109,7 @@ pagination
 
 @media only screen and (max-width: 768px) {
   .brand-carousel .owl-nav.disabled > div {
-    font-family: 'Hind Siliguri', sans-serif;
+   font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
     background-color: #000;
     padding: 8px 15px;
     font-size: 14px;
@@ -3260,7 +3275,7 @@ pagination
   margin-bottom: 0;
   margin-top: 0;
   font-weight: 900;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   line-height: 50px;
 }
 
@@ -3373,7 +3388,7 @@ pagination
   margin-right: 15px;
   float: right;
   color: #1d1d1f;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   font-weight: 900;
   font-size: 16px;
   letter-spacing: 0.035em;
@@ -3679,7 +3694,7 @@ pagination
   border-radius: 0;
   display: inline-block;
   font-size: 16px;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   letter-spacing: 0.025em;
   padding: 10px 30px;
 }
@@ -3931,7 +3946,7 @@ pagination
 }
 
 .faq-bolck .heading-content .subtitle {
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 .menu-extend .fa-plus:before {
@@ -4035,7 +4050,7 @@ pagination
   border-radius: 5px;
   min-height: 90px;
   font-size: 13px;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   font-weight: 600;
 }
 
@@ -4108,7 +4123,7 @@ pagination
   margin-top: 0;
   font-weight: bold;
   color: #454545;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .about-details-content .about-details {
@@ -4210,7 +4225,7 @@ pagination
 }
 
 .view-all-item .view-all-btn {
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   background-color: #000;
   padding: 8px 15px;
   font-size: 14px;
@@ -4263,7 +4278,7 @@ pagination
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.015em;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 .vehicle-bottom-content .meta-item span {
@@ -4326,7 +4341,7 @@ pagination
 .vehicle-top-meta .meta-item {
   float: left;
   margin-right: 15px;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 .vehicle-top-meta .meta-item span {
@@ -4481,7 +4496,7 @@ pagination
 
 @media only screen and (max-width: 768px) {
   .slider-style-two .owl-nav.disabled > div {
-    font-family: 'Hind Siliguri', sans-serif;
+   font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
     background-color: #000;
     padding: 8px 15px;
     font-size: 14px;
@@ -4649,7 +4664,7 @@ pagination
   font-weight: 700;
   font-size: 24px;
   color: #ffffff;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   margin-bottom: 20px;
   line-height: 1.15;
 }
@@ -5173,7 +5188,7 @@ pagination
   border-radius: 0;
   display: inline-block;
   margin-right: 0;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   letter-spacing: 0.015em;
   font-weight: 700;
 }
@@ -5309,7 +5324,7 @@ pagination
   background-color: #ffffff;
   font-weight: bold;
   border: 1px solid #ddd;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 .blog-block .nav-tabs > li > a:hover {
@@ -5722,7 +5737,7 @@ pagination
   letter-spacing: 0.010em;
   margin-top: 5px;
   position: relative;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   -webkit-backface-visibility: hidden;
@@ -5745,7 +5760,7 @@ pagination
 
 .pricing-table-item .price .price-subtille {
   margin-bottom: 10px;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   font-weight: 600;
   letter-spacing: 0.015em;
 }
@@ -5778,7 +5793,7 @@ pagination
 }
 
 .pricing-table-item .pricing-table-footer .button {
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   font-size: 18px;
   display: inline-block;
 }
@@ -6203,7 +6218,7 @@ pagination
   color: #cbcaca;
   margin-right: 5px;
   font-weight: bold;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 .social-profile a {
@@ -6394,7 +6409,7 @@ pagination
   color: #181818;
   font-size: 18px;
   margin-bottom: 5px;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 @media only screen and (max-width: 992px) {
@@ -6598,7 +6613,7 @@ pagination
   font-size: 45px;
   font-weight: 900;
   line-height: 1em;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 @media only screen and (max-width: 767px) {
@@ -6745,7 +6760,7 @@ pagination
   font-size: 15px;
   color: #161616;
   line-height: 20px;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 .google-map-area .contact-style-one .social-icon {
@@ -6905,7 +6920,7 @@ pagination
 
 .vehicle-sidebar .advance-search-query .form-content label {
   color: #454545;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   font-size: 18px;
   text-transform: capitalize;
   font-weight: 800;
@@ -6929,7 +6944,7 @@ pagination
   font-size: 24px;
   color: #232c3b;
   font-weight: 800;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   margin-bottom: 20px;
 }
 
@@ -7382,7 +7397,7 @@ pagination
 .comments-area .comment-metadata .author {
   font-size: 18px;
   font-weight: 800;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 .comments-area .comment-metadata .says, .comments-area .comment-metadata .comment-edit-link {
@@ -7744,7 +7759,7 @@ input[type="checkbox"]::-ms-check {
   margin-bottom: 5px;
   color: #ffffff;
   font-weight: bold;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
 }
 
 .widget_popular_posts .post-info .post-date {
@@ -7826,7 +7841,7 @@ input[type="checkbox"]::-ms-check {
 .widget.widget_menu ul li {
   line-height: 45px;
   position: relative;
-  font-family: 'Hind Siliguri', sans-serif;
+ font-family:Kiron, SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif  !important ;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.025em;

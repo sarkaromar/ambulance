@@ -36,6 +36,22 @@
   <!-- ====== About Us Block ====== --> 
     <div class="about-us-block pd-16">
         <div class="container">
+        <div class="row">
+            <div class="col-lg-1">
+                <div class="flash-news-text">
+                    খবর
+                </div>
+            </div>
+            <div class="col-lg-11">
+                <marquee loop="infinite" behavior="alternate" direction="left" scrollamount="5" onMouseOver="this.stop()" onMouseOut="this.start()">
+                    @if(isset($news[0]))
+                        @foreach($news as $new)
+                            <a class="flash-news" href="{{ url('/news-details',$new->news_id ) }}">&rarr; {{ $new->news_title }}</a>
+                        @endforeach
+                    @endif
+                </marquee>
+            </div>
+        </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="row tb theme-black about-service-two">
@@ -44,12 +60,16 @@
                                     <div class="col-md-10 col-sm-10 block-title-area tb-cell">
                                         <br>
                                         <div class="heading-content style-one border">
-                                            <h2 class="title">মা-মনি<span>অ্যাম্বুলেন্স</span></h2>
+                                            <h2 class="title">মা-মনি<span> অ্যাম্বুলেন্স</span></h2>
                                         </div><!-- /.heading-content-one -->
                                     </div><!-- /.col-md-10 -->
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, quos doloribus maiores architecto explicabo dolorum itaque recusandae! Eius esse ratione blanditiis in reiciendis harum vitae eos culpa amet, magnam eligendi?</p>
-                                <p>quos doloribus maiores architecto explicabo dolorum itaque recusandae! Eius esse ratione blanditiis in reiciendis harum vitae eos culpa amet, magnam eligendi?</p>
-                                <p>Eius esse ratione blanditiis in reiciendis harum vitae eos culpa amet, magnam eligendi?</p>
+                                    <br>
+                                <p>বাংলাদেশের যে জায়গাতেই থাকুন, মা-মনি অ্যাম্বুলেন্স পক্ষ থেকে আপনাদের স্বাগতম ।</p>
+                                    <p>মান সম্মত সার্ভিস - কম খরচে আমরা আপনার সেবায় সার্বক্ষনিক প্রস্তুত। </p>
+                                <p>রোগী জন্য হুইলচেয়ার, অক্সিজেন, স্ট্রেচার এবং একটি আরামদায়ক বিছানা আছে ও রোগীর সাথে যারা থাকিবে তাদের জন্য আরামদায়ক ভাবে বসার  আসন আছে। </p>
+                                <p>নোয়াখালীর যে কোন স্থানে ৩০ মিনিটে আমরা এ্যাম্বুলেন্স সেবা প্রদান করি। আমাদের এ্যাম্বুলেন্স গুলির প্রত্যেকটিতে  হুইলচেয়ার, অক্সিজেন, এবং স্ট্রেচারের  ভাল বাবস্থা রয়েছে।</p>
+                                <p>আমাদের এ্যাম্বুলেন্স রোগীদের জন্য একটি ভাল ব্যবস্থা আছে, রোগীর জন্য স্বাস্থ্যগত বিছানা সহ। আমাদের এ্যাম্বুলেন্স গুলির প্রত্যেকটি হুইলচেয়ার, অক্সিজেন এবং স্ট্রেচারের একটি ভাল বাবস্থা রয়েছে।</p>
+                                
                             </div><!-- /.heading-content-one -->
                         </div><!-- /.col-md-12 -->
 
@@ -83,13 +103,13 @@
                                         <div class="col-md-12 pd-right">
                                             <div class="input">                          
                                                 <i class="fa fa-user"></i>
-                                                <input type="text" name="name" placeholder="Full Name" required>
+                                                <input type="text" name="name" placeholder="সম্পূর্ণ নাম" required>
                                             </div><!-- /.input -->
                                         </div><!--/.col-md-6-->
                                         <div class="col-md-12 pd-right">
                                             <div class="input">                          
                                                 <select name="amb_type" required>
-                                                    <option value="">Choose Ambulance</option>
+                                                    <option value="">আম্বুল্যান্স বাছায় করুন</option>
                                                     @if($ambtypes[0])
                                                     @foreach($ambtypes as $amb_type)
                                                     <option value="{{ $amb_type->abmulance_type_id }}">{{ $amb_type->abmulance_type_name }}</option>
@@ -101,42 +121,42 @@
                                         <div class="col-md-6 pd-right">
                                             <div class="input">
                                                 <i class="fa fa-map-marker"></i>
-                                                <input type="text" name="form" placeholder="From" required>
+                                                <input type="text" name="form" placeholder="কোথা থেকে যাবেন" required>
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6-->
                                         <div class="col-md-6 pd-left">
                                             <div class="input">
                                                 <i class="fa fa-map-marker"></i>
-                                                <input type="text" name="to" placeholder="To" required>
+                                                <input type="text" name="to" placeholder="কোথা পর্যন্ত যাবেন" required>
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6-->
                                         <div class="col-md-6 pd-right">
                                             <div class="input">
                                                 <i class="fa fa-calendar"></i>
-                                                <input type="text" id="jquery_datepicker" class="form-controller" name="date" placeholder="Date" required>
+                                                <input type="text" id="jquery_datepicker" class="form-controller" name="date" placeholder="তারিখ" required>
                                             </div>
                                         </div><!--/.col-md-6-->
                                         <div class="col-md-6 pd-left">
                                             <div class="input">
                                                 <i class="fa fa-clock-o"></i>
-                                                <input type="text" class="time-selector form-controller" name="time" placeholder="15:00 am" required>
+                                                <input type="text" class="time-selector form-controller" name="time" placeholder="সময়" required>
                                             </div>
                                         </div><!--/.col-md-6-->  
                                         <div class="col-md-6 pd-right">
                                             <div class="input">
                                                     <i class="fa fa-mobile"></i>
-                                                <input type="text" name="mobile" placeholder="Mobile nubmer" required>
+                                                <input type="text" name="mobile" placeholder="মোবাইল নাম্বার" required>
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6--> 
                                         <div class="col-md-6 pd-left">
                                             <div class="input">
                                                     <i class="fa fa-at"></i>
-                                                <input type="email" name="email" placeholder="Email">
+                                                <input type="email" name="email" placeholder="ইমেইল">
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6-->
                                         <div class="col-md-12">
                                             <div class="input">
-                                                <textarea rows="2" cols="100" name="address" placeholder="Full Address" required></textarea>
+                                                <textarea rows="2" cols="100" name="address" placeholder="আপনের পূর্ণ ঠিকানা" required></textarea>
                                             </div><!-- /.form-group -->
                                         </div><!--/.col-md-6-->
                                     </div><!-- /.row -->
@@ -154,18 +174,6 @@
             </div><!-- /.row -->
        </div><!-- /.container -->
     </div><!-- /.about-us-block -->
-    <!-- ======Faq Block======= -->
-    <div class="faq-bolck pd-75">
-        <div class="container">
-            <marquee>
-                @if(isset($news[0]))
-                @foreach($news as $new)
-                <a href="{{ url('/news-details',$new->news_id ) }}">{{ $new->news_title }}</a>
-                @endforeach
-                @endif
-            </marquee>
-        </div>
-    </div>
     <!-- ======Faq Block======= -->
     <div class="faq-bolck pd-75">
         <div class="container">
