@@ -21,6 +21,7 @@ Route::get('/about-us', 'Front\Home_@about');
 // other pages
 Route::get('/rants', 'Front\Home_@rants');
 Route::get('/news', 'Front\Home_@news');
+Route::get('/news-details/{id}', 'Front\Home_@news_details');
 Route::get('/faq', 'Front\Home_@faq');
 Route::get('/terms_and_conditions', 'Front\Home_@tnc');
 Route::get('/contact-us', 'Front\Home_@contact');
@@ -117,5 +118,9 @@ Route::prefix('admin')->group(function(){
 
 	Route::get('/tnc', 'Back\Cms@tnc');
 	Route::post('/tnc-update', 'Back\Cms@tnc_update');
+
+	// settings section --------
+	Route::get('/settings', 'Back\Settings@index');
+	Route::post('/update-settings', 'Back\Settings@update');
 
 });

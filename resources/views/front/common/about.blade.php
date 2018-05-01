@@ -52,61 +52,23 @@
         </div><!-- /.row --> 
 
         <div class="driver-carousel slider-style-two owl-carousel" data-item="[4,2,2,1]">
+            @if(isset($drivers[0]))
+            @foreach($drivers as $driver)
             <div class="item">
                 <div class="driver-content vehicle-content theme-yellow">
                     <div class="driver-thumb vehicle-thumbnail">
                         <a href="#">
-                            <img src="assets/images/driver/driver-01.jpg" alt="car-item" />
+                            <img src="{{ URL::to('photo/driver', $driver->driver_image) }}" alt="{{ $driver->driver_title }}" />
                         </a>
                     </div><!-- /.vehicle-thumbnail -->
                     <div class="vehicle-bottom-content">
-                       <h2 class="driver-name vehicle-title"><a href="#">Mr. Sagor Smith</a></h2>
-                        <h4 class="driver-desc">Full Time Work,  Age 27</h4>
+                       <h2 class="driver-name vehicle-title"><a href="#">{{ $driver->driver_title }}</a></h2>
+                        <h4 class="driver-desc">{{ $driver->driver_info }}</h4>
                     </div><!-- /.vehicle-bottom-content -->
                 </div><!-- /.car-content -->
             </div><!-- /.item -->
-
-            <div class="item">
-                <div class="driver-content vehicle-content theme-yellow">
-                    <div class="driver-thumb vehicle-thumbnail">
-                        <a href="#">
-                            <img src="assets/images/driver/driver-02.jpg" alt="car-item" />
-                        </a>
-                    </div><!-- /.vehicle-thumbnail -->
-                    <div class="vehicle-bottom-content">
-                       <h2 class="driver-name vehicle-title"><a href="#">Mr. Sagor Smith</a></h2>
-                        <h4 class="driver-desc">Full Time Work,  Age 27</h4>
-                    </div><!-- /.vehicle-bottom-content -->
-                </div><!-- /.car-content -->
-            </div><!-- /.item -->
-            
-            <div class="item">
-                <div class="driver-content vehicle-content theme-yellow">
-                    <div class="driver-thumb vehicle-thumbnail">
-                        <a href="#">
-                            <img src="assets/images/driver/driver-03.jpg" alt="car-item" />
-                        </a>
-                    </div><!-- /.vehicle-thumbnail -->
-                    <div class="vehicle-bottom-content">
-                       <h2 class="driver-name vehicle-title"><a href="#">Mr. Sagor Smith</a></h2>
-                        <h4 class="driver-desc">Full Time Work,  Age 27</h4>
-                    </div><!-- /.vehicle-bottom-content -->
-                </div><!-- /.car-content -->
-            </div><!-- /.item -->
-
-            <div class="item">
-                <div class="driver-content vehicle-content theme-yellow">
-                    <div class="driver-thumb vehicle-thumbnail">
-                        <a href="#">
-                            <img src="assets/images/driver/driver-04.jpg" alt="car-item" />
-                        </a>
-                    </div><!-- /.vehicle-thumbnail -->
-                    <div class="vehicle-bottom-content">
-                       <h2 class="driver-name vehicle-title"><a href="#">Mr. Sagor Smith</a></h2>
-                        <h4 class="driver-desc">Full Time Work,  Age 27</h4>
-                    </div><!-- /.vehicle-bottom-content -->
-                </div><!-- /.car-content -->
-            </div><!-- /.item -->
+            @endforeach
+            @endif
         </div><!-- /.driver-carousel -->
     </div><!-- /.container  -->
 </div><!-- /.driver-area -->

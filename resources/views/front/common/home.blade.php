@@ -231,65 +231,24 @@
                     <div class="service-list-slider slider-style-two owl-carousel" data-item="[1,1,1,1]">
                         <div class="item">
                             <div class="row">
+                                @if(isset($services[0]))
+                                @foreach($services as $service)              
                                 <div class="col-md-6 col-sm-6">
                                     <div class="about-details-content mr-btm-30 theme-blue">
                                         <div class="details-header">      
                                             <div class="image-content">
                                                 <i class="renticon renticon-ground-curgo"></i>
                                             </div><!-- /.image-content -->
-                                            <h3 class="about-title">নন এসি অ্যাম্বুলেন্স</h3>
+                                            <h3 class="about-title">{{ $service->service_name }}</h3>
                                         </div><!-- /.details-header -->
                                         <div class="details-description">
-                                            <p class="about-details">Consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris egethiuy Morbi mollis pellden.</p>
-                                            <a href="#" class="button nevy-bg">আরো</a>
+                                            <p class="about-details">{{ $service->service_short_desc }}</p>
+                                            <a href="{{ url($service->service_link) }}" class="button nevy-bg">আরো</a>
                                         </div><!-- /.details-description -->
                                     </div><!-- /.about-details-content -->
                                 </div><!-- /.col-md-6 -->
-                                
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="about-details-content mr-btm-30 theme-blue">
-                                        <div class="details-header">     
-                                            <div class="image-content">
-                                                <i class="renticon renticon-ground-curgo"></i>
-                                            </div><!-- /.image-content -->
-                                            <h3 class="about-title">এসি অ্যাম্বুলেন্স</h3>
-                                        </div><!-- /.details-header -->
-                                        <div class="details-description">
-                                            <p class="about-details">Consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris egethiuy Morbi mollis pellden.</p>
-                                            <a href="#" class="button nevy-bg">আরো</a>
-                                        </div><!-- /.details-description -->
-                                    </div><!-- /.about-details-content -->
-                                </div><!-- /.col-md-6 -->
-                                
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="about-details-content mr-btm-30 theme-blue">
-                                        <div class="details-header">      
-                                            <div class="image-content">
-                                                <i class="renticon renticon-ground-curgo"></i>
-                                            </div><!-- /.image-content -->
-                                            <h3 class="about-title">ICU অ্যাম্বুলেন্স</h3>
-                                        </div><!-- /.details-header -->
-                                        <div class="details-description">
-                                            <p class="about-details">Consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris egethiuy Morbi mollis pellden tesque offs aiug ueia nec rhoncus.</p>
-                                            <a href="#" class="button nevy-bg">আরো</a>
-                                        </div><!-- /.details-description -->
-                                    </div><!-- /.about-details-content -->
-                                </div><!-- /.col-md-6 -->
-
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="about-details-content mr-btm-30 theme-blue">
-                                        <div class="details-header">      
-                                            <div class="image-content">
-                                                <i class="renticon renticon-ground-curgo"></i>
-                                            </div><!-- /.image-content -->
-                                            <h3 class="about-title">ফ্রীজার ভ্যান</h3>
-                                        </div><!-- /.details-header -->
-                                        <div class="details-description">
-                                            <p class="about-details">Consectetur adipiscing elit. Cras vitae nibh nisl. Cras etitikis mauris egethiuy Morbi mollis pellden tesque offs aiug ueia nec rhoncus.</p>
-                                            <a href="#" class="button nevy-bg">আরো</a>
-                                        </div><!-- /.details-description -->
-                                    </div><!-- /.about-details-content --> 
-                                </div><!-- /.col-md-6 -->                                  
+                                @endforeach
+                                @endif                
                             </div><!-- /.row -->
                         </div><!-- /.item -->
                     </div><!-- /.faq-slider -->

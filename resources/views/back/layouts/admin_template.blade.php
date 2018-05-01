@@ -168,8 +168,13 @@
                                     <a href="{{ url('/admin/tnc')}}"><i class="fa fa-caret-right"></i> Terms& Cond.</a>
                                 </li>
                             </ul>
-                        </li>  
-
+                        </li> 
+                        <!-- booking list -->
+                        <li class="treeview <?php if ($menu == 'settings') echo 'active' ?>">
+                            <a href="{{ url('/admin/settings') }}" >
+                                <i class="fa fa-gear fa-lg"></i><span> &nbsp;Settings</span>
+                            </a>
+                        </li> 
                         <!-- other link goes here  -->
                     </ul>
                 </section>

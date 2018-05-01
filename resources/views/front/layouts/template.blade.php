@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-md-4 col-sm-4 col-xs-7">
                     <div class="site-logo">
-                        <a href="index.html"><img src="{{ URL::to('assets/images/logo.png') }}" alt="header-logo" /></a>
+                        <a href="{{ url('/') }}"><img src="{{ URL::to('photo/logo', $setting[0]->setting_logo) }}" alt="header-logo" /></a>
                     </div><!-- /.logo -->
                 </div><!-- /.col-md-5 -->
                 <!-- PC Top Right Content -->
@@ -37,17 +37,16 @@
                                     <i class="fa fa-phone"></i>
                                 </div><!-- /.icon-block -->
                                 <div class="menu-info">                                
-                                    <a href="#">ফোন - ০১৮৮৫০৯০০০০</a>
-                                    <a href="#">maamonics@gmail.com</a>
+                                    <a href="#">ফোন - {{ $setting[0]->setting_phone1 }}</a>
+                                    <a href="#">{{ $setting[0]->setting_email1 }}</a>
                                 </div>
                             </li>
                             <li>
                                 <div class="icon-block">
                                     <i class="fa fa-map-marker"></i>
                                 </div><!-- /.icon-block -->
-                                <div class="menu-info">                                
-                                    যোগাযোগ: হাসপাতাল রোড,
-                                    <br> মাইজদী, নোয়াখালী।
+                                <div class="menu-info">
+                                    {!! $setting[0]->setting_address1 !!}                                
                                 </div>
                             </li>
                             <li>
@@ -56,10 +55,10 @@
                                 </div><!-- /.icon-block -->
                                 <div class="social-icon">
                                     <span class="content-title">সাথে থাকুন:</span>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a href="{{ $setting[0]->setting_fb }}"><i class="fa fa-facebook"></i></a>
+                                    <a href="{{ $setting[0]->setting_twitter }}"><i class="fa fa-twitter"></i></a>
+                                    <a href="{{ $setting[0]->setting_instagram }}"><i class="fa fa-instagram"></i></a>
+                                    <a href="{{ $setting[0]->setting_youtube }}"><i class="fa fa-youtube"></i></a>
                                 </div><!-- /.social-icon -->
                             </li>
                         </ul>
@@ -141,94 +140,93 @@
     </div><!-- /.section-divider -->
     <footer class="footer-block bg-black blue-theme" style="background-image: url(assets/images/footer-bg.png);">
         <div class="container">
-                <!-- footer-top-block -->
-                <div class="footer-top-block">            
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="widget widget_about">    
-                                <h3 class="widget-title">
-                                    আমাদের সম্পর্কে
-                                </h3><!-- /.widget-title -->
-                                <div class="widget-about-content">
-                                    <img src="{{ URL::to('assets/images/logo.png') }}" alt="logo" />
-                                    <p>We Provide develo gped in a way so that the clients find  Support. Themes are developed in a way so that  the clients find.</p>
-                                    <a href="#" class="button">আরো</a>
-                                </div><!-- /.widget-content -->
-                            </div><!-- /.widget widget_about -->
-                        </div><!-- /.col-md-3 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="widget widget_menu">
-                                <h3 class="widget-title">
-                                    দরকারী লিংক
-                                </h3><!-- /.widget-title -->
-                                <ul>
-                                    <li><a href="about.html">আমাদের সম্পর্কে</a></li>
-                                    <li><a href="rants.html">ভাড়া তালিকা</a></li>
-                                    <li><a href="news.html">খবর</a></li>
-                                    <li><a href="faq.html">প্রশ্নাবলী</a></li>
-                                    <li><a href="tnc.html">শর্ত</a></li>
-                                    <li><a href="contact.html">যোগাযোগ</a></li>
-                                </ul> 
-                            </div><!-- /.widget -->
-                        </div><!-- /.col-md-3 -->
-    
-                        <div class="col-md-3 col-sm-6">
-                            <div class="widget widget_menu">
-                                <h3 class="widget-title">
-                                    আমাদের সেবাসমূহ
-                                </h3><!-- /.widget-title -->
-                                <ul>
-                                    <li><a href="non-ac-ambulance.html">নন এসি অ্যাম্বুলেন্স </a></li>                                         
-                                    <li><a href="ac-ambulance.html">এসি অ্যাম্বুলেন্স </a></li>                                         
-                                    <li><a href="icu-ambulance.html">আই সি ইউ অ্যাম্বুলেন্স</a></li>                                         
-                                    <li><a href="freezer-van.html">ফ্রীজার ভ্যান</a></li> 
-                                </ul>
-                            </div><!-- /.widget -->
-                        </div><!-- /.col-md-4 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="widget widget_hot_contact">
-                                <h3 class="widget-title">
-                                    যোগাযোগ 
-                                </h3><!-- /.widget-title -->
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-envelope"></i>maamonics@gmail.com</a></li>
-                                    <li><a href="#"><i class="fa fa-phone"></i>(+880)1885-090000</a></li>
-                                    <li><a href="#"><i class="fa fa-map-marker"></i>Hospital Road, Maijdee, Noakhali.</a></li>
-                                </ul> 
-                            </div><!-- /.widget -->
-                            <div class="widget widget_newsletter">
-                                <h3 class="widget-title">সদস্যতা</h3>
-                                <form action="#" class="subscribes-newsletter" method="get">
-                                    <label>আমাদের নিউজলেটার সদস্যতা</label>
-                                    <div class="input-group">
-                                        <input type="search" name="s" placeholder="Your email" class="form-controller">
-                                        <span class="input-group-btn">
-                                            <button type="submit" class="btn btn-primary">
-                                                    <span class="fa fa-paper-plane"></span>
-                                            </button>
-                                        </span>
-                                    </div><!-- /. input-group -->
-                                </form><!-- /.subscribes-newsletter -->
-                            </div><!-- /.widget -->
-                        </div><!-- /.col-md-3 -->
-                    </div><!-- /.row -->
-                </div><!-- /.footer-top-block -->
+            <!-- footer-top-block -->
+            <div class="footer-top-block">            
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget_about">    
+                            <h3 class="widget-title">
+                                আমাদের সম্পর্কে
+                            </h3><!-- /.widget-title -->
+                            <div class="widget-about-content">
+                                <img src="{{ URL::to('photo/logo', $setting[0]->setting_logo) }}" alt="logo" />
+                                <p>We Provide develo gped in a way so that the clients find  Support. Themes are developed in a way so that  the clients find.</p>
+                                <a href="{{ url('about-us') }}" class="button">আরো</a>
+                            </div><!-- /.widget-content -->
+                        </div><!-- /.widget widget_about -->
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget_menu">
+                            <h3 class="widget-title">
+                                দরকারী লিংক
+                            </h3><!-- /.widget-title -->
+                            <ul>
+                                <li><a href="{{ url('about-us') }}">আমাদের সম্পর্কে</a></li>
+                                <li><a href="{{ url('rants') }}">ভাড়া তালিকা</a></li>
+                                <li><a href="{{ url('news') }}">খবর</a></li>
+                                <li><a href="{{ url('faq') }}">প্রশ্নাবলী</a></li>
+                                <li><a href="{{ url('terms_and_conditions') }}">শর্ত</a></li>
+                                <li><a href="{{ url('contact-us') }}">যোগাযোগ</a></li>
+                            </ul> 
+                        </div><!-- /.widget -->
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget_menu">
+                            <h3 class="widget-title">
+                                আমাদের সেবাসমূহ
+                            </h3><!-- /.widget-title -->
+                            <ul>
+                                <li><a href="{{ url('non-ac-ambulance') }}">নন এসি অ্যাম্বুলেন্স </a></li>                                         
+                                <li><a href="{{ url('ac-ambulance') }}">এসি অ্যাম্বুলেন্স </a></li>                                         
+                                <li><a href="{{ url('icu-ambulance') }}">আই সি ইউ অ্যাম্বুলেন্স</a></li>                                         
+                                <li><a href="{{ url('freezer-van') }}">ফ্রীজার ভ্যান</a></li> 
+                            </ul>
+                        </div><!-- /.widget -->
+                    </div><!-- /.col-md-4 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget_hot_contact">
+                            <h3 class="widget-title">
+                                যোগাযোগ 
+                            </h3><!-- /.widget-title -->
+                            <ul>
+                                <li><a href="#"><i class="fa fa-envelope"></i>{{ $setting[0]->setting_email1 }}</a></li>
+                                <li><a href="#"><i class="fa fa-phone"></i>{{ $setting[0]->setting_phone2 }}</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker"></i>{{ $setting[0]->setting_address2 }}</a></li>
+                            </ul> 
+                        </div><!-- /.widget -->
+                        <div class="widget widget_newsletter">
+                            <h3 class="widget-title">সদস্যতা</h3>
+                            <form action="#" class="subscribes-newsletter" method="get">
+                                <label>আমাদের নিউজলেটার সদস্যতা</label>
+                                <div class="input-group">
+                                    <input type="search" name="s" placeholder="Your email" class="form-controller">
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-primary">
+                                                <span class="fa fa-paper-plane"></span>
+                                        </button>
+                                    </span>
+                                </div><!-- /. input-group -->
+                            </form><!-- /.subscribes-newsletter -->
+                        </div><!-- /.widget -->
+                    </div><!-- /.col-md-3 -->
+                </div><!-- /.row -->
+            </div><!-- /.footer-top-block -->
             <!-- footer-bottom-block -->
             <div class="footer-bottom-block">            
                 <div class="row">
                      <div class="col-md-9">
                         <div class="bottom-content-left">
-                            <p class="copyright">Copyright &copy; 2017 <a href="{{ url('') }}">MaaMoniAmbulance.com</a>  -  All Right Reserved</p>
+                            <p class="copyright">Copyright &copy; <?php echo date('Y') ?> <a href="{{ url('') }}">MaaMoniAmbulance.com</a>  -  All Right Reserved</p>
                         </div><!-- /.bottom-top-content -->
                      </div><!-- /.col-md-9 -->
                      <div class="col-md-3">
                         <div class="bottom-content-right">
                             <div class="social-profile">
                                 <span class="social-profole-title">Follow Us:</span>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="{{ $setting[0]->setting_fb }}"><i class="fa fa-facebook"></i></a>
+                                <a href="{{ $setting[0]->setting_twitter }}"><i class="fa fa-twitter"></i></a>
+                                <a href="{{ $setting[0]->setting_instagram }}"><i class="fa fa-instagram"></i></a>
+                                <a href="{{ $setting[0]->setting_youtube }}"><i class="fa fa-youtube"></i></a>
                             </div><!-- /.social-profile -->
                         </div><!-- /.bottom-content-right -->
                      </div><!-- /.col-md-3 -->
@@ -236,7 +234,6 @@
             </div><!-- /.footer-bottom-block -->
         </div><!-- /.container -->
     </footer><!-- /.footer-block -->
-
     <!-- java script -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="{{ URL::to('assets/js/plugins.min.js') }}"></script>

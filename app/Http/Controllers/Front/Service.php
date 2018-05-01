@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\ServiceModel;
 use App\ServiceSliderModel;
 use App\AmbulanceTypeModel;
+use App\SettingsModel;
 
 use Session;
 
@@ -44,6 +45,9 @@ class Service extends Controller {
         // get ambulance type
         $ambtypes = AmbulanceTypeModel::all();
 
+        // get setting info
+        $setting = SettingsModel::all();
+
         $title = 'Non Ac Ambulance';
         
         $menu = 'non_ac';
@@ -54,6 +58,7 @@ class Service extends Controller {
                     ->withSliders($sliders)
                     ->withAmbtypes($ambtypes)
                     ->withTitle($title)
+                    ->withSetting($setting)
                     ->withMenu($menu);
     }
 
@@ -82,6 +87,9 @@ class Service extends Controller {
        // get ambulance type
         $ambtypes = AmbulanceTypeModel::all();
 
+        // get setting info
+        $setting = SettingsModel::all();
+
         $title = 'Ac Ambulance';
         
         $menu = 'ac';
@@ -92,6 +100,7 @@ class Service extends Controller {
                     ->withSliders($sliders)
                     ->withAmbtypes($ambtypes)
                     ->withTitle($title)
+                    ->withSetting($setting)
                     ->withMenu($menu);
     }
 
@@ -120,6 +129,9 @@ class Service extends Controller {
         // get ambulance type
         $ambtypes = AmbulanceTypeModel::all();
 
+        // get setting info
+        $setting = SettingsModel::all();
+
         $title = 'ICU Ambulance';
         
         $menu = 'icu';
@@ -130,6 +142,7 @@ class Service extends Controller {
                     ->withSliders($sliders)
                     ->withAmbtypes($ambtypes)
                     ->withTitle($title)
+                    ->withSetting($setting)
                     ->withMenu($menu);
     }
 
@@ -158,6 +171,9 @@ class Service extends Controller {
         // get ambulance type
         $ambtypes = AmbulanceTypeModel::all();
 
+        // get setting info
+        $setting = SettingsModel::all();
+
         $title = 'Freezer Van';
         
         $menu = 'freezer';
@@ -168,6 +184,7 @@ class Service extends Controller {
                     ->withSliders($sliders)
                     ->withAmbtypes($ambtypes)
                     ->withTitle($title)
+                    ->withSetting($setting)
                     ->withMenu($menu);
     }
 

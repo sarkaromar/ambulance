@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Redirect;
 use App\AmbulanceTypeModel;
 use App\BookingModel;
 use App\FaqModel;
+use App\ServiceModel;
 use App\SliderModel;
+use App\DriverModel;
+use App\NewsModel;
 use App\TestimonialModel;
 use App\ContentModel;
+use App\SettingsModel;
 
-// use DB;
-// use Auth;
 use Session;
 
 /**
@@ -39,22 +41,30 @@ class Home_ extends Controller {
         // get testimonial
         $tests = TestimonialModel::all();
 
+        // get service
+        $services = ServiceModel::select('service_name','service_short_desc','service_link')->get();
+
         // get faq
-        $faqs = FaqModel::all();
+        $faqs = FaqModel::limit(5)->get();
 
         // get ambulance type
         $ambtypes = AmbulanceTypeModel::all();
 
-        $title = 'Maa Moni Ambulance Service 24/7';
+        // get setting info
+        $setting = SettingsModel::all();
+
+       $title = 'Maa Moni Ambulance Service 24/7';
         
         $menu = 'home';
         
         return view('front.common.home')
                 ->withSliders($sliders)
                 ->withTests($tests)
+                ->withServices($services)
                 ->withFaqs($faqs)
                 ->withAmbtypes($ambtypes)
                 ->withTitle($title)
+                ->withSetting($setting)
                 ->withMenu($menu);
     }
 
@@ -125,13 +135,21 @@ class Home_ extends Controller {
         $result = $contentmodel->select('content_info')->where('content_name', 'about')->first();
         $content = $result->content_info;
         
+        // get driver
+        $drivers = DriverModel::get();
+
+        // get setting info
+        $setting = SettingsModel::all();
+
         $title = 'About';
         
         $menu = 'about';
         
         return view('front.common.about')
                     ->withContent($content)
+                    ->withDrivers($drivers)
                     ->withTitle($title)
+                    ->withSetting($setting)
                     ->withMenu($menu);
     }
 
@@ -144,14 +162,14 @@ class Home_ extends Controller {
      */
     public function non_ac_ambulance(){
 
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
+        // get setting info
+        $setting = SettingsModel::all();
 
         $title = 'Maa Moni Ambulance Service 24/7';
         
         $menu = 'non_ac_ambulance';
         
-        return view('front.common.non_ac_ambulance')->withTitle($title)->withMenu($menu);
+        return view('front.common.non_ac_ambulance')->withTitle($title)->withSetting($setting)->withMenu($menu);
     }
 
     /**
@@ -171,10 +189,14 @@ class Home_ extends Controller {
         $title = 'Rants';
         
         $menu = 'rants';
+
+        // get setting info
+        $setting = SettingsModel::all();
         
         return view('front.common.rants')
                     ->withContent($content)
                     ->withTitle($title)
+                    ->withSetting($setting)
                     ->withMenu($menu);
     }
 
@@ -187,14 +209,45 @@ class Home_ extends Controller {
      */
     public function news(){
 
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
+        $news = NewsModel::Paginate(2);
 
         $title = 'Maa Moni Ambulance Service 24/7';
         
         $menu = 'news';
+
+        // get setting info
+        $setting = SettingsModel::all();
         
-        return view('front.common.news')->withTitle($title)->withMenu($menu);
+        return view('front.common.news')
+                ->withNews($news)
+                ->withTitle($title)
+                ->withSetting($setting)
+                ->withMenu($menu);
+    }
+
+    /**
+     * Show the news page.
+     *
+     * @param   
+     * @return Response
+     * @author Mostafijur Rahman Rana
+     */
+    public function news_details($id){
+
+        $news = NewsModel::where('news_id', $id)->first();
+
+        $title = 'Maa Moni Ambulance Service 24/7';
+        
+        $menu = 'news';
+
+        // get setting info
+        $setting = SettingsModel::all();
+        
+        return view('front.common.news_details')
+                ->withNews($news)
+                ->withTitle($title)
+                ->withSetting($setting)
+                ->withMenu($menu);
     }
 
     /**
@@ -206,14 +259,21 @@ class Home_ extends Controller {
      */
     public function faq(){
 
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
+        // get faq
+        $faqs = FaqModel::all();
 
-        $title = 'Maa Moni Ambulance Service 24/7';
+        $title = 'FAQ';
         
         $menu = 'faq';
-        
-        return view('front.common.faq')->withTitle($title)->withMenu($menu);
+
+        // get setting info
+        $setting = SettingsModel::all();
+
+        return view('front.common.faq')
+                        ->withFaqs($faqs)
+                        ->withTitle($title)
+                        ->withSetting($setting)
+                        ->withMenu($menu);
     }
 
     /**
@@ -230,6 +290,9 @@ class Home_ extends Controller {
         $result = $contentmodel->select('content_info')->where('content_name', 'tnc')->first();
         $content = $result->content_info;
 
+        // get setting info
+        $setting = SettingsModel::all();
+
         $title = 'Terms and Conditions';
         
         $menu = 'tnc';
@@ -237,6 +300,7 @@ class Home_ extends Controller {
         return view('front.common.tnc')
                     ->withContent($content)
                     ->withTitle($title)
+                    ->withSetting($setting)
                     ->withMenu($menu);
     }
 
@@ -256,7 +320,10 @@ class Home_ extends Controller {
         
         $menu = 'contact';
         
-        return view('front.common.contact')->withTitle($title)->withMenu($menu);
+        // get setting info
+        $setting = SettingsModel::all();
+        
+        return view('front.common.contact')->withTitle($title)->withSetting($setting)->withMenu($menu);
     }
 
 

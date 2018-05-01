@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('service_name')->nullable();
             $table->text('service_short_desc')->nullable();
             $table->text('service_info')->nullable();
+            $table->string('service_link')->nullable();
             $table->timestamps();
         });
     }
