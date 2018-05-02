@@ -122,8 +122,6 @@ class Home_ extends Controller {
 
     }
 
-
-
     /**
      * Show the about page.
      *
@@ -144,7 +142,7 @@ class Home_ extends Controller {
         // get setting info
         $setting = SettingsModel::all();
 
-        $title = 'About';
+        $title = 'আমাদের সম্পর্কে';
         
         $menu = 'about';
         
@@ -156,24 +154,24 @@ class Home_ extends Controller {
                     ->withMenu($menu);
     }
 
-    /**
-     * Show the non_ac_ambulance page.
-     *
-     * @param   
-     * @return Response
-     * @author Mostafijur Rahman Rana
-     */
-    public function non_ac_ambulance(){
+    // /**
+    //  * Show the non_ac_ambulance page.
+    //  *
+    //  * @param   
+    //  * @return Response
+    //  * @author Mostafijur Rahman Rana
+    //  */
+    // public function non_ac_ambulance(){
 
-        // get setting info
-        $setting = SettingsModel::all();
+    //     // get setting info
+    //     $setting = SettingsModel::all();
 
-        $title = 'Maa Moni Ambulance Service 24/7';
+    //     $title = 'নন এসি অ্যাম্বুলেন্স';
         
-        $menu = 'non_ac_ambulance';
+    //     $menu = 'non_ac_ambulance';
         
-        return view('front.common.non_ac_ambulance')->withTitle($title)->withSetting($setting)->withMenu($menu);
-    }
+    //     return view('front.common.non_ac_ambulance')->withTitle($title)->withSetting($setting)->withMenu($menu);
+    // }
 
     /**
      * Show the rants page.
@@ -189,7 +187,7 @@ class Home_ extends Controller {
         $result = $contentmodel->select('content_info')->where('content_name', 'rants')->first();
         $content = $result->content_info;
 
-        $title = 'Rants';
+        $title = 'ভাড়া তালিকা';
         
         $menu = 'rants';
 
@@ -212,9 +210,9 @@ class Home_ extends Controller {
      */
     public function news(){
 
-        $news = NewsModel::Paginate(2);
+        $news = NewsModel::Paginate(6);
 
-        $title = 'Maa Moni Ambulance Service 24/7';
+        $title = 'খবর';
         
         $menu = 'news';
 
@@ -239,7 +237,7 @@ class Home_ extends Controller {
 
         $news = NewsModel::where('news_id', $id)->first();
 
-        $title = 'Maa Moni Ambulance Service 24/7';
+        $title = 'খবর';
         
         $menu = 'news';
 
@@ -265,7 +263,7 @@ class Home_ extends Controller {
         // get faq
         $faqs = FaqModel::all();
 
-        $title = 'FAQ';
+        $title = 'প্রশ্নাবলী';
         
         $menu = 'faq';
 
@@ -296,7 +294,7 @@ class Home_ extends Controller {
         // get setting info
         $setting = SettingsModel::all();
 
-        $title = 'Terms and Conditions';
+        $title = 'শর্ত';
         
         $menu = 'tnc';
         
@@ -319,7 +317,7 @@ class Home_ extends Controller {
         // get sliders
         // $data['sliders'] = DB::table('v_sliders')->get();
 
-        $title = 'Maa Moni Ambulance Service 24/7';
+        $title = 'যোগাযোগ';
         
         $menu = 'contact';
         

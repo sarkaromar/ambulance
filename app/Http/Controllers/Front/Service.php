@@ -48,7 +48,7 @@ class Service extends Controller {
         // get setting info
         $setting = SettingsModel::all();
 
-        $title = 'Non Ac Ambulance';
+        $title = 'নন এসি অ্যাম্বুলেন্স ';
         
         $menu = 'non_ac';
         
@@ -90,7 +90,7 @@ class Service extends Controller {
         // get setting info
         $setting = SettingsModel::all();
 
-        $title = 'Ac Ambulance';
+        $title = 'এসি অ্যাম্বুলেন্স ';
         
         $menu = 'ac';
         
@@ -132,7 +132,7 @@ class Service extends Controller {
         // get setting info
         $setting = SettingsModel::all();
 
-        $title = 'ICU Ambulance';
+        $title = 'আই সি ইউ অ্যাম্বুলেন্স';
         
         $menu = 'icu';
         
@@ -174,7 +174,7 @@ class Service extends Controller {
         // get setting info
         $setting = SettingsModel::all();
 
-        $title = 'Freezer Van';
+        $title = 'ফ্রীজার ভ্যান';
         
         $menu = 'freezer';
         

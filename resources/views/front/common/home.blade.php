@@ -57,22 +57,16 @@
                     <div class="row tb theme-black about-service-two">
                         <div class="col-lg-12 ">
                             <div class="heading-content style-one header-style-one">
-                                    <div class="col-md-10 col-sm-10 block-title-area tb-cell">
-                                        <br>
-                                        <div class="heading-content style-one border">
-                                            <h2 class="title">মা-মনি<span> অ্যাম্বুলেন্স</span></h2>
-                                        </div><!-- /.heading-content-one -->
-                                    </div><!-- /.col-md-10 -->
+                                <div class="col-md-10 col-sm-10 block-title-area tb-cell">
                                     <br>
-                                <p>বাংলাদেশের যে জায়গাতেই থাকুন, মা-মনি অ্যাম্বুলেন্স পক্ষ থেকে আপনাদের স্বাগতম ।</p>
-                                    <p>মান সম্মত সার্ভিস - কম খরচে আমরা আপনার সেবায় সার্বক্ষনিক প্রস্তুত। </p>
-                                <p>রোগী জন্য হুইলচেয়ার, অক্সিজেন, স্ট্রেচার এবং একটি আরামদায়ক বিছানা আছে ও রোগীর সাথে যারা থাকিবে তাদের জন্য আরামদায়ক ভাবে বসার  আসন আছে। </p>
-                                <p>নোয়াখালীর যে কোন স্থানে ৩০ মিনিটে আমরা এ্যাম্বুলেন্স সেবা প্রদান করি। আমাদের এ্যাম্বুলেন্স গুলির প্রত্যেকটিতে  হুইলচেয়ার, অক্সিজেন, এবং স্ট্রেচারের  ভাল বাবস্থা রয়েছে।</p>
-                                <p>আমাদের এ্যাম্বুলেন্স রোগীদের জন্য একটি ভাল ব্যবস্থা আছে, রোগীর জন্য স্বাস্থ্যগত বিছানা সহ। আমাদের এ্যাম্বুলেন্স গুলির প্রত্যেকটি হুইলচেয়ার, অক্সিজেন এবং স্ট্রেচারের একটি ভাল বাবস্থা রয়েছে।</p>
-                                
+                                    <div class="heading-content style-one border">
+                                        <h2 class="title">মা-মনি<span> অ্যাম্বুলেন্স</span></h2>
+                                    </div><!-- /.heading-content-one -->
+                                </div><!-- /.col-md-10 -->
+                                <br>
+                                {{ $setting[0]->setting_home_text }}
                             </div><!-- /.heading-content-one -->
                         </div><!-- /.col-md-12 -->
-
                     </div><!-- /.row -->
                 </div><!-- /.col-md-6 -->
                 <div class="col-md-6">

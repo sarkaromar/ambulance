@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2018 at 10:30 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.35
+-- Generation Time: May 02, 2018 at 03:44 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -333,6 +333,7 @@ CREATE TABLE `settings` (
   `setting_total_driver` varchar(255) DEFAULT NULL,
   `setting_total_client` varchar(255) DEFAULT NULL,
   `setting_total_day` varchar(255) DEFAULT NULL,
+  `setting_home_text` text,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -341,8 +342,8 @@ CREATE TABLE `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`setting_id`, `setting_logo`, `setting_phone1`, `setting_phone2`, `setting_email1`, `setting_email2`, `setting_address1`, `setting_address2`, `setting_fb`, `setting_skype`, `setting_twitter`, `setting_youtube`, `setting_instagram`, `setting_total_amb`, `setting_total_driver`, `setting_total_client`, `setting_total_day`, `created_at`, `updated_at`) VALUES
-(1, 'mLky1525166591.png', '(+880)1885-090000', '(+880)1885-090000', 'maamonics@gmail.com', 'maamonics@gmail.com', 'যোগাযোগ: হাসপাতাল রোড,\r\n                                    <br> মাইজদী, নোয়াখালী।', 'Hospital Road, Maijdee, Noakhali.', 'https://www.facebook.com/maamoniambulance/', 'skype.com', 'https://twitter.com/maamonics', 'https://plus.google.com/117820037998262635391', 'https://www.instagram.com/maamoniambulanceservice/', '15', '30', '2500', '1000', NULL, '2018-05-01 19:21:53');
+INSERT INTO `settings` (`setting_id`, `setting_logo`, `setting_phone1`, `setting_phone2`, `setting_email1`, `setting_email2`, `setting_address1`, `setting_address2`, `setting_fb`, `setting_skype`, `setting_twitter`, `setting_youtube`, `setting_instagram`, `setting_total_amb`, `setting_total_driver`, `setting_total_client`, `setting_total_day`, `setting_home_text`, `created_at`, `updated_at`) VALUES
+(1, 'mLky1525166591.png', '(+880)1885-090000', '(+880)1885-090000', 'maamonics@gmail.com', 'maamonics@gmail.com', 'যোগাযোগ: হাসপাতাল রোড,\r\n                                    <br> মাইজদী, নোয়াখালী।', 'Hospital Road, Maijdee, Noakhali.', 'https://www.facebook.com/maamoniambulance/', 'skype.com', 'https://twitter.com/maamonics', 'https://plus.google.com/117820037998262635391', 'https://www.instagram.com/maamoniambulanceservice/', '15', '30', '2500', '1000', 'বাংলাদেশের যে জায়গাতেই থাকুন, মা-মনি অ্যাম্বুলেন্স পক্ষ থেকে আপনাদের স্বাগতম ।\r\n\r\nমান সম্মত সার্ভিস - কম খরচে আমরা আপনার সেবায় সার্বক্ষনিক প্রস্তুত।\r\n\r\nরোগী জন্য হুইলচেয়ার, অক্সিজেন, স্ট্রেচার এবং একটি আরামদায়ক বিছানা আছে ও রোগীর সাথে যারা থাকিবে তাদের জন্য আরামদায়ক ভাবে বসার আসন আছে।\r\n\r\nনোয়াখালীর যে কোন স্থানে ৩০ মিনিটে আমরা এ্যাম্বুলেন্স সেবা প্রদান করি। আমাদের এ্যাম্বুলেন্স গুলির প্রত্যেকটিতে হুইলচেয়ার, অক্সিজেন, এবং স্ট্রেচারের ভাল বাবস্থা রয়েছে।\r\n\r\nআমাদের এ্যাম্বুলেন্স রোগীদের জন্য একটি ভাল ব্যবস্থা আছে, রোগীর জন্য স্বাস্থ্যগত বিছানা সহ। আমাদের এ্যাম্বুলেন্স গুলির প্রত্যেকটি হুইলচেয়ার, অক্সিজেন এবং স্ট্রেচারের একটি ভাল বাবস্থা রয়েছে।', NULL, '2018-05-02 13:32:27');
 
 -- --------------------------------------------------------
 

@@ -30,7 +30,8 @@ class CreateSettingsTable extends Migration
             $table->string('setting_total_amb')->nullable();
             $table->string('setting_total_driver')->nullable();
             $table->string('setting_total_client')->nullable();
-             $table->string('setting_total_day')->nullable();
+            $table->string('setting_total_day')->nullable();
+            $table->text('setting_home_text')->nullable();
             $table->timestamps();
         });
     }

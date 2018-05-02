@@ -138,6 +138,12 @@
                                 <input type="text" class="form-control" name="setting_total_day" value="{{ $setting->setting_total_day }}" placeholder="total" required>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Home Text</label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" name="setting_home_text" rows="15" placeholder="home text" required>{{ $setting->setting_home_text }}</textarea>
+                            </div>
+                        </div>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success"><i class="fa fa-fw fa-check-square-o"></i> Update</button>
