@@ -35,7 +35,7 @@ class Ac extends Controller{
         $servicslideremodel = new ServiceSliderModel();
 
         // service data
-        $result = $servicemodel->select('service_id', 'service_short_desc', 'service_info')->where('service_name', 'ac')->first();
+        $result = $servicemodel->select('service_id', 'service_short_desc', 'service_info')->where('service_id', '1')->first();
 
         $serviceid = $result->service_id;
 
@@ -210,7 +210,7 @@ class Ac extends Controller{
         ];
 
         // update
-        if($servicemodel->where('service_name', 'ac')->update($data)){
+        if($servicemodel->where('service_id', '1')->update($data)){
             
             $msg = "Successfully Updated!";
             Session::flash('success', $msg);
@@ -242,7 +242,7 @@ class Ac extends Controller{
         ];
 
         // update
-        if($servicemodel->where('service_name', 'ac')->update($data)){
+        if($servicemodel->where('service_id', '1')->update($data)){
             
             $msg = "Successfully Updated!";
             Session::flash('success', $msg);

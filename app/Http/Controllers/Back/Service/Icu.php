@@ -35,7 +35,7 @@ class Icu extends Controller{
         $servicslideremodel = new ServiceSliderModel();
 
         // service data
-        $result = $servicemodel->select('service_id', 'service_short_desc', 'service_info')->where('service_name', 'icu')->first();
+        $result = $servicemodel->select('service_id', 'service_short_desc', 'service_info')->where('service_id', '3')->first();
 
         $serviceid = $result->service_id;
 
@@ -210,7 +210,7 @@ class Icu extends Controller{
         ];
 
         // update
-        if($servicemodel->where('service_name', 'icu')->update($data)){
+        if($servicemodel->where('service_id', '3')->update($data)){
             
             $msg = "Successfully Updated!";
             Session::flash('success', $msg);
@@ -242,7 +242,7 @@ class Icu extends Controller{
         ];
 
         // update
-        if($servicemodel->where('service_name', 'icu')->update($data)){
+        if($servicemodel->where('service_id', '3')->update($data)){
             
             $msg = "Successfully Updated!";
             Session::flash('success', $msg);
