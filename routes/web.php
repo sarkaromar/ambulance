@@ -25,12 +25,16 @@ Route::get('/news-details/{id}', 'Front\Home_@news_details');
 Route::get('/faq', 'Front\Home_@faq');
 Route::get('/terms_and_conditions', 'Front\Home_@tnc');
 Route::get('/contact-us', 'Front\Home_@contact');
+Route::post('/send-message', 'Front\Home_@send_message')->name('send');
 
 // services pages
 Route::get('/non-ac-ambulance', 'Front\Service@non_ac_ambulance');
 Route::get('/ac-ambulance', 'Front\Service@ac_ambulance');
 Route::get('/icu-ambulance', 'Front\Service@icu_ambulance');
 Route::get('/freezer-van', 'Front\Service@freezer_ambulance');
+
+// for ajax call action
+Route::get('/subscriber', 'Front\CommonController@save_subscriber'); // save subscriber form footer
 
 
 // admin routes ----------------------------------------------------------------
@@ -119,8 +123,14 @@ Route::prefix('admin')->group(function(){
 	Route::get('/tnc', 'Back\Cms@tnc');
 	Route::post('/tnc-update', 'Back\Cms@tnc_update');
 
+	// slider section
+	Route::get('/subscriber', 'Back\Subscriber@index');
+	Route::get('/delete-subscriber/{id}', 'Back\Subscriber@delete');
+
 	// settings section --------
 	Route::get('/settings', 'Back\Settings@index');
 	Route::post('/update-settings', 'Back\Settings@update');
+
+
 
 });

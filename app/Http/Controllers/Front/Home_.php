@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
 use App\AmbulanceTypeModel;
@@ -154,25 +155,7 @@ class Home_ extends Controller {
                     ->withMenu($menu);
     }
 
-    // /**
-    //  * Show the non_ac_ambulance page.
-    //  *
-    //  * @param   
-    //  * @return Response
-    //  * @author Mostafijur Rahman Rana
-    //  */
-    // public function non_ac_ambulance(){
-
-    //     // get setting info
-    //     $setting = SettingsModel::all();
-
-    //     $title = 'নন এসি অ্যাম্বুলেন্স';
-        
-    //     $menu = 'non_ac_ambulance';
-        
-    //     return view('front.common.non_ac_ambulance')->withTitle($title)->withSetting($setting)->withMenu($menu);
-    // }
-
+    
     /**
      * Show the rants page.
      *
@@ -327,6 +310,49 @@ class Home_ extends Controller {
         return view('front.common.contact')->withTitle($title)->withSetting($setting)->withMenu($menu);
     }
 
+
+    /**
+     * for send message
+     *
+     * @param   
+     * @return Response
+     * @author Mostafijur Rahman Rana
+     */
+    public function send_message(Request $request){
+
+        // validate
+        $this->validate($request, [
+            
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|max:255',
+            'massage' => 'required|max:5000'
+
+        ]);
+
+        // make array
+        $data = [
+
+            'name' => trim($request->input('name')),
+            'email' => trim($request->input('email')),
+            'subject' => trim($request->input('subject')),
+            'massage' => trim($request->input('massage')),
+
+        ];
+
+        // Mail::to('')->send();
+        // Mail::send('front.email_body.contact_email', $data, function($message){
+        //     $message->to('mostafijrana1@gmail.com')->subject('someone want to contact'); // site email name, email holder name 
+        // });
+
+        Mail::send('front.email_body.contact_email', $data, function ($message){
+            $message->to('mostafijrana1@gmail.com');
+        });
+
+        Session::flash('success', 'We received your message, we will contact with you!');
+        return redirect::Back();
+        
+    }
 
 
 }

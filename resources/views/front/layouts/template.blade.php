@@ -198,11 +198,12 @@
                             <h3 class="widget-title">সদস্যতা</h3>
                             <form action="#" class="subscribes-newsletter" method="get">
                                 <label>আমাদের নিউজলেটার সদস্যতা</label>
+                                <div id="subs_res"></div>
                                 <div class="input-group">
-                                    <input type="search" name="s" placeholder="Your email" class="form-controller">
+                                    <input type="email" class="form-controller" id="subs_email" name="email" placeholder="Your email" >
                                     <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary">
-                                                <span class="fa fa-paper-plane"></span>
+                                        <button type="button" id="subs_btn" class="btn btn-primary">
+                                            <span class="fa fa-paper-plane"></span>
                                         </button>
                                     </span>
                                 </div><!-- /. input-group -->
@@ -239,6 +240,7 @@
     <script src="{{ URL::to('assets/js/plugins.min.js') }}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ URL::to('assets/js/subscriber.js') }}"></script>
     <script src="{{ URL::to('assets/js/carrent.min.js') }}"></script>
     <script>
         $( function() {

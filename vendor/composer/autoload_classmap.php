@@ -49,6 +49,7 @@ return array(
     'App\\ServiceSliderModel' => $baseDir . '/app/ServiceSliderModel.php',
     'App\\SettingsModel' => $baseDir . '/app/SettingsModel.php',
     'App\\SliderModel' => $baseDir . '/app/SliderModel.php',
+    'App\\SubscriberModel' => $baseDir . '/app/SubscriberModel.php',
     'App\\TestimonialModel' => $baseDir . '/app/TestimonialModel.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',

@@ -36,7 +36,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($lists as $list)
+                                @foreach($bookinglists as $list)
                                 <tr>
                                     <td>{{ $list->booking_applicant_name }}</td>
                                     <td>{{ $list->abmulance_type_name }}</td>
@@ -97,7 +97,7 @@
                                                                 <div class="form-group">
                                                                     <div class="col-md-7">
                                                                         <label> Date<sup style="color: red">*</sup></label>
-                                                                        <input type="text" id="jquery_datepicker" class="form-control" name="date" value="{{ $list->booking_date }}" placeholder="Form" required>
+                                                                        <input type="text" id="jquery_datepicker_{{ $list->booking_id }}" class="form-control" name="date" value="{{ $list->booking_date }}" placeholder="Form" required>
                                                                     </div>
                                                                     <div class="col-md-5">
                                                                         <label> Time<sup style="color: red">*</sup></label>
@@ -183,7 +183,7 @@
                                         <div class="form-group">
                                             <div class="col-md-7">
                                                 <label> Date<sup style="color: red">*</sup></label>
-                                                <input type="text" id="jquery_datepicker2" class="form-control" name="date" placeholder="Form" required>
+                                                <input type="text" id="jquery_datepicker" class="form-control" name="date" placeholder="Form" required>
                                             </div>
                                             <div class="col-md-5">
                                                 <label> Time<sup style="color: red">*</sup></label>

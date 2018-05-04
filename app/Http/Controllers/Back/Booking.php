@@ -29,7 +29,7 @@ class Booking extends Controller{
 
         // make object and get booking list
         $bookings = new BookingModel();
-        $lists = $bookings
+        $bookinglists = $bookings
                     ->join('abmulance_types','bookings.booking_ambulance_type_id','=','abmulance_types.abmulance_type_id')
                     ->select('bookings.*','abmulance_types.abmulance_type_name')
                     ->orderBy('bookings.booking_id', 'desc')
@@ -44,7 +44,7 @@ class Booking extends Controller{
 
         return view('back.booking.booking_list')
                                         ->withAmbtypes($ambtypes)
-                                        ->withLists($lists)
+                                        ->withBookinglists($bookinglists)
                                         ->withTitle($title)
                                         ->withMenu($menu);
       

@@ -54,25 +54,39 @@
                         </div><!-- /.contact -->
                     </div><!-- /.contactus-content-left -->
                 </div><!-- /.col-md-4 -->
-                
                 <div class="col-md-8">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    @if (Session::has('success'))
+                    <div class="alert alert-success">
+                        <strong>Thanks!</strong> {{Session::get('success')}}
+                    </div>
+                    @endif
                     <div class="contact-us-content-right">
-                        <form action="#">
+                        <form action="{{ route('send') }}" method="POST">
+                            {{ csrf_field() }}
                             <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             <div class="input-content clearfix">
                                 <h4>Send Us A email</h4>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input type="text" placeholder="Name*" class="form-control">
+                                        <input type="text" name="name" placeholder="your full name*" class="form-control" required>
                                     </div><!-- /.col-sm-6 -->
                                     <div class="col-sm-6">
-                                        <input type="email" placeholder="Email*" class="form-control Email">
+                                        <input type="email" name="email" placeholder="your email*" class="form-control Email" required>
                                     </div><!-- /.col-sm-6 -->
                                     <div class="col-md-12">
-                                        <input type="search" placeholder="Website*" class="form-control website">
+                                        <input type="text" name="subject" placeholder="your subject*" class="form-control" required>
                                     </div><!-- /.col-md-12 -->
                                     <div class="col-md-12">
-                                        <textarea rows="2" cols="80">your massage</textarea>
+                                        <textarea rows="4" name="massage" placeholder="your massage*" required></textarea>
                                     </div><!-- /.col-md-12 -->
                                 </div><!-- /.row -->
                                 <div class="subimt-button clearfix">

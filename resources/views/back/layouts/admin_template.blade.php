@@ -168,8 +168,14 @@
                                     <a href="{{ url('/admin/tnc')}}"><i class="fa fa-caret-right"></i> Terms& Cond.</a>
                                 </li>
                             </ul>
-                        </li> 
-                        <!-- booking list -->
+                        </li>
+                        <!-- subscriber -->
+                        <li class="treeview <?php if ($menu == 'subscriber') echo 'active' ?>">
+                            <a href="{{ url('/admin/subscriber') }}" >
+                                <i class="fa fa-users fa-lg"></i><span> &nbsp;Subscriber List</span>
+                            </a>
+                        </li>
+                        <!-- settings -->
                         <li class="treeview <?php if ($menu == 'settings') echo 'active' ?>">
                             <a href="{{ url('/admin/settings') }}" >
                                 <i class="fa fa-gear fa-lg"></i><span> &nbsp;Settings</span>
@@ -245,20 +251,29 @@
             $('#lfm').filemanager('image', {prefix: route_prefix});
             $('#lfm2').filemanager('file', {prefix: route_prefix});
         </script>
-
-
-
-        <!-- datepicker -->
-        <!-- <script>
+        <!-- for common datepicker -->
+        <script>
             $( function() {
                 $( "#jquery_datepicker" ).datepicker({
                     minDate: 0,
                     dateFormat: 'yy-mm-dd'
                 });
             });
-        </script> -->
-        <!-- date picker for row -->
-
+        </script>
+        <!-- for booking table date picker -->
+        @if(isset($bookinglists[0]))
+        @foreach($bookinglists as $list)
+        <script>
+            $( function() {
+                $( "#jquery_datepicker_{{ $list->booking_id }}" ).datepicker({
+                    minDate: 0,
+                    dateFormat: 'yy-mm-dd'
+                });
+            });
+        </script>
+        @endforeach
+        @endif
+        <!-- for data table -->
         <script>
           $(function () {
             $('#data_table').DataTable({
