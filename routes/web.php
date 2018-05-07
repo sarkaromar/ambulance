@@ -52,35 +52,18 @@ Route::prefix('admin')->group(function(){
 	Route::get('/booking-delete/{id}', 'Back\Booking@delete');
 
 	// service section --------
-	// ac
-	Route::get('/ac', 'Back\Service\Ac@index');
-	Route::post('/add-ac-slider', 'Back\Service\Ac@add_slider');
-	Route::post('/update-ac-slider/{id}', 'Back\Service\Ac@update_slider');
-	Route::post('/update-ac-short-desc/', 'Back\Service\Ac@update_short_desc');
-	Route::post('/update-ac-service-info/', 'Back\Service\Ac@update_service_info');
-	// common for all
-	Route::get('/delete-service-slider/{id}', 'Back\Service\Ac@delete_slider');
+	Route::get('/service', 'Back\Service@index');
+	Route::get('/add-service', 'Back\Service@add_service');
+	Route::post('/do-add-service', 'Back\Service@do_add_service');
+	Route::get('/update-service/{id}', 'Back\Service@update_service');
+	Route::post('/do-update-service/{id}', 'Back\Service@do_update_service');
+	Route::get('/delete-service/{id}', 'Back\Service@delete_service');
 
-	// non ac
-	Route::get('/non-ac', 'Back\Service\Non_ac@index');
-	Route::post('/add-non-ac-slider', 'Back\Service\Non_ac@add_slider');
-	Route::post('/update-non-ac-slider/{id}', 'Back\Service\Non_ac@update_slider');
-	Route::post('/update-non-ac-short-desc/', 'Back\Service\Non_ac@update_short_desc');
-	Route::post('/update-non-ac-service-info/', 'Back\Service\Non_ac@update_service_info');
-
-	// icu
-	Route::get('/icu', 'Back\Service\Icu@index');
-	Route::post('/add-icu-slider', 'Back\Service\Icu@add_slider');
-	Route::post('/update-icu-slider/{id}', 'Back\Service\Icu@update_slider');
-	Route::post('/update-icu-short-desc/', 'Back\Service\Icu@update_short_desc');
-	Route::post('/update-icu-service-info/', 'Back\Service\Icu@update_service_info');
-	
-	// freezer
-	Route::get('/freezer', 'Back\Service\Freezer@index');
-	Route::post('/add-freezer-slider', 'Back\Service\Freezer@add_slider');
-	Route::post('/update-freezer-slider/{id}', 'Back\Service\Freezer@update_slider');
-	Route::post('/update-freezer-short-desc/', 'Back\Service\Freezer@update_short_desc');
-	Route::post('/update-freezer-service-info/', 'Back\Service\Freezer@update_service_info');
+	// service slider section --------
+	Route::get('/service-slider-list/{id}', 'Back\ServiceSlider@index');
+	Route::post('/add-service-slider', 'Back\ServiceSlider@add');
+	Route::post('/update-service-slider/{id}', 'Back\ServiceSlider@update');
+	Route::get('/delete-service-slider/{id}', 'Back\ServiceSlider@delete');
 
 	// cms section ---------------------
 	// slider section

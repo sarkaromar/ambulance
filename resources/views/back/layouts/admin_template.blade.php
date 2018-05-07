@@ -100,28 +100,11 @@
                                 <i class="fa fa-list-ul fa-lg"></i><span> &nbsp;Booking List</span>
                             </a>
                         </li>
-                        <!-- service page -->
-                        <li class="treeview <?php if($menu == 'service' ) echo 'active' ?>">
-                            <a href="#">
-                                <i class="fa fa-fw fa-edit fa-lg"></i><span> &nbsp;Service Content</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                        <!-- service Content -->
+                        <li class="treeview <?php if ($menu == 'service') echo 'active' ?>">
+                            <a href="{{ url('/admin/service') }}" >
+                                <i class="fa fa-list-ul fa-lg"></i><span> &nbsp;Service Content</span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li class="<?php if (isset($submenu) && $submenu == 'ac' ) echo 'active' ?>">
-                                    <a href="{{ url('/admin/ac')}}"><i class="fa fa-caret-right"></i> Ac Amb.</a>
-                                </li>
-                                <li class="<?php if (isset($submenu) && $submenu == 'non_ac' ) echo 'active' ?>">
-                                    <a href="{{ url('/admin/non-ac')}}"><i class="fa fa-caret-right"></i> Non-Ac Amb.</a>
-                                </li>
-                                <li class="<?php if (isset($submenu) && $submenu == 'icu' ) echo 'active' ?>">
-                                    <a href="{{ url('/admin/icu')}}"><i class="fa fa-caret-right"></i> ICU Amb.</a>
-                                </li>
-                                <li class="<?php if (isset($submenu) && $submenu == 'freezer' ) echo 'active' ?>">
-                                    <a href="{{ url('/admin/freezer')}}"><i class="fa fa-caret-right"></i> Freezer Amb.</a>
-                                </li>
-                            </ul>
                         </li>
                         <!-- dynamic content -->
                         <li class="treeview <?php if($menu == 'dynamic' ) echo 'active' ?>">

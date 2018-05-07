@@ -15,10 +15,10 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('service_id');
-            $table->string('service_name')->nullable();
+            $table->string('service_title')->nullable();
+            $table->string('service_slug')->nullable();
             $table->text('service_short_desc')->nullable();
             $table->text('service_info')->nullable();
-            $table->string('service_link')->nullable();
             $table->timestamps();
         });
     }
