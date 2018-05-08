@@ -18,10 +18,6 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">{{ $title }}</h3>
-                        <!-- top btn -->
-                        <div class="pull-right">
-                            <a class="btn btn-success" data-toggle="modal" href="#add" title="add">Add</a>
-                        </div>
                     </div><!-- /.box-header -->
                    @if ($errors->any())
                     <div class="alert alert-danger">
@@ -53,38 +49,48 @@
                                 <table class="table table-hover">
                                     <tbody>
                                         <tr>
-                                            <th><strong>Image</strong></th>
+                                            <th><strong>Name</strong></th>
+                                            <th><strong>From</strong></th>
                                             <th><strong>Action</strong></th>
                                         </tr>
                                         @foreach ($lists as $list)
                                         <tr>
-                                            <td><img src="{{ URL::to('photo/service_slider', $list->service_slider_image) }}" width="100px"></td>
+                                            <td>{{ $list->contact_name }}</td>
+                                            <td>{{ $list->contact_email }}</td>
                                             <td>
-                                                <a href="#edit_{{$list->service_slider_id}}" class="text-primary" data-toggle="modal" title="Edit"><i class="fa fa-pencil-square-o fa-lg"></i></a> |
-                                                <a href="{{url('admin/delete-service-slider', $list->service_slider_id)}}" class="text-danger" onclick="return check();" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o fa-lg"></i></a>
+                                                <a href="#details_{{$list->contact_id}}" class="text-primary" data-toggle="modal" title="View Message"><i class="fa fa-eye fa-lg"></i></a> |
+                                                <a href="{{url('admin/delete-contact', $list->contact_id)}}" class="text-danger" onclick="return check();" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o fa-lg"></i></a>
                                             </td>
                                         </tr>
                                         <!--edit-->
-                                        <div id="edit_{{$list->service_slider_id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                            <div class="modal-dialog">
+                                        <div id="details_{{$list->contact_id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
-                                                    <form method="POST" action="{{ url('admin/update-service-slider', $list->service_slider_id) }}" enctype="multipart/form-data">
-                                                        {{ csrf_field() }}
+                                                    <form method="" action="">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                            <h5 class="modal-title">Edit {{ $title}}</h5>
+                                                            <h5 class="modal-title">View {{ $title}}</h5>
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="form-group">
-                                                                <label class="control-label">Image:<sup style="color: red">*</sup></label>
-                                                                <input class="form-control" type="file" name="image"/>
-                                                                <input type="hidden" name="old_image" value="{{ $list->service_slider_image }}" required/>
-                                                                <img src="{{ URL::to('photo/service_slider', $list->service_slider_image) }}" width="150px">
+                                                                <label class="control-label mb-10">Name:</label>
+                                                                <input type="text" class="form-control" value="{{ $list->contact_name }}" placeholder="Name">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label mb-10">From:</label>
+                                                               <input type="text" class="form-control" value="{{ $list->contact_email }}" placeholder="Email">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label mb-10">Subject:</label>
+                                                               <input type="text" class="form-control" value="{{ $list->contact_subject }}" placeholder="Subject">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label mb-10">Message:</label>
+                                                                <textarea class="form-control" rows="10" placeholder="email body">{{ $list->contact_subject }}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
-                                                            <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Update</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -104,33 +110,6 @@
         <!-- /.row -->
     </section>
     <!-- /.content -->
-    <!-- add modal -->
-    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title"> Add</h4>
-                </div>
-                <form method="POST" action="{{ url('admin/add-service-slider', $serviceid) }}" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label >Image:<sup style="color: red">*</sup></label>
-                                    <input class="form-control" type="file" name="image" required/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success btn-icon pull-left"><i class="fa fa-fw  fa-save fa-lg"></i> Add</button>
-                    </div>
-                </form>
-            </div> 
-        </div>
-    </div>   
 </div>
 <!-- /.content-wrapper -->
 @endsection

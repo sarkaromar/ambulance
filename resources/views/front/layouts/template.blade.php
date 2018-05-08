@@ -78,11 +78,12 @@
                                     <li><a href="{{ url('about-us') }}">আমাদের সম্পর্কে</a></li>
                                     <li>
                                         <a href="#">আমাদের সেবাসমূহ</a>
-                                        <ul class="sub-menu"> 
-                                            <li><a href="{{ url('non-ac-ambulance') }}">নন এসি অ্যাম্বুলেন্স </a></li>                                         
-                                            <li><a href="{{ url('ac-ambulance') }}">এসি অ্যাম্বুলেন্স </a></li>                                         
-                                            <li><a href="{{ url('icu-ambulance') }}">আই সি ইউ অ্যাম্বুলেন্স</a></li>                                         
-                                            <li><a href="{{ url('freezer-van') }}">ফ্রীজার ভ্যান</a></li>                                         
+                                        <ul class="sub-menu">
+                                            @if(isset($servicelists[0]))
+                                            @foreach($servicelists as $servicelist)
+                                            <li><a href="{{ url('service', $servicelist->service_slug) }}">{{ $servicelist->service_title }}</a></li> 
+                                            @endforeach
+                                            @endif
                                         </ul>
                                     </li>
                                     <li><a href="{{ url('rants') }}">ভাড়া তালিকা</a></li>

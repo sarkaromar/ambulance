@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Back;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use App\ServiceSliderModel;
 use Session;
 
@@ -25,18 +26,19 @@ class ServiceSlider extends Controller{
      *
      * @return response
      */
-    public function index($id) {
+    public function index($serviceid) {
 
         // make object and get booking list
         $slider = new ServiceSliderModel();
 
-        $lists = $slider->where('service_id', $id)->get();
+        $lists = $slider->where('service_id', $serviceid)->get();
 
         $title = 'Service Slider List';
         
         $menu = 'service';
 
         return view('back.service.service_slider')
+                                        ->withServiceid($serviceid)
                                         ->withLists($lists)
                                         ->withTitle($title)
                                         ->withMenu($menu);
@@ -48,33 +50,32 @@ class ServiceSlider extends Controller{
      *
      * @return response
      */
-    public function store(Request $request) {
+    public function store(Request $request, $serviceid) {
 
         // image upload
         if(Input::file('image')){
 
             $image = Input::file('image');
             $image_name  = str_random(4).time() . '.' . $image->getClientOriginalExtension();
-            $path = getcwd() . '/photo/slider/';
+            $path = getcwd() . '/photo/service_slider/';
             $image->move($path, $image_name);
 
         }
         
         // create object
-        $slider = new SliderModel();
+        $slider = new ServiceSliderModel();
         // assign
-        $slider->slider_image = $image_name;
-        $slider->slider_text1 = $request->input('slider_text1');
-        $slider->slider_text2 = $request->input('slider_text2');
-
+        $slider->service_id = $serviceid;
+        $slider->service_slider_image = $image_name;
+       
         if($slider->save()){
             $msg = "Added Successfully!";
             Session::flash('success', $msg);
-            return redirect('/admin/slider');
+            return Redirect::back();
         } else {
             $msg = "Error whiling added!";
             Session::flash('success', $msg);
-            return redirect('/admin/slider');
+            return Redirect::back();
         }
     }
 
@@ -83,7 +84,7 @@ class ServiceSlider extends Controller{
      *
      * @return response
      */
-    public function update(Request $request, $id) {
+    public function update(Request $request, $service_slider_id) {
 
         // image upload
         if(Input::file('image')){
@@ -92,7 +93,7 @@ class ServiceSlider extends Controller{
             $del_image = $request->input('old_image');
             if(!empty($del_image)){
 
-                $path = getcwd() . '/photo/slider/';
+                $path = getcwd() . '/photo/service_slider/';
                 $filename = $path . $del_image;
                 if (file_exists($filename)) {
                     unlink($filename);
@@ -103,7 +104,7 @@ class ServiceSlider extends Controller{
             // new image upload
             $image = Input::file('image');
             $image_name  = str_random(4).time() . '.' . $image->getClientOriginalExtension();
-            $path = getcwd() . '/photo/slider/';
+            $path = getcwd() . '/photo/service_slider/';
             $image->move($path, $image_name);
 
         }else{
@@ -115,25 +116,23 @@ class ServiceSlider extends Controller{
         // make array
         $data = [ 
 
-            'slider_text1' => $request->input('slider_text1'),
-            'slider_text2' => $request->input('slider_text2'),
-            'slider_image' => $image_name,
+            'service_slider_image' => $image_name,
         
         ];
 
         // make object and update
-        $slider = new SliderModel();
-        $result = $slider->where('slider_id', $id)->update($data);
+        $slider = new ServiceSliderModel();
+        $result = $slider->where('service_slider_id', $service_slider_id)->update($data);
 
         // redirect
         if($result){
             $msg = "Update Successfully!";
             Session::flash('success', $msg);
-            return redirect('/admin/slider');
+            return Redirect::back();
         }else{
             $msg = "Error whiling update!";
             Session::flash('success', $msg);
-            return redirect('/admin/slider');
+            return Redirect::back();
         }
         
     }
@@ -143,19 +142,19 @@ class ServiceSlider extends Controller{
      *
      * @return response
      */
-    public function delete($id) {
+    public function delete($service_slider_id) {
 
         // make object
-        $slider = new SliderModel();
+        $slider = new ServiceSliderModel();
         
         // get image
-        $data =  $slider->select('slider_image')->where('slider_id', $id)->first();
+        $data =  $slider->select('service_slider_image')->where('service_slider_id', $service_slider_id)->first();
     
         // delete from directory
-        if(!empty($data->slider_image)){
+        if(!empty($data->service_slider_image)){
 
-            $path = getcwd() . '/photo/slider/';
-            $filename = $path . $data->slider_image;
+            $path = getcwd() . '/photo/service_slider/';
+            $filename = $path . $data->service_slider_image;
             if (file_exists($filename)) {
                 unlink($filename);
             }
@@ -163,17 +162,17 @@ class ServiceSlider extends Controller{
         }
 
         // delete row
-        $result = $slider->where('slider_id', $id)->delete();
+        $result = $slider->where('service_slider_id', $service_slider_id)->delete();
 
         // redirect
         if($result){
             $msg = "Successfully Deleted!";
             Session::flash('success', $msg);
-            return redirect('/admin/slider');
+            return Redirect::back();
         }else{
             $msg = "Error Whiling Delete!";
             Session::flash('success', $msg);
-            return redirect('/admin/slider');
+            return Redirect::back();
         }
         
     }

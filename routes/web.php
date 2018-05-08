@@ -26,12 +26,9 @@ Route::get('/faq', 'Front\Home_@faq');
 Route::get('/terms_and_conditions', 'Front\Home_@tnc');
 Route::get('/contact-us', 'Front\Home_@contact');
 Route::post('/send-message', 'Front\Home_@send_message')->name('send');
+// services details pages
+Route::get('/service/{slug}', 'Front\Home_@service_details');
 
-// services pages
-Route::get('/non-ac-ambulance', 'Front\Service@non_ac_ambulance');
-Route::get('/ac-ambulance', 'Front\Service@ac_ambulance');
-Route::get('/icu-ambulance', 'Front\Service@icu_ambulance');
-Route::get('/freezer-van', 'Front\Service@freezer_ambulance');
 
 // for ajax call action
 Route::get('/subscriber', 'Front\CommonController@save_subscriber'); // save subscriber form footer
@@ -60,10 +57,10 @@ Route::prefix('admin')->group(function(){
 	Route::get('/delete-service/{id}', 'Back\Service@delete_service');
 
 	// service slider section --------
-	Route::get('/service-slider-list/{id}', 'Back\ServiceSlider@index');
-	Route::post('/add-service-slider', 'Back\ServiceSlider@add');
-	Route::post('/update-service-slider/{id}', 'Back\ServiceSlider@update');
-	Route::get('/delete-service-slider/{id}', 'Back\ServiceSlider@delete');
+	Route::get('/service-slider-list/{serviceid}', 'Back\ServiceSlider@index');
+	Route::post('/add-service-slider/{serviceid}', 'Back\ServiceSlider@store');
+	Route::post('/update-service-slider/{service_slider_id}', 'Back\ServiceSlider@update');
+	Route::get('/delete-service-slider/{service_slider_id}', 'Back\ServiceSlider@delete');
 
 	// cms section ---------------------
 	// slider section
@@ -113,6 +110,10 @@ Route::prefix('admin')->group(function(){
 	// settings section --------
 	Route::get('/settings', 'Back\Settings@index');
 	Route::post('/update-settings', 'Back\Settings@update');
+
+	// contact section 
+	Route::get('/contact', 'Back\Contact@index');
+	Route::get('/delete-contact/{id}', 'Back\Contact@delete');
 
 
 

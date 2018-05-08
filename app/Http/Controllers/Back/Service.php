@@ -155,13 +155,33 @@ class Service extends Controller{
      *
      * @return response
      */
-    public function delete_service($id) {
+    public function delete_service($service_id) {
 
-        // make object
+        // delete service slider
+        $serviceslider = new ServiceSliderModel();
+        $service_sldier_lists = $serviceslider->where('service_id', $service_id)->get();
+
+        foreach ($service_sldier_lists as $service_slider) {
+            
+            // delete from directory
+            if(!empty($service_slider->service_slider_image)){
+
+                $path = getcwd() . '/photo/service_slider/';
+                $filename = $path . $service_slider->service_slider_image;
+                if (file_exists($filename)) {
+                    unlink($filename);
+                }
+
+            }
+
+            // delete row
+            $serviceslider->where('service_id', $service_id)->delete();
+        }
+
+
+        // delete service 
         $service = new ServiceModel();
-        
-        // delete row
-        $result = $service->where('service_id', $id)->delete();
+        $result = $service->where('service_id', $service_id)->delete();
 
         // redirect
         if($result){

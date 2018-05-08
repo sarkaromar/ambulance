@@ -253,11 +253,11 @@
                                             <div class="image-content">
                                                 <i class="renticon renticon-ground-curgo"></i>
                                             </div><!-- /.image-content -->
-                                            <h3 class="about-title">{{ $service->service_name }}</h3>
+                                            <h3 class="about-title">{{ $service->service_title }}</h3>
                                         </div><!-- /.details-header -->
                                         <div class="details-description">
                                             <p class="about-details">{{ $service->service_short_desc }}</p>
-                                            <a href="{{ url($service->service_link) }}" class="button nevy-bg">আরো</a>
+                                            <a href="{{ url($service->service_slug) }}" class="button nevy-bg">আরো</a>
                                         </div><!-- /.details-description -->
                                     </div><!-- /.about-details-content -->
                                 </div><!-- /.col-md-6 -->

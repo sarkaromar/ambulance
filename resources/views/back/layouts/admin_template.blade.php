@@ -158,6 +158,12 @@
                                 <i class="fa fa-users fa-lg"></i><span> &nbsp;Subscriber List</span>
                             </a>
                         </li>
+                        <!-- contact -->
+                        <li class="treeview <?php if ($menu == 'contact') echo 'active' ?>">
+                            <a href="{{ url('/admin/contact') }}" >
+                                <i class="fa fa-paper-plane fa-lg"></i><span> &nbsp;Contact</span>
+                            </a>
+                        </li> 
                         <!-- settings -->
                         <li class="treeview <?php if ($menu == 'settings') echo 'active' ?>">
                             <a href="{{ url('/admin/settings') }}" >

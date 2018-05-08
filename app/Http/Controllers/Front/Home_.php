@@ -10,12 +10,15 @@ use App\AmbulanceTypeModel;
 use App\BookingModel;
 use App\FaqModel;
 use App\ServiceModel;
+use App\ServiceSliderModel;
 use App\SliderModel;
 use App\DriverModel;
 use App\NewsModel;
 use App\TestimonialModel;
 use App\ContentModel;
 use App\SettingsModel;
+use App\ContactModel;
+
 
 use Session;
 
@@ -43,7 +46,10 @@ class Home_ extends Controller {
         $tests = TestimonialModel::all();
 
         // get service
-        $services = ServiceModel::select('service_name','service_short_desc','service_link')->get();
+        $services = ServiceModel::select('service_title','service_short_desc','service_slug')->get();
+
+        // get service list menu
+        $servicelists = ServiceModel::select('service_title','service_slug')->get();
 
         // get faq
         $faqs = FaqModel::limit(5)->get();
@@ -64,6 +70,7 @@ class Home_ extends Controller {
                 ->withSliders($sliders)
                 ->withTests($tests)
                 ->withServices($services)
+                ->withServicelists($servicelists)
                 ->withFaqs($faqs)
                 ->withAmbtypes($ambtypes)
                 ->withTitle($title)
@@ -136,6 +143,9 @@ class Home_ extends Controller {
         $contentmodel = new ContentModel();
         $result = $contentmodel->select('content_info')->where('content_name', 'about')->first();
         $content = $result->content_info;
+
+        // get service list menu
+        $servicelists = ServiceModel::select('service_title','service_slug')->get();
         
         // get driver
         $drivers = DriverModel::get();
@@ -149,6 +159,7 @@ class Home_ extends Controller {
         
         return view('front.common.about')
                     ->withContent($content)
+                    ->withServicelists($servicelists)
                     ->withDrivers($drivers)
                     ->withTitle($title)
                     ->withSetting($setting)
@@ -170,6 +181,9 @@ class Home_ extends Controller {
         $result = $contentmodel->select('content_info')->where('content_name', 'rants')->first();
         $content = $result->content_info;
 
+        // get service list menu
+        $servicelists = ServiceModel::select('service_title','service_slug')->get();
+
         $title = 'ভাড়া তালিকা';
         
         $menu = 'rants';
@@ -179,6 +193,7 @@ class Home_ extends Controller {
         
         return view('front.common.rants')
                     ->withContent($content)
+                    ->withServicelists($servicelists)
                     ->withTitle($title)
                     ->withSetting($setting)
                     ->withMenu($menu);
@@ -195,6 +210,9 @@ class Home_ extends Controller {
 
         $news = NewsModel::Paginate(6);
 
+        // get service list menu
+        $servicelists = ServiceModel::select('service_title','service_slug')->get();
+
         $title = 'খবর';
         
         $menu = 'news';
@@ -204,6 +222,7 @@ class Home_ extends Controller {
         
         return view('front.common.news')
                 ->withNews($news)
+                ->withServicelists($servicelists)
                 ->withTitle($title)
                 ->withSetting($setting)
                 ->withMenu($menu);
@@ -220,6 +239,9 @@ class Home_ extends Controller {
 
         $news = NewsModel::where('news_id', $id)->first();
 
+        // get service list menu
+        $servicelists = ServiceModel::select('service_title','service_slug')->get();
+
         $title = 'খবর';
         
         $menu = 'news';
@@ -229,6 +251,7 @@ class Home_ extends Controller {
         
         return view('front.common.news_details')
                 ->withNews($news)
+                ->withServicelists($servicelists)
                 ->withTitle($title)
                 ->withSetting($setting)
                 ->withMenu($menu);
@@ -246,6 +269,9 @@ class Home_ extends Controller {
         // get faq
         $faqs = FaqModel::all();
 
+        // get service list menu
+        $servicelists = ServiceModel::select('service_title','service_slug')->get();
+
         $title = 'প্রশ্নাবলী';
         
         $menu = 'faq';
@@ -255,6 +281,7 @@ class Home_ extends Controller {
 
         return view('front.common.faq')
                         ->withFaqs($faqs)
+                        ->withServicelists($servicelists)
                         ->withTitle($title)
                         ->withSetting($setting)
                         ->withMenu($menu);
@@ -274,6 +301,9 @@ class Home_ extends Controller {
         $result = $contentmodel->select('content_info')->where('content_name', 'tnc')->first();
         $content = $result->content_info;
 
+        // get service list menu
+        $servicelists = ServiceModel::select('service_title','service_slug')->get();
+
         // get setting info
         $setting = SettingsModel::all();
 
@@ -283,6 +313,7 @@ class Home_ extends Controller {
         
         return view('front.common.tnc')
                     ->withContent($content)
+                    ->withServicelists($servicelists)
                     ->withTitle($title)
                     ->withSetting($setting)
                     ->withMenu($menu);
@@ -297,8 +328,8 @@ class Home_ extends Controller {
      */
     public function contact(){
 
-        // get sliders
-        // $data['sliders'] = DB::table('v_sliders')->get();
+        // get service list menu
+        $servicelists = ServiceModel::select('service_title','service_slug')->get();
 
         $title = 'যোগাযোগ';
         
@@ -340,18 +371,73 @@ class Home_ extends Controller {
 
         ];
 
-        // Mail::to('')->send();
-        // Mail::send('front.email_body.contact_email', $data, function($message){
-        //     $message->to('mostafijrana1@gmail.com')->subject('someone want to contact'); // site email name, email holder name 
-        // });
+        // create object
+        $contact = new ContactModel();
+        // assign
+        $contact->contact_name = trim($request->input('name'));
+        $contact->contact_email = trim($request->input('email'));
+        $contact->contact_subject = trim($request->input('subject'));
+        $contact->contact_massage = trim($request->input('massage'));
 
-        Mail::send('front.email_body.contact_email', $data, function ($message){
-            $message->to('mostafijrana1@gmail.com');
-        });
+        if($contact->save()){
 
-        Session::flash('success', 'We received your message, we will contact with you!');
-        return redirect::Back();
+            Session::flash('success', 'We received your message, we will contact with you!');
+            return redirect::Back();
+
+        } else {
+            
+            Session::flash('error', 'Sorry, try next time!');
+            return redirect::Back();
         
+        }
+
+        
+
+        
+        
+    }
+
+    /**
+     * Show the service page.
+     *
+     * @param   
+     * @return Response
+     * @author Mostafijur Rahman Rana
+     */
+    public function service_details($slug){
+
+        //find service
+        if($service = ServiceModel::where('service_slug', $slug)->first()){
+
+            $sliders = ServiceSliderModel::where('service_id', $service->service_id)->get();
+            
+            $content = $service->service_info;
+
+            // get setting info
+            $setting = SettingsModel::all();
+
+            // get ambulance type for form
+            $ambtypes = AmbulanceTypeModel::all();
+
+            $title = "$service->service_title";
+        
+            $menu = 'service';
+        
+            return view('front.common.service')
+                        ->withContent($content)
+                        ->withSliders($sliders)
+                        ->withAmbtypes($ambtypes)
+                        ->withTitle($title)
+                        ->withSetting($setting)
+                        ->withMenu($menu);
+
+        }else{
+
+            // if not found then back
+            return redirect('/');
+
+        }
+
     }
 
 
