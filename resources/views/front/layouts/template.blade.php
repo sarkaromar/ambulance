@@ -115,7 +115,7 @@
                         <div class="lang">    
                             <i class="fa fa-language"></i>
                             <span>ভাষা</span>
-                            <a href="{{ url('en') }}"><img src="{{ URL::to('assets/images/lang/en.png') }}" alt=""></a>
+                            <a href="{{ url('/en') }}"><img src="{{ URL::to('assets/images/lang/en.png') }}" alt=""></a>
                             <a href="{{ url('/') }}"><img src="{{ URL::to('assets/images/lang/bn.png') }}" alt=""></a>
                         </div>
                     </div><!-- /.nav-right-content -->
@@ -177,10 +177,11 @@
                                 আমাদের সেবাসমূহ
                             </h3><!-- /.widget-title -->
                             <ul>
-                                <li><a href="{{ url('non-ac-ambulance') }}">নন এসি অ্যাম্বুলেন্স </a></li>                                         
-                                <li><a href="{{ url('ac-ambulance') }}">এসি অ্যাম্বুলেন্স </a></li>                                         
-                                <li><a href="{{ url('icu-ambulance') }}">আই সি ইউ অ্যাম্বুলেন্স</a></li>                                         
-                                <li><a href="{{ url('freezer-van') }}">ফ্রীজার ভ্যান</a></li> 
+                                @if(isset($servicelists[0]))
+                                @foreach($servicelists as $servicelist)
+                                <li><a href="{{ url('service', $servicelist->service_slug) }}">{{ $servicelist->service_title }}</a></li> 
+                                @endforeach
+                                @endif
                             </ul>
                         </div><!-- /.widget -->
                     </div><!-- /.col-md-4 -->

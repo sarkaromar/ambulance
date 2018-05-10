@@ -141,7 +141,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Home Text</label>
                             <div class="col-md-8">
-                                <textarea class="form-control" name="setting_home_text" rows="15" placeholder="home text" required>{{ $setting->setting_home_text }}</textarea>
+                                <textarea class="form-control" name="content" rows="15" placeholder="home text" required>{!! old('content', $content) !!}</textarea>
                             </div>
                         </div>
                     </div>

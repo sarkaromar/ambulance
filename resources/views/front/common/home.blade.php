@@ -64,7 +64,7 @@
                                     </div><!-- /.heading-content-one -->
                                 </div><!-- /.col-md-10 -->
                                 <br>
-                                {{ $setting[0]->setting_home_text }}
+                                {!! $setting[0]->setting_home_text !!}
                             </div><!-- /.heading-content-one -->
                         </div><!-- /.col-md-12 -->
                     </div><!-- /.row -->
@@ -257,7 +257,7 @@
                                         </div><!-- /.details-header -->
                                         <div class="details-description">
                                             <p class="about-details">{{ $service->service_short_desc }}</p>
-                                            <a href="{{ url($service->service_slug) }}" class="button nevy-bg">আরো</a>
+                                            <a href="{{ url('service', $service->service_slug) }}" class="button nevy-bg">আরো</a>
                                         </div><!-- /.details-description -->
                                     </div><!-- /.about-details-content -->
                                 </div><!-- /.col-md-6 -->

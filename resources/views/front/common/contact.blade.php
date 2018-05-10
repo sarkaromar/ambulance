@@ -46,10 +46,11 @@
                         <div class="contact">
                             <h4><i class="fa fa-user-circle"></i>Social account</h4>
                             <div class="social-icon">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                                <a href="{{ $setting[0]->setting_fb }}"><i class="fa fa-facebook"></i></a>
+                                <a href="{{ $setting[0]->setting_skype }}"><i class="fa fa-skype"></i></a>
+                                <a href="{{ $setting[0]->setting_twitter }}"><i class="fa fa-twitter"></i></a>
+                                <a href="{{ $setting[0]->setting_instagram }}"><i class="fa fa-instagram"></i></a>
+                                <a href="{{ $setting[0]->setting_youtube }}"><i class="fa fa-google-plus"></i></a>
                             </div><!-- /.Social-icon -->
                         </div><!-- /.contact -->
                     </div><!-- /.contactus-content-left -->

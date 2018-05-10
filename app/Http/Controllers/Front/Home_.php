@@ -338,7 +338,10 @@ class Home_ extends Controller {
         // get setting info
         $setting = SettingsModel::all();
         
-        return view('front.common.contact')->withTitle($title)->withSetting($setting)->withMenu($menu);
+        return view('front.common.contact')
+            ->withTitle($title)
+            ->withSetting($setting)
+            ->withMenu($menu);
     }
 
 
@@ -391,10 +394,6 @@ class Home_ extends Controller {
         
         }
 
-        
-
-        
-        
     }
 
     /**

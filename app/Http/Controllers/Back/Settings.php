@@ -30,12 +30,15 @@ class Settings extends Controller{
         // make object 
         $setting = SettingsModel::select('*')->first();
 
+        $content = $setting->setting_home_text;
+
         $title = 'Settings';
         
         $menu = 'settings';
 
         return view('back.settings.settings')
                     ->withSetting($setting)
+                    ->withContent($content)
                     ->withTitle($title)
                     ->withMenu($menu);
                 
@@ -97,7 +100,7 @@ class Settings extends Controller{
             'setting_total_driver' => $request->input('setting_total_driver'),
             'setting_total_client' => $request->input('setting_total_client'),
             'setting_total_day' => $request->input('setting_total_day'),
-            'setting_home_text' => $request->input('setting_home_text'),
+            'setting_home_text' => $request->input('content')
         
         ];
 
